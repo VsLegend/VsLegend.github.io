@@ -1,1 +1,4 @@
-theme: jekyll-theme-architect
+deploy:
+  type: git
+  repository: https://github.com/VsLegend/VsLegend.github.io
+  branch: master
