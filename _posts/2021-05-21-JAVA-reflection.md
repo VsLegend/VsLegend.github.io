@@ -8,7 +8,6 @@ image: assets/images/11.jpg
 description: "Java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。"
 featured: true
 hidden: true
-rating: 4.5
 ---
 
 # Java反射机制
