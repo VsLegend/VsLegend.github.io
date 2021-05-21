@@ -1,17 +1,17 @@
 ---
 layout: post
-title:  "Inception Movie"
-author: WoNy Jw
+title:  "Java反射机制"
+author: WoNyJw
 categories: [ Java, Reflection ]
 tags: [Java, 反射]
 image: assets/images/11.jpg
-description: "My review of Inception movie. Acting, plot and something else in this short description."
+description: "Java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。"
 featured: true
 hidden: true
 rating: 4.5
 ---
 
-# 反射机制：Reflection
+# Java反射机制
 
 参考：[The Reflection API](https://docs.oracle.com/javase/tutorial/reflect/index.html)
 
@@ -28,7 +28,6 @@ Java在编译之后会生成一个class文件，反射通过字节码文件找�
 - 反射允许代码执行非反射代码中非法的操作，可以检索和访问类的私有成员变量，包括私有属性、方法等。
 
 注意：要有选择的使用反射功能，如果可以直接执行操作，那么最好不要使用反射。
-
 
 
 

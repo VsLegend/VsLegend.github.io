@@ -19,83 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8bdb50e2-0fac-4da9-bffc-d50877666881" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    <list default="true" id="8bdb50e2-0fac-4da9-bffc-d50877666881" name="Default Changelist" comment="更新">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_data/settings.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/article-content.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/contact-link.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/disqus-comments.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/footer.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/google-analytics.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/head.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/hero.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/instagram.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/javascripts.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/main.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/pagination.html" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/pagination.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/subscribe.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_layouts/default.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/default.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_layouts/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_layouts/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/post.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_layouts/tag_page.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_pages/about.md" beforeDir="false" afterPath="$PROJECT_DIR$/_pages/about.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_pages/styleguide.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-06-25-start-the-day-with-the-right-habit.markdown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-07-05-moving-to-a-new-place.markdown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-07-17-time-to-givegifts-to-everyone.markdown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-07-19-why-a-brand-is-often-important.markdown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2018-07-23-find-a-connection-with-the-reader.markdown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/Reflect.markdown" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/0-settings/_helpers.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/0-settings/_mixins.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/0-settings/_variables.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/1-tools/_grid.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/1-tools/_ionicons.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/1-tools/_normalize.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/1-tools/_reset.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/1-tools/_shared.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/1-tools/_syntax-highlighting.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/1-tools/_zoom.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/2-base/_base.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/3-modules/_contact-link.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/3-modules/_footer.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/3-modules/_header.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/3-modules/_hero.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/3-modules/_instagram.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/3-modules/_pagination.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/3-modules/_scroll-button-top.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/3-modules/_search.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/3-modules/_subscribe.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/4-layouts/_article.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/4-layouts/_page-home.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/4-layouts/_page.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/4-layouts/_post.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/4-layouts/_tag-page.scss" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/favicon.ico" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/01.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/02.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/03.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/04.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/05.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/06.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/07.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/08.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/09.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/10.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/TaurusDrawing5.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/logo.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/zolan-main-page.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/zolan-post.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +53,14 @@
       <option name="presentableId" value="Default" />
       <updated>1621598350881</updated>
     </task>
+    <task id="LOCAL-00001" summary="更新">
+      <created>1621610470034</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1621610470034</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -140,11 +75,27 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="更新" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新" />
+  </component>
   <component name="WindowStateProjectService">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1621610977458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621610977458" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1621606658135">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1621606658135" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1621610479189">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621610479189" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621610977458">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621610977458" />
     <state x="661" y="223" width="598" height="594" key="find.popup" timestamp="1621609405360">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
