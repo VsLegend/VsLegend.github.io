@@ -10,6 +10,7 @@ disqus: 'demowebsite'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
 permalink: /:title/
+encoding: "utf-8"
 
 # Authors
 authors:
@@ -19,8 +20,8 @@ authors:
     avatar: 'assets/images/avatar.png'
     gravatar: b1cc14991db7a456fcd761680bbc8f81
     email: vslegend007@gmail.com
-    web:
-    twitter:
+    web: Null
+    twitter: Null
     description: "宁静致远。"
 
 # Plugins
@@ -43,8 +44,9 @@ jekyll-archives:
 paginate: 6
 paginate_path: /page:num/
     
-# Other
+# 转换
 markdown: kramdown
+markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 kramdown:
   input: GFM
