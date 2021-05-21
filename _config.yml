@@ -1,10 +1,10 @@
 # Site
-name: "WoNy Jw"
-title: "WoNy Jw"
-description: "WoNy Jw`s Blog."
+name: "WanyJw"
+title: "WanyJw"
+description: "WanyJw`s Blog."
 logo: 'assets/images/logo.png'
 favicon: 'assets/images/logo.png'
-baseurl: /WonyJw
+baseurl: /WanyJw
 google_analytics: 'UA-46278016-1'
 disqus: 'demowebsite'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
@@ -13,9 +13,9 @@ permalink: /:title/
 
 # Authors
 authors:
-  WoNyJw:
-    name: WoNy Jw
-    display_name: WoNy Jw
+  WanyJw:
+    name: WanyJw
+    display_name: WanyJw
     avatar: 'assets/images/avatar.png'
     gravatar: b1cc14991db7a456fcd761680bbc8f81
     email: vslegend007@gmail.com
