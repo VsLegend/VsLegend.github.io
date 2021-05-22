@@ -19,12 +19,31 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="精选设置">
-      <change afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_site/robots.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="文案">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/about-bundler/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about-bundler/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/acumulated-experience/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/acumulated-experience/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/customer-service/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/customer-service/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/education/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/education/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/first-mass-produced/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/first-mass-produced/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/is-intelligence-enough/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/is-intelligence-enough/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/never-stopped-worrying-never-loved-bomb/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/never-stopped-worrying-never-loved-bomb/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/options-for-creating-new-site-with-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/options-for-creating-new-site-with-jekyll/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/powerful-things-markdown-editor/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/powerful-things-markdown-editor/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/press-and-education/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/press-and-education/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/quick-start-guide/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/quick-start-guide/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/red-riding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/red-riding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tree-of-codes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tree-of-codes/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/we-all-wait-for-summer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/we-all-wait-for-summer/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +102,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621661745538</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="解决图片问题">
+      <created>1621662072624</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1621662072624</updated>
+    </task>
+    <task id="LOCAL-00005" summary="文案">
+      <created>1621662149220</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1621662149220</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -96,11 +129,14 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="设置" />
     <MESSAGE value="精选设置" />
-    <option name="LAST_COMMIT_MESSAGE" value="精选设置" />
+    <MESSAGE value="解决图片问题" />
+    <MESSAGE value="文案" />
+    <option name="LAST_COMMIT_MESSAGE" value="文案" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621661733955">
@@ -119,17 +155,17 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="388" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661895450" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1621661811673">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1621662151312">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621661811673" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621662151312" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621658936357">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621658936357" />
-    <state x="661" y="223" width="678" height="754" key="find.popup" timestamp="1621661217311">
+    <state x="661" y="223" width="678" height="754" key="find.popup" timestamp="1621662130505">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="661" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621661217311" />
+    <state x="661" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621662130505" />
   </component>
 </project>
