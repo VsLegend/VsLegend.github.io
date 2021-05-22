@@ -21,29 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="文案">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/about-bundler/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about-bundler/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/acumulated-experience/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/acumulated-experience/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/customer-service/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/customer-service/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/education/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/education/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/first-mass-produced/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/first-mass-produced/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/is-intelligence-enough/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/is-intelligence-enough/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/never-stopped-worrying-never-loved-bomb/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/never-stopped-worrying-never-loved-bomb/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/options-for-creating-new-site-with-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/options-for-creating-new-site-with-jekyll/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/powerful-things-markdown-editor/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/powerful-things-markdown-editor/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/press-and-education/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/press-and-education/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/quick-start-guide/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/quick-start-guide/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/red-riding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/red-riding/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tree-of-codes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tree-of-codes/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/we-all-wait-for-summer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/we-all-wait-for-summer/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -147,10 +125,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621660936592" />
-    <state x="709" y="221" key="RollbackChangesDialog" timestamp="1621660937793">
+    <state x="709" y="221" key="RollbackChangesDialog" timestamp="1621663434305">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="709" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621660937793" />
+    <state x="709" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621663434305" />
     <state x="790" y="388" key="VCS.EditChangelistDialog" timestamp="1621661895450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -163,9 +141,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621658936357" />
-    <state x="661" y="223" width="678" height="754" key="find.popup" timestamp="1621662130505">
+    <state x="661" y="223" width="678" height="754" key="find.popup" timestamp="1621663470884">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="661" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621662130505" />
+    <state x="661" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621663470884" />
   </component>
 </project>
