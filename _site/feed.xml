@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mediumish</title>
-    <description>Jekyll template, Medium styled, free for bloggers.</description>
+    <title>WangJwi</title>
+    <description>WangJwi`s Blog.</description>
     <link>http://localhost:4000/WangJwi/</link>
     <atom:link href="http://localhost:4000/WangJwi/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sat, 22 May 2021 13:48:24 +0800</pubDate>
-    <lastBuildDate>Sat, 22 May 2021 13:48:24 +0800</lastBuildDate>
+    <pubDate>Sat, 22 May 2021 14:14:05 +0800</pubDate>
+    <lastBuildDate>Sat, 22 May 2021 14:14:05 +0800</lastBuildDate>
     <generator>Jekyll v3.9.0</generator>
     
       <item>
         <title>Java反射机制</title>
-        <description>&lt;h1 id=&quot;java反射机制&quot;&gt;Java反射机制&lt;/h1&gt;
+        <description>&lt;h2 id=&quot;java反射机制&quot;&gt;Java反射机制&lt;/h2&gt;
 
 &lt;p&gt;参考：&lt;a href=&quot;https://docs.oracle.com/javase/tutorial/reflect/index.html&quot;&gt;The Reflection API&lt;/a&gt;&lt;/p&gt;
 
-&lt;h2 id=&quot;反射原理&quot;&gt;反射原理：&lt;/h2&gt;
+&lt;h3 id=&quot;反射原理&quot;&gt;反射原理：&lt;/h3&gt;
 &lt;p&gt;Java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。&lt;/p&gt;
 
-&lt;h2 id=&quot;反射的用途&quot;&gt;反射的用途：&lt;/h2&gt;
+&lt;h3 id=&quot;反射的用途&quot;&gt;反射的用途：&lt;/h3&gt;
 &lt;p&gt;反射功能通常用于检查或修改Java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -29,7 +29,7 @@
 
 &lt;p&gt;注意：要有选择的使用反射功能，如果可以直接执行操作，那么最好不要使用反射。&lt;/p&gt;
 
-&lt;h2 id=&quot;反射的缺点&quot;&gt;反射的缺点：&lt;/h2&gt;
+&lt;h3 id=&quot;反射的缺点&quot;&gt;反射的缺点：&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;额外的性能开销（&lt;strong&gt;Performance Overhead&lt;/strong&gt;）：由于反射涉及动态类型的解析，它无法执行某些Java虚拟机优化，因此反射操作的性能通常要比非反射操作慢。&lt;/li&gt;
@@ -37,7 +37,7 @@
   &lt;li&gt;内部泄露（&lt;strong&gt;Exposure of Internals&lt;/strong&gt;）：由于反射允许代码执行非反射代码中非法的操作（例如访问私有字段和方法），因此使用反射可能会导致意外的副作用，这可能会使代码无法正常工作并可能破坏可移植性。反射性代码破坏了抽象，因此可能会随着平台的升级而改变行为。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;获取对象类的方式&quot;&gt;获取对象类的方式:&lt;/h2&gt;
+&lt;h3 id=&quot;获取对象类的方式&quot;&gt;获取对象类的方式:&lt;/h3&gt;
 
 &lt;ol&gt;
   &lt;li&gt;&lt;strong&gt;Object.getClass()&lt;/strong&gt;。从一个实例对象中获取它的类。这仅适用于继承自Object的引用类型（当然Java的类默认继承于Object）。&lt;/li&gt;
@@ -135,7 +135,7 @@ public static final Class&amp;lt;Double&amp;gt;   TYPE = (Class&amp;lt;Double&am
 }
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;获取类的成员变量&quot;&gt;获取类的成员变量：&lt;/h2&gt;
+&lt;h3 id=&quot;获取类的成员变量&quot;&gt;获取类的成员变量：&lt;/h3&gt;
 
 &lt;p&gt;获取字段：&lt;/p&gt;
 
@@ -254,7 +254,7 @@ public static final Class&amp;lt;Double&amp;gt;   TYPE = (Class&amp;lt;Double&am
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h2 id=&quot;javalangreflectfield&quot;&gt;java.lang.reflect.Field&lt;/h2&gt;
+&lt;h3 id=&quot;javalangreflectfield&quot;&gt;java.lang.reflect.Field&lt;/h3&gt;
 
 &lt;p&gt;Field字段具有类型和值。Field提供访问属性对象类型信息的方法；以及获取和设置字段值的方法。&lt;/p&gt;
 
@@ -406,7 +406,7 @@ public class FieldReflectDemo {
 
 &lt;p&gt;因为JVM在编译时期, 就把final类型的&lt;strong&gt;直接赋值的String&lt;/strong&gt;进行了优化, 在编译时期就会把String处理成常量。反射成功将其值修改成功了，但是在它的get方法中，返回的不是当前变量，而是返回JVM优化好的一个常量值。&lt;/p&gt;
 
-&lt;h2 id=&quot;javalangreflectmethod&quot;&gt;java.lang.reflect.Method&lt;/h2&gt;
+&lt;h3 id=&quot;javalangreflectmethod&quot;&gt;java.lang.reflect.Method&lt;/h3&gt;
 
 &lt;p&gt;Method方法具有参数和返回值，并且方法可能抛出异常。Method提供获取参数信息、返回值的方法；它也可以调用（invoke）给定对象的方法。&lt;/p&gt;
 
@@ -488,7 +488,7 @@ public int getNumByName(String name) throws NullPointerException {
   }
 &lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;javalangreflectconstructor&quot;&gt;java.lang.reflect.Constructor&lt;/h2&gt;
+&lt;h3 id=&quot;javalangreflectconstructor&quot;&gt;java.lang.reflect.Constructor&lt;/h3&gt;
 
 &lt;p&gt;Constructor与Method相似，但有两个主要例外：第一，构造函数没有返回值；第二，构造函数的调用为给定的类创建对象的新实例。&lt;/p&gt;
 </description>
