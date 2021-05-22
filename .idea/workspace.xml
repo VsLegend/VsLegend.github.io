@@ -20,12 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="新增文章文章">
+      <change afterPath="$PROJECT_DIR$/assets/images/trevor-philips.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/Functional-Programming/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/Functional-Programming/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/assets/js/lunrsearchengine.js" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/js/lunrsearchengine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
@@ -63,7 +67,13 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images" />
     <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\DATA\project\VsLegend.github.io\assets\images" />
+    </key>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -188,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621668903750</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="新增文章文章">
+      <created>1621669695961</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1621669695961</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -220,34 +237,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661733955" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1621666206751">
+    <state x="675" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1621670968408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621666206751" />
-    <state x="709" y="221" key="RollbackChangesDialog" timestamp="1621665149422">
+    <state x="675" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1621670968408" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1621671599134">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="709" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621665149422" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621671599134" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1621671007297">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1621671007297" />
+    <state x="709" y="221" key="RollbackChangesDialog" timestamp="1621670117050">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="709" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621670117050" />
     <state x="790" y="388" key="VCS.EditChangelistDialog" timestamp="1621661895450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="388" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661895450" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1621668906572">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1621669697108">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621668906572" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621658936357">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621669697108" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621671599134">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621658936357" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621671599134" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1621667250115">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621667250115" />
-    <state x="662" y="223" width="678" height="754" key="find.popup" timestamp="1621669659201">
+    <state x="662" y="223" width="678" height="754" key="find.popup" timestamp="1621671907599">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="662" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621669659201" />
+    <state x="662" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621671907599" />
     <state x="720" y="231" key="git4idea.branch.GitSmartOperationDialog" timestamp="1621665072654">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

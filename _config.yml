@@ -10,7 +10,7 @@ disqus: 'demowebsite'
 mailchimp-list: 'https://wowthemes.us11.list-manage.com/subscribe/post?u=8aeb20a530e124561927d3bd8&amp;id=8c3d2d214b'
 include: ["_pages"]
 permalink: /:title/
-lang: zh
+lang: zh-Hans
 
 # Authors
 authors:
@@ -34,12 +34,12 @@ authors:
   wjw:
     name: WangJwi
     display_name: WangJwi
-    avatar: 'assets/images/avatar.png'
+    avatar: 'assets/images/trevor-philips.jpg'
     gravatar: e56154546cf4be74e393c62d1ae9f9d4
     email: wowthemesnet@gmail.com
     web: https://www.wowthemes.net
     twitter: https://twitter.com/
-    description: "Java Ctrl CV`er"
+    description: "摆脱Cv工程师"
 
 
 # Plugins

@@ -7,7 +7,7 @@ tags: [Java, stream， lambda, functional programming]
 image: assets/images/11.jpg
 description: "函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。"
 featured: true
-hidden: true
+hidden: false
 lang: zh
 ---
 

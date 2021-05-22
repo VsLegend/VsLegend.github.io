@@ -201,7 +201,11 @@
     color: #009999; }
 
 td.rouge-code {
-  width: 100%; }
+  width: 100%;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: #efefef;
+  }
 
 pre.lineno {
   color: #9999; }
