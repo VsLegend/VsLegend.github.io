@@ -19,7 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="精选设置" />
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="精选设置">
+      <change afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/robots.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,7 +76,14 @@
       <option name="project" value="LOCAL" />
       <updated>1621660950511</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="精选设置">
+      <created>1621661745538</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1621661745538</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -90,6 +103,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="精选设置" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621661733955">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661733955" />
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1621660936592">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -98,10 +115,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="709" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621660937793" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1621661354243">
+    <state x="790" y="388" key="VCS.EditChangelistDialog" timestamp="1621661895450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621661354243" />
+    <state x="790" y="388" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661895450" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1621661811673">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621661811673" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621658936357">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

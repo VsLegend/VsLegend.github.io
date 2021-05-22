@@ -1,0 +1,866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Mediumish</title>
+    <description>Jekyll template, Medium styled, free for bloggers.</description>
+    <link>http://localhost:4000/mediumish-theme-jekyll/</link>
+    <atom:link href="http://localhost:4000/mediumish-theme-jekyll/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Sat, 22 May 2021 13:40:37 +0800</pubDate>
+    <lastBuildDate>Sat, 22 May 2021 13:40:37 +0800</lastBuildDate>
+    <generator>Jekyll v3.9.0</generator>
+    
+      <item>
+        <title>Java反射机制</title>
+        <description>&lt;h1 id=&quot;java反射机制&quot;&gt;Java反射机制&lt;/h1&gt;
+
+&lt;p&gt;参考：&lt;a href=&quot;https://docs.oracle.com/javase/tutorial/reflect/index.html&quot;&gt;The Reflection API&lt;/a&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;反射原理&quot;&gt;反射原理：&lt;/h2&gt;
+&lt;p&gt;Java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。&lt;/p&gt;
+
+&lt;h2 id=&quot;反射的用途&quot;&gt;反射的用途：&lt;/h2&gt;
+&lt;p&gt;反射功能通常用于检查或修改Java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;在运行中分析类的能力，可以通过完全限定类名创建类的对象实例。&lt;/li&gt;
+  &lt;li&gt;在运行中查看和操作对象，可以遍历类的成员变量。&lt;/li&gt;
+  &lt;li&gt;反射允许代码执行非反射代码中非法的操作，可以检索和访问类的私有成员变量，包括私有属性、方法等。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;注意：要有选择的使用反射功能，如果可以直接执行操作，那么最好不要使用反射。&lt;/p&gt;
+
+&lt;h2 id=&quot;反射的缺点&quot;&gt;反射的缺点：&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;额外的性能开销（&lt;strong&gt;Performance Overhead&lt;/strong&gt;）：由于反射涉及动态类型的解析，它无法执行某些Java虚拟机优化，因此反射操作的性能通常要比非反射操作慢。&lt;/li&gt;
+  &lt;li&gt;安全限制（&lt;strong&gt;Security Restrictions&lt;/strong&gt;）：反射需要运行时操作权限，此操作可能在一些安全管理器下不被允许。&lt;/li&gt;
+  &lt;li&gt;内部泄露（&lt;strong&gt;Exposure of Internals&lt;/strong&gt;）：由于反射允许代码执行非反射代码中非法的操作（例如访问私有字段和方法），因此使用反射可能会导致意外的副作用，这可能会使代码无法正常工作并可能破坏可移植性。反射性代码破坏了抽象，因此可能会随着平台的升级而改变行为。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;获取对象类的方式&quot;&gt;获取对象类的方式:&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Object.getClass()&lt;/strong&gt;。从一个实例对象中获取它的类。这仅适用于继承自Object的引用类型（当然Java的类默认继承于Object）。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Java&quot;&gt;Map&amp;lt;String, String&amp;gt; hashMap = new HashMap&amp;lt;&amp;gt;();
+Class&amp;lt;? extends Map&amp;gt; aClass = hashMap.getClass();
+String text = &quot;text&quot;;
+Class&amp;lt;? extends String&amp;gt; aClass1 = text.getClass();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-Java&quot;&gt;// Object类
+public final native Class&amp;lt;?&amp;gt; getClass();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;XXX.class&lt;/strong&gt;。直接从未实例化的类获取类。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Class&amp;lt;Integer&amp;gt; integerClass = int.class;
+Class&amp;lt;HashMap&amp;gt; hashMapClass = HashMap.class;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Class.forName()&lt;/strong&gt;。通过完全限定类名获取类。即包名加类名（java.util.HashMap）。否则会报找不到类错误。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Class&amp;lt;HashMap&amp;gt; hashMapClass = Class.forName(&quot;java.util.HashMap&quot;);
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;// class类
+public static Class&amp;lt;?&amp;gt; forName(String className)
+            throws ClassNotFoundException {
+    Class&amp;lt;?&amp;gt; caller = Reflection.getCallerClass();
+    return forName0(className, true, ClassLoader.getClassLoader(caller), caller);
+}
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Integer.TYPE&lt;/strong&gt;。基本类型的包装类通过TYPE获取类。都是Java早期版本的产物，已过时。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;// Integer
+@SuppressWarnings(&quot;unchecked&quot;)
+public static final Class&amp;lt;Integer&amp;gt;  TYPE = (Class&amp;lt;Integer&amp;gt;) Class.getPrimitiveClass(&quot;int&quot;);
+
+
+// Double
+@SuppressWarnings(&quot;unchecked&quot;)
+public static final Class&amp;lt;Double&amp;gt;   TYPE = (Class&amp;lt;Double&amp;gt;) Class.getPrimitiveClass(&quot;double&quot;);
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;通过反射类ClassAPI获取类。注意，只有在已经直接或间接获得一个类的情况下，才可以访问这些API。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;try {
+  Class&amp;lt;?&amp;gt; className = Class.forName(&quot;java.lang.String&quot;);
+  // 获取父类
+  Class&amp;lt;?&amp;gt; superclass = className.getSuperclass();
+  // 返回调用类的成员变量，包括所有公共的类、接口和枚举
+  Class&amp;lt;?&amp;gt;[] classes = className.getClasses();
+  // 返回调用类的依赖，包括所有类、接口和显式声明的枚举
+  Class&amp;lt;?&amp;gt;[] declaredClasses = className.getDeclaredClasses();
+} catch (ClassNotFoundException e) {
+  e.printStackTrace();
+}
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;获取类的成员变量&quot;&gt;获取类的成员变量：&lt;/h2&gt;
+
+&lt;p&gt;获取字段：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html&quot;&gt;Class&lt;/a&gt; API&lt;/th&gt;
+      &lt;th&gt;是否是列表&lt;/th&gt;
+      &lt;th&gt;是否获取父类属性&lt;/th&gt;
+      &lt;th&gt;能否能获取私有字段&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredField-java.lang.String-&quot;&gt;getDeclaredField()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getField-java.lang.String-&quot;&gt;getField()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredFields--&quot;&gt;getDeclaredFields()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getFields--&quot;&gt;getFields()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;获取方法：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html&quot;&gt;Class&lt;/a&gt; API&lt;/th&gt;
+      &lt;th&gt;List of members?&lt;/th&gt;
+      &lt;th&gt;Inherited members?&lt;/th&gt;
+      &lt;th&gt;Private members?&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredMethod-java.lang.String-java.lang.Class...-&quot;&gt;getDeclaredMethod()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getMethod-java.lang.String-java.lang.Class...-&quot;&gt;getMethod()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredMethods--&quot;&gt;getDeclaredMethods()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getMethods--&quot;&gt;getMethods()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;获取构造器：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html&quot;&gt;Class&lt;/a&gt; API&lt;/th&gt;
+      &lt;th&gt;List of members?&lt;/th&gt;
+      &lt;th&gt;Inherited members?&lt;/th&gt;
+      &lt;th&gt;Private members?&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredConstructor-java.lang.Class...-&quot;&gt;getDeclaredConstructor()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;N/A1&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getConstructor-java.lang.Class...-&quot;&gt;getConstructor()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+      &lt;td&gt;N/A1&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredConstructors--&quot;&gt;getDeclaredConstructors()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;N/A1&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getConstructors--&quot;&gt;getConstructors()&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;yes&lt;/td&gt;
+      &lt;td&gt;N/A1&lt;/td&gt;
+      &lt;td&gt;no&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;javalangreflectfield&quot;&gt;java.lang.reflect.Field&lt;/h2&gt;
+
+&lt;p&gt;Field字段具有类型和值。Field提供访问属性对象类型信息的方法；以及获取和设置字段值的方法。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;获取字段类型：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;字段可以是原始类型或引用类型。&lt;/p&gt;
+
+&lt;p&gt;有八种基本类型：boolean，byte，short，int，long，char，float，和double。&lt;/p&gt;
+
+&lt;p&gt;引用类型是java.lang.Object类的直接或间接子类，包含接口，数组和枚举类型等 。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;获取字段修饰符：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;访问修饰符：public，protected，和private&lt;/li&gt;
+  &lt;li&gt;仅用于字段的控制运行时行为的修饰符：transient和volatile&lt;/li&gt;
+  &lt;li&gt;限制单实例的修饰符： static&lt;/li&gt;
+  &lt;li&gt;禁止值修改的修饰符： final&lt;/li&gt;
+  &lt;li&gt;注解&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;Class&amp;lt;?&amp;gt; className = Class.forName(&quot;java.util.HashMap&quot;);
+Field table = className.getDeclaredField(&quot;table&quot;);
+// 获取属性的名字
+String name = table.getName();
+// 获取属性的类型
+Class&amp;lt;?&amp;gt; type = table.getType();
+// 获取修饰符
+int modifiers = table.getModifiers();
+System.out.println(Modifier.toString(modifiers));
+// 获取注解
+Override annotation = table.getDeclaredAnnotation(Override.class);
+Annotation[] declaredAnnotations = table.getDeclaredAnnotations();
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;strong&gt;获取和设置字段值：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;给定一个类的实例，可以使用反射来设置该类中字段的值。通常仅在特殊情况下无法以常规方式设置值时才执行此操作。因为这样的访问通常会违反该类的设计意图，所以应绝对谨慎地使用它。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;注意&lt;/strong&gt;：通过反射设置字段的值会有一定的性能开销，因为必须进行各种操作，例如验证访问权限。从运行时的角度来看，效果是相同的，并且操作是原子的，就好像直接在类代码中更改了值一样。除此之外，反射会破坏Java原本的设定，列如可以重新设置final属性的值等。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;反射修改final修饰的属性值到JVM对String的优化：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;反射功能强大，能修改private以及final修饰的变量。如下代码中，展示了JVM的优化以及反射的一些劣势。&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;@Data
+public class FieldReflectDemo {
+  // 引用直接指向常量池中的常量值
+  private final String constantStr = &quot;FinalConstantStringField&quot;;
+  // JVM优化了getter方法，直接将对constantStr引用全部替换成了常量
+//  public String getConstantStr() {return &quot;FinalConstantStringField&quot;;}
+
+
+  // 在堆中新建了一个对象
+  private final String newStr = new String(&quot;FinalNewStringField&quot;);
+  
+  public FieldReflectDemo(){}
+    
+    public static void main(String[] args) {
+    FieldReflectDemo fieldReflectDemo = new FieldReflectDemo();
+    try {
+      Class&amp;lt;?&amp;gt; className = fieldReflectDemo.getClass();
+      Field constantStr = className.getDeclaredField(&quot;constantStr&quot;);
+      Field newStr = className.getDeclaredField(&quot;newStr&quot;);
+      // 获取实例对象的字段值
+      System.out.println(&quot;constantStr原：&quot; + constantStr.get(fieldReflectDemo));
+      System.out.println(&quot;newStr原：&quot; + newStr.get(fieldReflectDemo));
+      constantStr.setAccessible(true);
+      newStr.setAccessible(true);
+      constantStr.set(fieldReflectDemo, &quot;New Filed Name&quot;);
+      newStr.set(fieldReflectDemo, &quot;New Filed Name&quot;);
+      System.out.println(&quot;constantStr反射修改：&quot; + constantStr.get(fieldReflectDemo));
+      System.out.println(&quot;newStr反射修改：&quot; + newStr.get(fieldReflectDemo));
+    } catch (NoSuchFieldException | IllegalAccessException e) {
+      e.printStackTrace();
+    }
+    System.out.println(&quot;constantStr实例对象值：&quot; + fieldReflectDemo.getConstantStr());
+    System.out.println(&quot;newStr实例对象值：&quot; + fieldReflectDemo.getNewStr());
+  }
+  
+  /**
+   * 输出
+   * constantStr原：FinalConstantStringField
+   * newStr原：FinalNewStringField
+   * constantStr反射修改：New Filed Name
+   * newStr反射修改：New Filed Name
+   * constantStr实例对象值：FinalConstantStringField
+   * newStr实例对象值：New Filed Name
+   */
+}
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;因为JVM在编译时期, 就把final类型的&lt;strong&gt;直接赋值的String&lt;/strong&gt;进行了优化, 在编译时期就会把String处理成常量。反射成功将其值修改成功了，但是在它的get方法中，返回的不是当前变量，而是返回JVM优化好的一个常量值。&lt;/p&gt;
+
+&lt;h2 id=&quot;javalangreflectmethod&quot;&gt;java.lang.reflect.Method&lt;/h2&gt;
+
+&lt;p&gt;Method方法具有参数和返回值，并且方法可能抛出异常。Method提供获取参数信息、返回值的方法；它也可以调用（invoke）给定对象的方法。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;获取方法类型的信息：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;方法声明包含了方法名、修饰符、参数、返回类型以及抛出的多个异常。&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;public class MethodReflectDemo {
+
+
+public MethodReflectDemo() {
+  
+private void getNothing(String name) {
+  
+public int getNumByName(String name) throws NullPointerException {
+  if (StringUtils.isEmpty(name))
+    throw new NullPointerException(&quot;名字为空&quot;);
+  return name.length();
+}
+
+
+  public static void main(String[] args) {
+    MethodReflectDemo methodReflectDemo = new MethodReflectDemo();
+    try {
+      Class&amp;lt;? extends MethodReflectDemo&amp;gt; demoClass = methodReflectDemo.getClass();
+      Method method = demoClass.getDeclaredMethod(&quot;getNumByName&quot;, String.class);
+      String name = method.getName();
+      System.out.println(&quot;方法名：&quot; + name);
+      // 修饰符
+      int modifiers = method.getModifiers();
+      System.out.println(&quot;所有修饰符：&quot; + Modifier.toString(modifiers));
+      // 参数
+      Parameter[] parameters = method.getParameters();
+      // 返回类型
+      Class&amp;lt;?&amp;gt; returnType = method.getReturnType();
+      System.out.println(&quot;返回类型：&quot; + returnType.getTypeName());
+      // 异常
+      Class&amp;lt;?&amp;gt;[] exceptionTypes = method.getExceptionTypes();
+      System.out.println(&quot;&quot;);
+    } catch (NoSuchMethodException e) {
+      e.printStackTrace();
+    }
+  }
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;javalangreflectconstructor&quot;&gt;java.lang.reflect.Constructor&lt;/h2&gt;
+
+&lt;p&gt;Constructor与Method相似，但有两个主要例外：第一，构造函数没有返回值；第二，构造函数的调用为给定的类创建对象的新实例。&lt;/p&gt;
+</description>
+        <pubDate>Fri, 21 May 2021 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/JAVA-reflection/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/JAVA-reflection/</guid>
+        
+        <category>Java</category>
+        
+        <category>反射</category>
+        
+        
+        <category>Java</category>
+        
+        <category>Reflection</category>
+        
+      </item>
+    
+      <item>
+        <title>Powerful things you can do with the Markdown editor</title>
+        <description>&lt;p&gt;There are lots of powerful things you can do with the Markdown editor. If you’ve gotten pretty comfortable with writing in Markdown, then you may enjoy some more advanced tips about the types of things you can do with Markdown!&lt;/p&gt;
+
+&lt;p&gt;As with the last post about the editor, you’ll want to be actually editing this post as you read it so that you can see all the Markdown code we’re using.&lt;/p&gt;
+
+&lt;h2 id=&quot;special-formatting&quot;&gt;Special formatting&lt;/h2&gt;
+
+&lt;p&gt;As well as bold and italics, you can also use some other special formatting in Markdown when the need arises, for example:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;del&gt;strike through&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;==highlight==&lt;/li&gt;
+  &lt;li&gt;*escaped characters*&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;writing-code-blocks&quot;&gt;Writing code blocks&lt;/h2&gt;
+
+&lt;p&gt;There are two types of code elements which can be inserted in Markdown, the first is inline, and the other is block. Inline code is formatted by wrapping any word or words in back-ticks, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;like this&lt;/code&gt;. Larger snippets of code can be displayed across multiple lines using triple back ticks:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;.my-link {
+    text-decoration: underline;
+}
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;html&quot;&gt;HTML&lt;/h4&gt;
+
+&lt;div class=&quot;language-html highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nt&quot;&gt;&amp;lt;li&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;ml-1 mr-1&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;a&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;target=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;_blank&quot;&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;href=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;#&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;i&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;class=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;fab fa-twitter&quot;&lt;/span&gt;&lt;span class=&quot;nt&quot;&gt;&amp;gt;&amp;lt;/i&amp;gt;&lt;/span&gt;
+    &lt;span class=&quot;nt&quot;&gt;&amp;lt;/a&amp;gt;&lt;/span&gt;
+&lt;span class=&quot;nt&quot;&gt;&amp;lt;/li&amp;gt;&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;css&quot;&gt;CSS&lt;/h4&gt;
+
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nc&quot;&gt;.highlight&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.c&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#999988&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;font-style&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;italic&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;nc&quot;&gt;.highlight&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;.err&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#a61717&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;nl&quot;&gt;background-color&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;m&quot;&gt;#e3d2d2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;js&quot;&gt;JS&lt;/h4&gt;
+
+&lt;div class=&quot;language-js highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+4
+5
+6
+7
+8
+9
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;c1&quot;&gt;// alertbar later&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;document&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scroll&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;scrollTop&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;y&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;280&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;.alertbar&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fadeIn&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;$&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;.alertbar&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;fadeOut&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;python&quot;&gt;Python&lt;/h4&gt;
+
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;k&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;ruby&quot;&gt;Ruby&lt;/h4&gt;
+
+&lt;div class=&quot;language-ruby highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nb&quot;&gt;require&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'redcarpet'&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;no&quot;&gt;Redcarpet&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;Hello World!&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;markdown&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;to_html&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;c&quot;&gt;C&lt;/h4&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;n&quot;&gt;printf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;Hello World&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;img src=&quot;/mediumish-theme-jekyll/assets/images/8.jpg&quot; alt=&quot;walking&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;reference-lists&quot;&gt;Reference lists&lt;/h2&gt;
+
+&lt;p&gt;The quick brown jumped over the lazy.&lt;/p&gt;
+
+&lt;p&gt;Another way to insert links in markdown is using reference lists. You might want to use this style of linking to cite reference material in a Wikipedia-style. All of the links are listed at the end of the document, so you can maintain full separation between content and its source or reference.&lt;/p&gt;
+
+&lt;h2 id=&quot;full-html&quot;&gt;Full HTML&lt;/h2&gt;
+
+&lt;p&gt;Perhaps the best part of Markdown is that you’re never limited to just Markdown. You can write HTML directly in the Markdown editor and it will just work as HTML usually does. No limits! Here’s a standard YouTube embed code as an example:&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe style=&quot;width:100%;&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Cniqsc9QfDo?rel=0&amp;amp;showinfo=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 12 Jun 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/powerful-things-markdown-editor/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/powerful-things-markdown-editor/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>The first mass-produced book to deviate from a rectilinear format</title>
+        <description>&lt;p&gt;The first mass-produced book to deviate from a rectilinear format, at least in the United States, is thought to be this 1863 edition of Red Riding Hood, cut into the shape of the protagonist herself with the troublesome wolf curled at her feet. Produced by the Boston-based publisher Louis Prang, this is the first in their “Doll Series”, a set of five “die-cut” books, known also as shape books — the other titles being Robinson Crusoe, Goody Two-Shoes (also written by Red Riding Hood author Lydia Very), Cinderella, and King Winter.&lt;/p&gt;
+
+&lt;p&gt;An 1868 Prang catalogue would later claim that such “books in the shape of a regular paper Doll… originated with us”.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It would seem the claim could also extend to die cut books in general, as we can’t find anything sooner, but do let us know in the comments if you have further light to shed on this! Such books are, of course, still popular in children’s publishing today, though the die cutting is not now limited to mere outlines, as evidenced in a beautiful 2014 version of the same Little Red Riding Hood story.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The die cut has also been employed in the non-juvenile sphere as well, a recent example being Jonathan Safran Foer’s ambitious Tree of Codes.&lt;/p&gt;
+
+&lt;p&gt;As for this particular rendition of Charles Perrault’s classic tale, the text and design is by Lydia Very (1823-1901), sister of Transcendentalist poet Jones Very. The gruesome ending of the original - which sees Little Red Riding Hood being gobbled up as well as her grandmother - is avoided here, the gore giving way to the less bloody aims of the morality tale, and the lesson that one should not disobey one’s mother.&lt;/p&gt;
+</description>
+        <pubDate>Tue, 12 Jun 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/first-mass-produced/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/first-mass-produced/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Education must also train one for quick, resolute and effective thinking.</title>
+        <description>&lt;p&gt;There are lots of powerful things you can do with the Markdown editor&lt;/p&gt;
+
+&lt;p&gt;If you’ve gotten pretty comfortable with writing in Markdown, then you may enjoy some more advanced tips about the types of things you can do with Markdown!&lt;/p&gt;
+
+&lt;p&gt;As with the last post about the editor, you’ll want to be actually editing this post as you read it so that you can see all the Markdown code we’re using.&lt;/p&gt;
+
+&lt;h2 id=&quot;special-formatting&quot;&gt;Special formatting&lt;/h2&gt;
+
+&lt;p&gt;As well as bold and italics, you can also use some other special formatting in Markdown when the need arises, for example:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;del&gt;strike through&lt;/del&gt;&lt;/li&gt;
+  &lt;li&gt;==highlight==&lt;/li&gt;
+  &lt;li&gt;*escaped characters*&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;writing-code-blocks&quot;&gt;Writing code blocks&lt;/h2&gt;
+
+&lt;p&gt;There are two types of code elements which can be inserted in Markdown, the first is inline, and the other is block. Inline code is formatted by wrapping any word or words in back-ticks, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;like this&lt;/code&gt;. Larger snippets of code can be displayed across multiple lines using triple back ticks:&lt;/p&gt;
+
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
+2
+3
+&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;.my-link {
+    text-decoration: underline;
+}
+&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you want to get really fancy, you can even add syntax highlighting using Rouge.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/mediumish-theme-jekyll/assets/images/8.jpg&quot; alt=&quot;walking&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;reference-lists&quot;&gt;Reference lists&lt;/h2&gt;
+
+&lt;p&gt;The quick brown jumped over the lazy.&lt;/p&gt;
+
+&lt;p&gt;Another way to insert links in markdown is using reference lists. You might want to use this style of linking to cite reference material in a Wikipedia-style. All of the links are listed at the end of the document, so you can maintain full separation between content and its source or reference.&lt;/p&gt;
+
+&lt;h2 id=&quot;full-html&quot;&gt;Full HTML&lt;/h2&gt;
+
+&lt;p&gt;Perhaps the best part of Markdown is that you’re never limited to just Markdown. You can write HTML directly in the Markdown editor and it will just work as HTML usually does. No limits! Here’s a standard YouTube embed code as an example:&lt;/p&gt;
+
+&lt;p&gt;&lt;iframe style=&quot;width:100%;&quot; height=&quot;315&quot; src=&quot;https://www.youtube.com/embed/Cniqsc9QfDo?rel=0&amp;amp;showinfo=0&quot; frameborder=&quot;0&quot; allowfullscreen=&quot;&quot;&gt;&lt;/iframe&gt;&lt;/p&gt;
+</description>
+        <pubDate>Tue, 12 Jun 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/education/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/education/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Accumulated experience of social living</title>
+        <description>&lt;p&gt;The die cut has also been employed in the non-juvenile sphere as well, a recent example being Jonathan Safran Foer’s ambitious Tree of Codes.&lt;/p&gt;
+
+&lt;p&gt;As for this particular rendition of Charles Perrault’s classic tale, the text and design is by Lydia Very (1823-1901), sister of Transcendentalist poet Jones Very. The gruesome ending of the original - which sees Little Red Riding Hood being gobbled up as well as her grandmother - is avoided here, the gore giving way to the less bloody aims of the morality tale, and the lesson that one should not disobey one’s mother.&lt;/p&gt;
+
+&lt;p&gt;The first mass-produced book to deviate from a rectilinear format, at least in the United States, is thought to be this 1863 edition of Red Riding Hood, cut into the shape of the protagonist herself with the troublesome wolf curled at her feet. Produced by the Boston-based publisher Louis Prang, this is the first in their “Doll Series”, a set of five “die-cut” books, known also as shape books — the other titles being Robinson Crusoe, Goody Two-Shoes (also written by Red Riding Hood author Lydia Very), Cinderella, and King Winter.&lt;/p&gt;
+
+&lt;p&gt;An 1868 Prang catalogue would later claim that such “books in the shape of a regular paper Doll… originated with us”.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It would seem the claim could also extend to die cut books in general, as we can’t find anything sooner, but do let us know in the comments if you have further light to shed on this! Such books are, of course, still popular in children’s publishing today, though the die cutting is not now limited to mere outlines, as evidenced in a beautiful 2014 version of the same Little Red Riding Hood story.&lt;/p&gt;
+&lt;/blockquote&gt;
+</description>
+        <pubDate>Tue, 12 Jun 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/acumulated-experience/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/acumulated-experience/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>About Bundler</title>
+        <description>&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;gem install bundler&lt;/code&gt; installs the bundler gem through RubyGems. You only need to install it once - not every time you create a new Jekyll project. Here are some additional details:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundler&lt;/code&gt; is a gem that manages other Ruby gems. It makes sure your gems and gem versions are compatible, and that you have all necessary dependencies each gem requires.&lt;/p&gt;
+
+&lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile.lock&lt;/code&gt; files inform &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bundler&lt;/code&gt; about the gem requirements in your site. If your site doesn’t have these Gemfiles, you can omit &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec&lt;/code&gt; and just &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;run jekyll serve&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;When you run &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bundler&lt;/code&gt; uses the gems and versions as specified in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Gemfile.lock&lt;/code&gt; to ensure your Jekyll site builds with no compatibility or dependency conflicts.&lt;/p&gt;
+
+&lt;p&gt;For more information about how to use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Bundler&lt;/code&gt; in your Jekyll project, this tutorial should provide answers to the most common questions and explain how to get up and running quickly.&lt;/p&gt;
+</description>
+        <pubDate>Sat, 12 May 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/about-bundler/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/about-bundler/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+      </item>
+    
+      <item>
+        <title>We all wait for summer</title>
+        <description>&lt;p&gt;As I engage in the so-called “bull sessions” around and about the school, I too often find that most college men have a misconception of the purpose of education. Most of the “brethren” think that education should equip them with the proper instruments of exploitation so that they can forever trample over the masses. Still others think that education should furnish them with noble ends rather than means to an end.&lt;/p&gt;
+
+&lt;p&gt;It seems to me that education has a two-fold function to perform in the life of man and in society: the one is utility and the other is culture. Education must enable a man to become more efficient, to achieve with increasing facility the ligitimate goals of his life.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Jan 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/we-all-wait-for-summer/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/we-all-wait-for-summer/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Tree of Codes</title>
+        <description>&lt;p&gt;The first mass-produced book to deviate from a rectilinear format, at least in the United States, is thought to be this 1863 edition of Red Riding Hood, cut into the shape of the protagonist herself with the troublesome wolf curled at her feet. Produced by the Boston-based publisher Louis Prang, this is the first in their “Doll Series”, a set of five “die-cut” books, known also as shape books — the other titles being Robinson Crusoe, Goody Two-Shoes (also written by Red Riding Hood author Lydia Very), Cinderella, and King Winter.&lt;/p&gt;
+
+&lt;p&gt;As for this particular rendition of Charles Perrault’s classic tale, the text and design is by Lydia Very (1823-1901), sister of Transcendentalist poet Jones Very. The gruesome ending of the original — which sees Little Red Riding Hood being gobbled up as well as her grandmother — is avoided here, the gore giving way to the less bloody aims of the morality tale, and the lesson that one should not disobey one’s mother.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It would seem the claim could also extend to die cut books in general, as we can’t find anything sooner, but do let us know in the comments if you have further light to shed on this! Such books are, of course, still popular in children’s publishing today, though the die cutting is not now limited to mere outlines, as evidenced in a beautiful 2014 version of the same Little Red Riding Hood story.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;An 1868 Prang catalogue would later claim that such “books in the shape of a regular paper Doll… originated with us”.&lt;/p&gt;
+
+&lt;p&gt;The die cut has also been employed in the non-juvenile sphere as well, a recent example being Jonathan Safran Foer’s ambitious Tree of Codes.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Jan 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/tree-of-codes/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/tree-of-codes/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Red Riding Hood</title>
+        <description>&lt;p&gt;The first mass-produced book to deviate from a rectilinear format, at least in the United States, is thought to be this 1863 edition of Red Riding Hood, cut into the shape of the protagonist herself with the troublesome wolf curled at her feet. Produced by the Boston-based publisher Louis Prang, this is the first in their “Doll Series”, a set of five “die-cut” books, known also as shape books — the other titles being Robinson Crusoe, Goody Two-Shoes (also written by Red Riding Hood author Lydia Very), Cinderella, and King Winter.&lt;/p&gt;
+
+&lt;p&gt;An 1868 Prang catalogue would later claim that such “books in the shape of a regular paper Doll… originated with us”.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;It would seem the claim could also extend to die cut books in general, as we can’t find anything sooner, but do let us know in the comments if you have further light to shed on this! Such books are, of course, still popular in children’s publishing today, though the die cutting is not now limited to mere outlines, as evidenced in a beautiful 2014 version of the same Little Red Riding Hood story.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The die cut has also been employed in the non-juvenile sphere as well, a recent example being Jonathan Safran Foer’s ambitious Tree of Codes.&lt;/p&gt;
+
+&lt;p&gt;As for this particular rendition of Charles Perrault’s classic tale, the text and design is by Lydia Very (1823-1901), sister of Transcendentalist poet Jones Very. The gruesome ending of the original — which sees Little Red Riding Hood being gobbled up as well as her grandmother — is avoided here, the gore giving way to the less bloody aims of the morality tale, and the lesson that one should not disobey one’s mother.&lt;/p&gt;
+</description>
+        <pubDate>Fri, 12 Jan 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/red-riding/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/red-riding/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+      <item>
+        <title>Press and education</title>
+        <description>&lt;p&gt;Even the press, the classroom, the platform, and the pulpit in many instances do not give us objective and unbiased truths. To save man from the morass of propaganda, in my opinion, is one of the chief aims of education. Education must enable one to sift and weigh evidence, to discern the true from the false, the real from the unreal, and the facts from the fiction.&lt;/p&gt;
+
+&lt;p&gt;Education must also train one for quick, &lt;strong&gt;resolute and effective thinking&lt;/strong&gt;. To think incisively and to think for one’s self is very difficult.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;We are prone to let our mental life become invaded by legions of half truths, prejudices, and propaganda. At this point, I often wonder whether or not education is fulfilling its purpose. A great majority of the so-called educated people do not think logically and scientifically.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The function of education, therefore, is to teach one to think intensively and to think critically. But education which stops with efficiency may prove the greatest menace to society. The most dangerous criminal may be the man gifted with reason, but with no morals.&lt;/p&gt;
+
+&lt;p&gt;The late Eugene Talmadge, in my opinion, possessed one of the better minds of Georgia, or even America. Moreover, he wore the Phi Beta Kappa key. By all measuring rods, Mr. Talmadge could think critically and intensively; yet he contends that I am an inferior being. Are those the types of men we call educated?&lt;/p&gt;
+
+&lt;p&gt;We must remember that intelligence is not enough. Intelligence plus character–that is the goal of true education. The complete education gives one not only power of concentration, but worthy objectives upon which to concentrate. The broad education will, therefore, transmit to one not only the accumulated knowledge of the race but also the accumulated experience of social living.&lt;/p&gt;
+
+</description>
+        <pubDate>Fri, 12 Jan 2018 00:00:00 +0800</pubDate>
+        <link>http://localhost:4000/mediumish-theme-jekyll/press-and-education/</link>
+        <guid isPermaLink="true">http://localhost:4000/mediumish-theme-jekyll/press-and-education/</guid>
+        
+        
+        <category>Jekyll</category>
+        
+        <category>tutorial</category>
+        
+      </item>
+    
+  </channel>
+</rss>
