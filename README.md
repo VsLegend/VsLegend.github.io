@@ -1,19 +1,4 @@
 # Mediumish - Jekyll Theme
 
+本地调试命令：bundle exec jekyll serve
 
-### Copyright
-
-Copyright (C) 2019 WanyJw, https://www.wowthemes.net
-
-**Mediumish for Jekyll** is designed and developed by [WanyJw](https://www.wowthemes.net) and it is *free* under MIT license. 
-
-<a href="https://www.wowthemes.net/donate/" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png" alt="Buy Me A Coffee" style="height: auto !important;width: auto !important;" ></a>
-
-### Contribute
-
-1. [Fork the repo](https://github.com/wowthemesnet/mediumish-theme-jekyll).
-2. Clone a copy of your fork on your local
-3. Create a branch off of master and give it a meaningful name (e.g. my-new-mediumish-feature).
-4. Make necessary changes, commit, push and open a pull request on GitHub.
-
-Thank you!

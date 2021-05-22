@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Java反射机制"
-author: WanyJw
+author: wjw
 categories: [ Java, Reflection ]
 tags: [Java, 反射]
 image: assets/images/11.jpg
