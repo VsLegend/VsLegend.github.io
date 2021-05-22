@@ -20,30 +20,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="静态资源访问问题">
+      <change afterPath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-01-11-customer-service.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-01-11-quick-start-guide.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-01-12-is-intelligence-enough.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-01-12-never-stopped-worrying-never-loved-bomb.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-01-12-options-for-creating-new-site-with-jekyll.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-01-12-press-and-education.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-01-12-red-riding.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-01-12-tree-of-codes.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-01-12-we-all-wait-for-summer.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-05-12-about-bundler.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-06-12-acumulated-experience.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-06-12-education.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-06-12-first-mass-produced.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2018-06-12-powerful-things-markdown-editor.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/about-bundler/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about-bundler/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/about-bundler/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/acumulated-experience/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/acumulated-experience/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/acumulated-experience/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/js/lunrsearchengine.js" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/js/lunrsearchengine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/customer-service/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/customer-service/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/education/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/education/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/first-mass-produced/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/first-mass-produced/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/customer-service/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/education/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/first-mass-produced/index.html" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/is-intelligence-enough/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/is-intelligence-enough/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/never-stopped-worrying-never-loved-bomb/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/never-stopped-worrying-never-loved-bomb/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/options-for-creating-new-site-with-jekyll/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/options-for-creating-new-site-with-jekyll/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page2/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/page3/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/powerful-things-markdown-editor/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/powerful-things-markdown-editor/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/press-and-education/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/press-and-education/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/quick-start-guide/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/quick-start-guide/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/red-riding/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/red-riding/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/is-intelligence-enough/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/never-stopped-worrying-never-loved-bomb/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/options-for-creating-new-site-with-jekyll/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/page3/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/powerful-things-markdown-editor/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/press-and-education/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/quick-start-guide/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/red-riding/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tree-of-codes/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tree-of-codes/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/we-all-wait-for-summer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/we-all-wait-for-summer/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tree-of-codes/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/we-all-wait-for-summer/index.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,6 +84,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1ssQ98VaTMFMfOGbYmSY82PpCdK" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -177,7 +198,21 @@
       <option name="project" value="LOCAL" />
       <updated>1621665339659</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="静态资源访问问题">
+      <created>1621665877205</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1621665877205</updated>
+    </task>
+    <task id="LOCAL-00015" summary="静态资源访问问题">
+      <created>1621666020610</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1621666020610</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,10 +243,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661733955" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1621665352479">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1621666206751">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621665352479" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621666206751" />
     <state x="709" y="221" key="RollbackChangesDialog" timestamp="1621665149422">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -220,22 +255,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="388" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661895450" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1621665406200">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1621666023102">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621665406200" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1621666023102" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621658936357">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621658936357" />
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1621665863607">
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1621667250115">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621665863607" />
-    <state x="662" y="223" width="678" height="754" key="find.popup" timestamp="1621665820663">
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621667250115" />
+    <state x="662" y="223" width="678" height="754" key="find.popup" timestamp="1621667731595">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="662" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621665820663" />
+    <state x="662" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1621667731595" />
     <state x="720" y="231" key="git4idea.branch.GitSmartOperationDialog" timestamp="1621665072654">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
