@@ -19,22 +19,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="新增文章文章">
-      <change afterPath="$PROJECT_DIR$/assets/images/trevor-philips.jpg" afterDir="false" />
+    <list default="true" id="aa69c54a-ac75-4593-8395-960fb99217d0" name="Default Changelist" comment="更新模板">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/Functional-Programming/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/Functional-Programming/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/js/lunrsearchengine.js" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/js/lunrsearchengine.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,10 +229,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="675" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1621670968408" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1621671599134">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1621821060509">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621671599134" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621821060509" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1621671007297">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
