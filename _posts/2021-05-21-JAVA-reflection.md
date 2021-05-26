@@ -1,17 +1,17 @@
 ---
-layout: post
 title:  "Java反射机制"
-author: wjw
-categories: [ Java ]
-tags: [Java, 反射, Reflection]
-image: assets/images/12.jpg
-description: "反射通常由需要检查或修改Java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。"
-featured: true
-hidden: false
-lang: zh
+author: WangJwi
+categories:
+- Java
+tags:
+- Java
+- 反射
+- Reflection
 ---
 
+
 反射通常由需要检查或修改Java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。
+
 ## Java反射机制
 
 参考：[The Reflection API](https://docs.oracle.com/javase/tutorial/reflect/index.html)

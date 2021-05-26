@@ -9,6 +9,12 @@
 <br><br>
 
 ## 本地调试相关
+首先安装bundler包管理器：gem install bundler
+
+删除项目中的本地文件：Gemfile.lock
+
+执行bundle：bundle install
+
 本地调试命令：bundle exec jekyll serve
 
 <br><br>

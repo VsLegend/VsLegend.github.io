@@ -20,10 +20,149 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="代码块格式设置">
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-24-categories.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-24-elements.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-24-link-post.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-24-long-title.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-24-tags.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-24-中文測試.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-24-日本語テスト.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-25-block.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-25-excerpts.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2013-12-26-images.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2014-02-16-Mathjax-with-jekyll.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2014-11-18-gallery-post.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2015-09-19-emoji-test.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2017-07-19-highlight-test.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/_posts/2017-07-20-next-tutorial.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/VsLegend.github.io.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/share.html" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/share.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.sass-cache/afe6b632748ead5e47344d21ad8cb559f31386b9/_starsnonscss.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.sass-cache/afe6b632748ead5e47344d21ad8cb559f31386b9/_syntax.scssc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/adsense-under-header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/disqus.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/featuredbox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/pagination.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/postbox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/search-lunr.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/share.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/star_rating.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/star_rating_postbox.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_includes/toc.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/archive.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/archive.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/categories.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/default.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/page.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/post.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/tags.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_pages/about.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_pages/categories.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_pages/tags.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/_sass/_common/components/highlight/theme.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/_common/components/highlight/theme.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sass/_stars.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sass/_starsnonscss.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sass/_syntax.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/Functional-Programming/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/about.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/css/screen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/fonts/casper-icons.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/fonts/casper-icons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/fonts/casper-icons.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/fonts/casper-icons.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/jumbotron.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/log.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/mediumish-jekyll-template.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/images/trevor-philips.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/js/ie10-viewport-bug-workaround.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/js/lazyload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/js/lunr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/js/lunrsearchengine.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/js/mediumish.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/main.scss" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/main.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/screen.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/casper-icons.eot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/casper-icons.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/casper-icons.ttf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/fonts/casper-icons.woff" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/10.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/11.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/12.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/13.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/14.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/15.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/16.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/17.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/3.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/4.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/5.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/6.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/7.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/8.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/9.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/avatar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/jumbotron.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/log.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/mediumish-jekyll-template.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/images/trevor-philips.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/ie10-viewport-bug-workaround.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/jquery.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/lazyload.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/lunr.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/lunrsearchengine.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/js/mediumish.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/changelog.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/feed.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/site/_config.yml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +172,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="hexo" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,11 +197,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\DATA\project\VsLegend.github.io" />
       <recent name="F:\DATA\project\VsLegend.github.io\assets" />
       <recent name="F:\DATA\project\VsLegend.github.io\assets\images" />
     </key>
@@ -78,7 +218,8 @@
       <option name="presentableId" value="Default" />
       <updated>1621658665651</updated>
       <workItem from="1622013880158" duration="2354000" />
-      <workItem from="1622020753708" duration="6386000" />
+      <workItem from="1622020753708" duration="6594000" />
+      <workItem from="1622033596634" duration="1795000" />
     </task>
     <task id="LOCAL-00001" summary="设置">
       <created>1621660495622</created>
@@ -213,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622031724513</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="代码块格式设置">
+      <created>1622033452739</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1622033452739</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,18 +414,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="709" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621670117050" />
-    <state x="461" y="164" key="SettingsEditor" timestamp="1622015222176">
+    <state x="461" y="164" key="SettingsEditor" timestamp="1622034521984">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1622015222176" />
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1622034521984" />
     <state x="790" y="388" key="VCS.EditChangelistDialog" timestamp="1621661895450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="388" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661895450" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1622031726108">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1622033454132">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622031726108" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622033454132" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621671599134">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -286,10 +434,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621667250115" />
-    <state x="662" y="223" width="678" height="754" key="find.popup" timestamp="1622030241789">
+    <state x="662" y="223" width="678" height="754" key="find.popup" timestamp="1622034346588">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="662" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622030241789" />
+    <state x="662" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622034346588" />
     <state x="720" y="231" key="git4idea.branch.GitSmartOperationDialog" timestamp="1621665072654">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
