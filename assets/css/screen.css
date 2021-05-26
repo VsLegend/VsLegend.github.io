@@ -12,9 +12,61 @@ License: https://www.wowthemes.net/freebies-license/
 }
 
 /* 设置正文的字体 */
-.article-post, .mainheading {
-    font-family: SimSun, fantasy;
+body,td,th,li,ol,p,strong,pre,h1,h2,h3,h4,h5 {
+    font-family: SimSun;
 }
+
+/*代码块格式设置*/
+
+td.rouge-code>pre {
+    padding-left: 10px;
+    padding-right: 10px;
+    background-color: #f7f7f7;
+}
+
+td.rouge-code {
+    width: 100%;
+    overflow: auto;
+    margin: 20px 0;
+    padding: 0;
+    font-size: 13px;
+    color: #4d4d4c;
+    /*background: #f7f7f7;*/
+    line-height: 1.6;
+    font-family: consolas,Menlo,"PingFang SC","Microsoft YaHei",monospace;
+}
+
+.lineno {
+    box-sizing: border-box;
+    border: #E3EDF3 1px solid;
+    width: 100%;
+    padding: 7px;
+    font-family: monospace, sans-serif;
+    font-size: .9rem;
+    white-space: pre;
+    overflow: auto;
+    background: #fff;
+    border-radius: 0px;
+    line-height: 1.6;
+    color: #333;
+    margin-bottom: -rem;
+}
+
+.lineno pre {
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #869194;
+    text-align: right;
+    background-color: #eff2f3;
+}
+.lineno {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+
 
 a {
     color: #00ab6b;
