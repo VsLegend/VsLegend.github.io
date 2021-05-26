@@ -20,21 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="新增文章文章">
-      <change afterPath="$PROJECT_DIR$/assets/images/trevor-philips.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_layouts/post.html" beforeDir="false" afterPath="$PROJECT_DIR$/_layouts/post.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/Functional-Programming/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/Functional-Programming/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/css/screen.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/screen.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/assets/js/lunrsearchengine.js" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/js/lunrsearchengine.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/categories.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/screen.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/screen.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +67,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -85,6 +87,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1621658665651</updated>
+      <workItem from="1622013880158" duration="2354000" />
     </task>
     <task id="LOCAL-00001" summary="设置">
       <created>1621660495622</created>
@@ -208,6 +211,9 @@
     <option name="localTasksCounter" value="18" />
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -245,14 +251,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621671599134" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1621671007297">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1622013842708">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1621671007297" />
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622013842708" />
     <state x="709" y="221" key="RollbackChangesDialog" timestamp="1621670117050">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="709" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621670117050" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1622015222176">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1622015222176" />
     <state x="790" y="388" key="VCS.EditChangelistDialog" timestamp="1621661895450">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

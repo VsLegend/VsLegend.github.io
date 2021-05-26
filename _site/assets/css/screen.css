@@ -11,6 +11,11 @@ License: https://www.wowthemes.net/freebies-license/
     padding: 1rem 0rem;
 }
 
+/* 设置正文的字体 */
+.article-post, .mainheading {
+    font-family: SimSun, fantasy;
+}
+
 a {
     color: #00ab6b;
     transition: all 0.2s;
