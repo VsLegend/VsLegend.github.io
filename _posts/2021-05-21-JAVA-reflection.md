@@ -1,5 +1,5 @@
 ---
-title:  "Java反射机制"
+title:  "java反射机制"
 author: WangJwi
 categories:
 - Java
@@ -10,18 +10,18 @@ tags:
 ---
 
 
-反射通常由需要检查或修改Java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。
+反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。
 
-## Java反射机制
+## java反射机制
 
 参考：[The Reflection API](https://docs.oracle.com/javase/tutorial/reflect/index.html)
 
 ### 反射原理：
-Java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。
+java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。
 
 
 ### 反射的用途：
-反射功能通常用于检查或修改Java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。
+反射功能通常用于检查或修改java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。
 
 - 在运行中分析类的能力，可以通过完全限定类名创建类的对象实例。
 - 在运行中查看和操作对象，可以遍历类的成员变量。
@@ -32,16 +32,16 @@ Java在编译之后会生成一个class文件，反射通过字节码文件找�
 
 ### 反射的缺点：
 
-- 额外的性能开销（**Performance Overhead**）：由于反射涉及动态类型的解析，它无法执行某些Java虚拟机优化，因此反射操作的性能通常要比非反射操作慢。
+- 额外的性能开销（**Performance Overhead**）：由于反射涉及动态类型的解析，它无法执行某些java虚拟机优化，因此反射操作的性能通常要比非反射操作慢。
 - 安全限制（**Security Restrictions**）：反射需要运行时操作权限，此操作可能在一些安全管理器下不被允许。
 - 内部泄露（**Exposure of Internals**）：由于反射允许代码执行非反射代码中非法的操作（例如访问私有字段和方法），因此使用反射可能会导致意外的副作用，这可能会使代码无法正常工作并可能破坏可移植性。反射性代码破坏了抽象，因此可能会随着平台的升级而改变行为。
 
 
 ### 获取对象类的方式:
 
-1. **Object.getClass()**。从一个实例对象中获取它的类。这仅适用于继承自Object的引用类型（当然Java的类默认继承于Object）。
+1. **Object.getClass()**。从一个实例对象中获取它的类。这仅适用于继承自Object的引用类型（当然java的类默认继承于Object）。
 
-``` Java
+``` java
 Map<String, String> hashMap = new HashMap<>();
 Class<? extends Map> aClass = hashMap.getClass();
 String text = "text";
@@ -50,7 +50,7 @@ Class<? extends String> aClass1 = text.getClass();
 
 
 
-``` Java
+``` java
 // Object类
 public final native Class<?> getClass();
 ```
@@ -59,7 +59,7 @@ public final native Class<?> getClass();
 
 2. **XXX.class**。直接从未实例化的类获取类。
 
-```
+``` java
 Class<Integer> integerClass = int.class;
 Class<HashMap> hashMapClass = HashMap.class;
 ```
@@ -68,13 +68,13 @@ Class<HashMap> hashMapClass = HashMap.class;
 
 3. **Class.forName()**。通过完全限定类名获取类。即包名加类名（java.util.HashMap）。否则会报找不到类错误。
 
-```
+``` java
 Class<HashMap> hashMapClass = Class.forName("java.util.HashMap");
 ```
 
 
 
-```
+``` java
 // class类
 public static Class<?> forName(String className)
             throws ClassNotFoundException {
@@ -85,9 +85,9 @@ public static Class<?> forName(String className)
 
 
 
-4. **Integer.TYPE**。基本类型的包装类通过TYPE获取类。都是Java早期版本的产物，已过时。
+4. **Integer.TYPE**。基本类型的包装类通过TYPE获取类。都是java早期版本的产物，已过时。
 
-```
+``` java
 // Integer
 @SuppressWarnings("unchecked")
 public static final Class<Integer>  TYPE = (Class<Integer>) Class.getPrimitiveClass("int");
@@ -102,7 +102,7 @@ public static final Class<Double>   TYPE = (Class<Double>) Class.getPrimitiveCla
 
 5. 通过反射类ClassAPI获取类。注意，只有在已经直接或间接获得一个类的情况下，才可以访问这些API。
 
-```
+``` java
 try {
   Class<?> className = Class.forName("java.lang.String");
   // 获取父类
@@ -179,7 +179,7 @@ Field字段具有类型和值。Field提供访问属性对象类型信息的方�
 
 
 
-```
+``` java
 Class<?> className = Class.forName("java.util.HashMap");
 Field table = className.getDeclaredField("table");
 // 获取属性的名字
@@ -202,7 +202,7 @@ Annotation[] declaredAnnotations = table.getDeclaredAnnotations();
 
 
 
-**注意**：通过反射设置字段的值会有一定的性能开销，因为必须进行各种操作，例如验证访问权限。从运行时的角度来看，效果是相同的，并且操作是原子的，就好像直接在类代码中更改了值一样。除此之外，反射会破坏Java原本的设定，列如可以重新设置final属性的值等。
+**注意**：通过反射设置字段的值会有一定的性能开销，因为必须进行各种操作，例如验证访问权限。从运行时的角度来看，效果是相同的，并且操作是原子的，就好像直接在类代码中更改了值一样。除此之外，反射会破坏java原本的设定，列如可以重新设置final属性的值等。
 
 
 
@@ -210,7 +210,7 @@ Annotation[] declaredAnnotations = table.getDeclaredAnnotations();
 
 反射功能强大，能修改private以及final修饰的变量。如下代码中，展示了JVM的优化以及反射的一些劣势。
 
-```
+``` java
 @Data
 public class FieldReflectDemo {
   // 引用直接指向常量池中的常量值
@@ -272,7 +272,7 @@ Method方法具有参数和返回值，并且方法可能抛出异常。Method�
 
 方法声明包含了方法名、修饰符、参数、返回类型以及抛出的多个异常。
 
-```
+``` java
 public class MethodReflectDemo {
 
 

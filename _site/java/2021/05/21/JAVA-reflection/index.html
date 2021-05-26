@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="反射通常由需要检查或修改Java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
+<meta name="description" content="反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
 <meta name="keywords" content="Java, 反射, Reflection">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Java反射机制">
+<meta property="og:title" content="java反射机制">
 <meta property="og:url" content="http://localhost:4000/java/2021/05/21/JAVA-reflection/">
 <meta property="og:site_name" content="WangJwi`s Blog">
-<meta property="og:description" content="反射通常由需要检查或修改Java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
+<meta property="og:description" content="反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Java反射机制">
-<meta name="twitter:description" content="反射通常由需要检查或修改Java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
+<meta name="twitter:title" content="java反射机制">
+<meta name="twitter:description" content="反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -154,7 +154,7 @@
 
 
 
-  <title>Java反射机制 | WangJwi`s Blog</title>
+  <title>java反射机制 | WangJwi`s Blog</title>
   
 
 
@@ -300,7 +300,7 @@
           <h1 class="post-title" itemprop="name headline">
           
           
-            Java反射机制
+            java反射机制
           
         </h1>
         
@@ -389,17 +389,17 @@
 
 
 
-  <p>反射通常由需要检查或修改Java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</p>
+  <p>反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</p>
 
-<h2 id="java反射机制">Java反射机制</h2>
+<h2 id="java反射机制">java反射机制</h2>
 
 <p>参考：<a href="https://docs.oracle.com/javase/tutorial/reflect/index.html">The Reflection API</a></p>
 
 <h3 id="反射原理">反射原理：</h3>
-<p>Java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。</p>
+<p>java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。</p>
 
 <h3 id="反射的用途">反射的用途：</h3>
-<p>反射功能通常用于检查或修改Java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。</p>
+<p>反射功能通常用于检查或修改java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。</p>
 
 <ul>
   <li>在运行中分析类的能力，可以通过完全限定类名创建类的对象实例。</li>
@@ -412,7 +412,7 @@
 <h3 id="反射的缺点">反射的缺点：</h3>
 
 <ul>
-  <li>额外的性能开销（<strong>Performance Overhead</strong>）：由于反射涉及动态类型的解析，它无法执行某些Java虚拟机优化，因此反射操作的性能通常要比非反射操作慢。</li>
+  <li>额外的性能开销（<strong>Performance Overhead</strong>）：由于反射涉及动态类型的解析，它无法执行某些java虚拟机优化，因此反射操作的性能通常要比非反射操作慢。</li>
   <li>安全限制（<strong>Security Restrictions</strong>）：反射需要运行时操作权限，此操作可能在一些安全管理器下不被允许。</li>
   <li>内部泄露（<strong>Exposure of Internals</strong>）：由于反射允许代码执行非反射代码中非法的操作（例如访问私有字段和方法），因此使用反射可能会导致意外的副作用，这可能会使代码无法正常工作并可能破坏可移植性。反射性代码破坏了抽象，因此可能会随着平台的升级而改变行为。</li>
 </ul>
@@ -420,71 +420,71 @@
 <h3 id="获取对象类的方式">获取对象类的方式:</h3>
 
 <ol>
-  <li><strong>Object.getClass()</strong>。从一个实例对象中获取它的类。这仅适用于继承自Object的引用类型（当然Java的类默认继承于Object）。</li>
+  <li><strong>Object.getClass()</strong>。从一个实例对象中获取它的类。这仅适用于继承自Object的引用类型（当然java的类默认继承于Object）。</li>
 </ol>
 
-<pre><code class="language-Java">Map&lt;String, String&gt; hashMap = new HashMap&lt;&gt;();
-Class&lt;? extends Map&gt; aClass = hashMap.getClass();
-String text = "text";
-Class&lt;? extends String&gt; aClass1 = text.getClass();
-</code></pre>
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4</pre></td><td class="code"><pre class="highlight"><code><span class="nc">Map</span><span class="o">&lt;</span><span class="nc">String</span><span class="o">,</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">hashMap</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">HashMap</span><span class="o">&lt;&gt;();</span>
+<span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">Map</span><span class="o">&gt;</span> <span class="n">aClass</span> <span class="o">=</span> <span class="n">hashMap</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+<span class="nc">String</span> <span class="n">text</span> <span class="o">=</span> <span class="s">"text"</span><span class="o">;</span>
+<span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">String</span><span class="o">&gt;</span> <span class="n">aClass1</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+</code></pre></td></tr></tbody></table></div></div>
 
-<pre><code class="language-Java">// Object类
-public final native Class&lt;?&gt; getClass();
-</code></pre>
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code><span class="c1">// Object类</span>
+<span class="kd">public</span> <span class="kd">final</span> <span class="kd">native</span> <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">getClass</span><span class="o">();</span>
+</code></pre></td></tr></tbody></table></div></div>
 
 <ol>
   <li><strong>XXX.class</strong>。直接从未实例化的类获取类。</li>
 </ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code>Class&lt;Integer&gt; integerClass = int.class;
-Class&lt;HashMap&gt; hashMapClass = HashMap.class;
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2</pre></td><td class="code"><pre class="highlight"><code><span class="nc">Class</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span> <span class="n">integerClass</span> <span class="o">=</span> <span class="kt">int</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
+<span class="nc">Class</span><span class="o">&lt;</span><span class="nc">HashMap</span><span class="o">&gt;</span> <span class="n">hashMapClass</span> <span class="o">=</span> <span class="nc">HashMap</span><span class="o">.</span><span class="na">class</span><span class="o">;</span>
 </code></pre></td></tr></tbody></table></div></div>
 
 <ol>
   <li><strong>Class.forName()</strong>。通过完全限定类名获取类。即包名加类名（java.util.HashMap）。否则会报找不到类错误。</li>
 </ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code>Class&lt;HashMap&gt; hashMapClass = Class.forName("java.util.HashMap");
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1</pre></td><td class="code"><pre class="highlight"><code><span class="nc">Class</span><span class="o">&lt;</span><span class="nc">HashMap</span><span class="o">&gt;</span> <span class="n">hashMapClass</span> <span class="o">=</span> <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"java.util.HashMap"</span><span class="o">);</span>
 </code></pre></td></tr></tbody></table></div></div>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code>// class类
-public static Class&lt;?&gt; forName(String className)
-            throws ClassNotFoundException {
-    Class&lt;?&gt; caller = Reflection.getCallerClass();
-    return forName0(className, true, ClassLoader.getClassLoader(caller), caller);
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6</pre></td><td class="code"><pre class="highlight"><code><span class="c1">// class类</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">forName</span><span class="o">(</span><span class="nc">String</span> <span class="n">className</span><span class="o">)</span>
+            <span class="kd">throws</span> <span class="nc">ClassNotFoundException</span> <span class="o">{</span>
+    <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">caller</span> <span class="o">=</span> <span class="nc">Reflection</span><span class="o">.</span><span class="na">getCallerClass</span><span class="o">();</span>
+    <span class="k">return</span> <span class="nf">forName0</span><span class="o">(</span><span class="n">className</span><span class="o">,</span> <span class="kc">true</span><span class="o">,</span> <span class="nc">ClassLoader</span><span class="o">.</span><span class="na">getClassLoader</span><span class="o">(</span><span class="n">caller</span><span class="o">),</span> <span class="n">caller</span><span class="o">);</span>
+<span class="o">}</span>
 </code></pre></td></tr></tbody></table></div></div>
 
 <ol>
-  <li><strong>Integer.TYPE</strong>。基本类型的包装类通过TYPE获取类。都是Java早期版本的产物，已过时。</li>
+  <li><strong>Integer.TYPE</strong>。基本类型的包装类通过TYPE获取类。都是java早期版本的产物，已过时。</li>
 </ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code>// Integer
-@SuppressWarnings("unchecked")
-public static final Class&lt;Integer&gt;  TYPE = (Class&lt;Integer&gt;) Class.getPrimitiveClass("int");
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8</pre></td><td class="code"><pre class="highlight"><code><span class="c1">// Integer</span>
+<span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"unchecked"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Class</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;</span>  <span class="no">TYPE</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Class</span><span class="o">&lt;</span><span class="nc">Integer</span><span class="o">&gt;)</span> <span class="nc">Class</span><span class="o">.</span><span class="na">getPrimitiveClass</span><span class="o">(</span><span class="s">"int"</span><span class="o">);</span>
 
 
-// Double
-@SuppressWarnings("unchecked")
-public static final Class&lt;Double&gt;   TYPE = (Class&lt;Double&gt;) Class.getPrimitiveClass("double");
+<span class="c1">// Double</span>
+<span class="nd">@SuppressWarnings</span><span class="o">(</span><span class="s">"unchecked"</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="nc">Class</span><span class="o">&lt;</span><span class="nc">Double</span><span class="o">&gt;</span>   <span class="no">TYPE</span> <span class="o">=</span> <span class="o">(</span><span class="nc">Class</span><span class="o">&lt;</span><span class="nc">Double</span><span class="o">&gt;)</span> <span class="nc">Class</span><span class="o">.</span><span class="na">getPrimitiveClass</span><span class="o">(</span><span class="s">"double"</span><span class="o">);</span>
 </code></pre></td></tr></tbody></table></div></div>
 
 <ol>
   <li>通过反射类ClassAPI获取类。注意，只有在已经直接或间接获得一个类的情况下，才可以访问这些API。</li>
 </ol>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11</pre></td><td class="code"><pre class="highlight"><code>try {
-  Class&lt;?&gt; className = Class.forName("java.lang.String");
-  // 获取父类
-  Class&lt;?&gt; superclass = className.getSuperclass();
-  // 返回调用类的成员变量，包括所有公共的类、接口和枚举
-  Class&lt;?&gt;[] classes = className.getClasses();
-  // 返回调用类的依赖，包括所有类、接口和显式声明的枚举
-  Class&lt;?&gt;[] declaredClasses = className.getDeclaredClasses();
-} catch (ClassNotFoundException e) {
-  e.printStackTrace();
-}
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11</pre></td><td class="code"><pre class="highlight"><code><span class="k">try</span> <span class="o">{</span>
+  <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">className</span> <span class="o">=</span> <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"java.lang.String"</span><span class="o">);</span>
+  <span class="c1">// 获取父类</span>
+  <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">superclass</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="na">getSuperclass</span><span class="o">();</span>
+  <span class="c1">// 返回调用类的成员变量，包括所有公共的类、接口和枚举</span>
+  <span class="nc">Class</span><span class="o">&lt;?&gt;[]</span> <span class="n">classes</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="na">getClasses</span><span class="o">();</span>
+  <span class="c1">// 返回调用类的依赖，包括所有类、接口和显式声明的枚举</span>
+  <span class="nc">Class</span><span class="o">&lt;?&gt;[]</span> <span class="n">declaredClasses</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="na">getDeclaredClasses</span><span class="o">();</span>
+<span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">ClassNotFoundException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+  <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+<span class="o">}</span>
 </code></pre></td></tr></tbody></table></div></div>
 
 <h3 id="获取类的成员变量">获取类的成员变量：</h3>
@@ -628,66 +628,66 @@ public static final Class&lt;Double&gt;   TYPE = (Class&lt;Double&gt;) Class.get
   <li>注解</li>
 </ul>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12</pre></td><td class="code"><pre class="highlight"><code>Class&lt;?&gt; className = Class.forName("java.util.HashMap");
-Field table = className.getDeclaredField("table");
-// 获取属性的名字
-String name = table.getName();
-// 获取属性的类型
-Class&lt;?&gt; type = table.getType();
-// 获取修饰符
-int modifiers = table.getModifiers();
-System.out.println(Modifier.toString(modifiers));
-// 获取注解
-Override annotation = table.getDeclaredAnnotation(Override.class);
-Annotation[] declaredAnnotations = table.getDeclaredAnnotations();
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12</pre></td><td class="code"><pre class="highlight"><code><span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">className</span> <span class="o">=</span> <span class="nc">Class</span><span class="o">.</span><span class="na">forName</span><span class="o">(</span><span class="s">"java.util.HashMap"</span><span class="o">);</span>
+<span class="nc">Field</span> <span class="n">table</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="na">getDeclaredField</span><span class="o">(</span><span class="s">"table"</span><span class="o">);</span>
+<span class="c1">// 获取属性的名字</span>
+<span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+<span class="c1">// 获取属性的类型</span>
+<span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">type</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">getType</span><span class="o">();</span>
+<span class="c1">// 获取修饰符</span>
+<span class="kt">int</span> <span class="n">modifiers</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">getModifiers</span><span class="o">();</span>
+<span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Modifier</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">modifiers</span><span class="o">));</span>
+<span class="c1">// 获取注解</span>
+<span class="nc">Override</span> <span class="n">annotation</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">getDeclaredAnnotation</span><span class="o">(</span><span class="nc">Override</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="nc">Annotation</span><span class="o">[]</span> <span class="n">declaredAnnotations</span> <span class="o">=</span> <span class="n">table</span><span class="o">.</span><span class="na">getDeclaredAnnotations</span><span class="o">();</span>
 </code></pre></td></tr></tbody></table></div></div>
 
 <p><strong>获取和设置字段值：</strong></p>
 
 <p>给定一个类的实例，可以使用反射来设置该类中字段的值。通常仅在特殊情况下无法以常规方式设置值时才执行此操作。因为这样的访问通常会违反该类的设计意图，所以应绝对谨慎地使用它。</p>
 
-<p><strong>注意</strong>：通过反射设置字段的值会有一定的性能开销，因为必须进行各种操作，例如验证访问权限。从运行时的角度来看，效果是相同的，并且操作是原子的，就好像直接在类代码中更改了值一样。除此之外，反射会破坏Java原本的设定，列如可以重新设置final属性的值等。</p>
+<p><strong>注意</strong>：通过反射设置字段的值会有一定的性能开销，因为必须进行各种操作，例如验证访问权限。从运行时的角度来看，效果是相同的，并且操作是原子的，就好像直接在类代码中更改了值一样。除此之外，反射会破坏java原本的设定，列如可以重新设置final属性的值等。</p>
 
 <p><strong>反射修改final修饰的属性值到JVM对String的优化：</strong></p>
 
 <p>反射功能强大，能修改private以及final修饰的变量。如下代码中，展示了JVM的优化以及反射的一些劣势。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45</pre></td><td class="code"><pre class="highlight"><code>@Data
-public class FieldReflectDemo {
-  // 引用直接指向常量池中的常量值
-  private final String constantStr = "FinalConstantStringField";
-  // JVM优化了getter方法，直接将对constantStr引用全部替换成了常量
-//  public String getConstantStr() {return "FinalConstantStringField";}
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39<br/>40<br/>41<br/>42<br/>43<br/>44<br/>45</pre></td><td class="code"><pre class="highlight"><code><span class="nd">@Data</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">FieldReflectDemo</span> <span class="o">{</span>
+  <span class="c1">// 引用直接指向常量池中的常量值</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">constantStr</span> <span class="o">=</span> <span class="s">"FinalConstantStringField"</span><span class="o">;</span>
+  <span class="c1">// JVM优化了getter方法，直接将对constantStr引用全部替换成了常量</span>
+<span class="c1">//  public String getConstantStr() {return "FinalConstantStringField";}</span>
 
 
-  // 在堆中新建了一个对象
-  private final String newStr = new String("FinalNewStringField");
+  <span class="c1">// 在堆中新建了一个对象</span>
+  <span class="kd">private</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">newStr</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">(</span><span class="s">"FinalNewStringField"</span><span class="o">);</span>
   
-  public FieldReflectDemo(){}
+  <span class="kd">public</span> <span class="nf">FieldReflectDemo</span><span class="o">(){}</span>
     
-    public static void main(String[] args) {
-    FieldReflectDemo fieldReflectDemo = new FieldReflectDemo();
-    try {
-      Class&lt;?&gt; className = fieldReflectDemo.getClass();
-      Field constantStr = className.getDeclaredField("constantStr");
-      Field newStr = className.getDeclaredField("newStr");
-      // 获取实例对象的字段值
-      System.out.println("constantStr原：" + constantStr.get(fieldReflectDemo));
-      System.out.println("newStr原：" + newStr.get(fieldReflectDemo));
-      constantStr.setAccessible(true);
-      newStr.setAccessible(true);
-      constantStr.set(fieldReflectDemo, "New Filed Name");
-      newStr.set(fieldReflectDemo, "New Filed Name");
-      System.out.println("constantStr反射修改：" + constantStr.get(fieldReflectDemo));
-      System.out.println("newStr反射修改：" + newStr.get(fieldReflectDemo));
-    } catch (NoSuchFieldException | IllegalAccessException e) {
-      e.printStackTrace();
-    }
-    System.out.println("constantStr实例对象值：" + fieldReflectDemo.getConstantStr());
-    System.out.println("newStr实例对象值：" + fieldReflectDemo.getNewStr());
-  }
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">FieldReflectDemo</span> <span class="n">fieldReflectDemo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">FieldReflectDemo</span><span class="o">();</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">className</span> <span class="o">=</span> <span class="n">fieldReflectDemo</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+      <span class="nc">Field</span> <span class="n">constantStr</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="na">getDeclaredField</span><span class="o">(</span><span class="s">"constantStr"</span><span class="o">);</span>
+      <span class="nc">Field</span> <span class="n">newStr</span> <span class="o">=</span> <span class="n">className</span><span class="o">.</span><span class="na">getDeclaredField</span><span class="o">(</span><span class="s">"newStr"</span><span class="o">);</span>
+      <span class="c1">// 获取实例对象的字段值</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"constantStr原："</span> <span class="o">+</span> <span class="n">constantStr</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">fieldReflectDemo</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"newStr原："</span> <span class="o">+</span> <span class="n">newStr</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">fieldReflectDemo</span><span class="o">));</span>
+      <span class="n">constantStr</span><span class="o">.</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+      <span class="n">newStr</span><span class="o">.</span><span class="na">setAccessible</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+      <span class="n">constantStr</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">fieldReflectDemo</span><span class="o">,</span> <span class="s">"New Filed Name"</span><span class="o">);</span>
+      <span class="n">newStr</span><span class="o">.</span><span class="na">set</span><span class="o">(</span><span class="n">fieldReflectDemo</span><span class="o">,</span> <span class="s">"New Filed Name"</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"constantStr反射修改："</span> <span class="o">+</span> <span class="n">constantStr</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">fieldReflectDemo</span><span class="o">));</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"newStr反射修改："</span> <span class="o">+</span> <span class="n">newStr</span><span class="o">.</span><span class="na">get</span><span class="o">(</span><span class="n">fieldReflectDemo</span><span class="o">));</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NoSuchFieldException</span> <span class="o">|</span> <span class="nc">IllegalAccessException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"constantStr实例对象值："</span> <span class="o">+</span> <span class="n">fieldReflectDemo</span><span class="o">.</span><span class="na">getConstantStr</span><span class="o">());</span>
+    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"newStr实例对象值："</span> <span class="o">+</span> <span class="n">fieldReflectDemo</span><span class="o">.</span><span class="na">getNewStr</span><span class="o">());</span>
+  <span class="o">}</span>
   
-  /**
+  <span class="cm">/**
    * 输出
    * constantStr原：FinalConstantStringField
    * newStr原：FinalNewStringField
@@ -695,8 +695,8 @@ public class FieldReflectDemo {
    * newStr反射修改：New Filed Name
    * constantStr实例对象值：FinalConstantStringField
    * newStr实例对象值：New Filed Name
-   */
-}
+   */</span>
+<span class="o">}</span>
 </code></pre></td></tr></tbody></table></div></div>
 
 <p>因为JVM在编译时期, 就把final类型的<strong>直接赋值的String</strong>进行了优化, 在编译时期就会把String处理成常量。反射成功将其值修改成功了，但是在它的get方法中，返回的不是当前变量，而是返回JVM优化好的一个常量值。</p>
@@ -709,42 +709,42 @@ public class FieldReflectDemo {
 
 <p>方法声明包含了方法名、修饰符、参数、返回类型以及抛出的多个异常。</p>
 
-<div class="language-plaintext highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36</pre></td><td class="code"><pre class="highlight"><code>public class MethodReflectDemo {
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36</pre></td><td class="code"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MethodReflectDemo</span> <span class="o">{</span>
 
 
-public MethodReflectDemo() {
+<span class="kd">public</span> <span class="nf">MethodReflectDemo</span><span class="o">()</span> <span class="o">{</span>
   
-private void getNothing(String name) {
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">getNothing</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
   
-public int getNumByName(String name) throws NullPointerException {
-  if (StringUtils.isEmpty(name))
-    throw new NullPointerException("名字为空");
-  return name.length();
-}
+<span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNumByName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">NullPointerException</span> <span class="o">{</span>
+  <span class="k">if</span> <span class="o">(</span><span class="nc">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">name</span><span class="o">))</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nf">NullPointerException</span><span class="o">(</span><span class="s">"名字为空"</span><span class="o">);</span>
+  <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+<span class="o">}</span>
 
 
-  public static void main(String[] args) {
-    MethodReflectDemo methodReflectDemo = new MethodReflectDemo();
-    try {
-      Class&lt;? extends MethodReflectDemo&gt; demoClass = methodReflectDemo.getClass();
-      Method method = demoClass.getDeclaredMethod("getNumByName", String.class);
-      String name = method.getName();
-      System.out.println("方法名：" + name);
-      // 修饰符
-      int modifiers = method.getModifiers();
-      System.out.println("所有修饰符：" + Modifier.toString(modifiers));
-      // 参数
-      Parameter[] parameters = method.getParameters();
-      // 返回类型
-      Class&lt;?&gt; returnType = method.getReturnType();
-      System.out.println("返回类型：" + returnType.getTypeName());
-      // 异常
-      Class&lt;?&gt;[] exceptionTypes = method.getExceptionTypes();
-      System.out.println("");
-    } catch (NoSuchMethodException e) {
-      e.printStackTrace();
-    }
-  }
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">MethodReflectDemo</span> <span class="n">methodReflectDemo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MethodReflectDemo</span><span class="o">();</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">MethodReflectDemo</span><span class="o">&gt;</span> <span class="n">demoClass</span> <span class="o">=</span> <span class="n">methodReflectDemo</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+      <span class="nc">Method</span> <span class="n">method</span> <span class="o">=</span> <span class="n">demoClass</span><span class="o">.</span><span class="na">getDeclaredMethod</span><span class="o">(</span><span class="s">"getNumByName"</span><span class="o">,</span> <span class="nc">String</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+      <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"方法名："</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+      <span class="c1">// 修饰符</span>
+      <span class="kt">int</span> <span class="n">modifiers</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getModifiers</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"所有修饰符："</span> <span class="o">+</span> <span class="nc">Modifier</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">modifiers</span><span class="o">));</span>
+      <span class="c1">// 参数</span>
+      <span class="nc">Parameter</span><span class="o">[]</span> <span class="n">parameters</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getParameters</span><span class="o">();</span>
+      <span class="c1">// 返回类型</span>
+      <span class="nc">Class</span><span class="o">&lt;?&gt;</span> <span class="n">returnType</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getReturnType</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"返回类型："</span> <span class="o">+</span> <span class="n">returnType</span><span class="o">.</span><span class="na">getTypeName</span><span class="o">());</span>
+      <span class="c1">// 异常</span>
+      <span class="nc">Class</span><span class="o">&lt;?&gt;[]</span> <span class="n">exceptionTypes</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getExceptionTypes</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NoSuchMethodException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
 </code></pre></td></tr></tbody></table></div></div>
 
 <h3 id="javalangreflectconstructor">java.lang.reflect.Constructor</h3>
@@ -803,15 +803,15 @@ public int getNumByName(String name) throws NullPointerException {
         <div class="post-nav" id="post-nav-id">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/java/2021/05/22/Functional-Programming/" rel="next" title="函数式编程">
+                <i class="fa fa-chevron-left"></i> 函数式编程
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/tutorial/2017/07/20/next-tutorial/" rel="prev" title="Next Theme Tutorial">
-                Next Theme Tutorial <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -892,7 +892,7 @@ public int getNumByName(String name) throws NullPointerException {
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -903,7 +903,7 @@ public int getNumByName(String name) throws NullPointerException {
             
             <div class="site-state-item site-state-categories">
               <a href="/categories/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">1</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -914,7 +914,7 @@ public int getNumByName(String name) throws NullPointerException {
             
             <div class="site-state-item site-state-tags">
               <a href="/tags/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">6</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
@@ -968,7 +968,7 @@ public int getNumByName(String name) throws NullPointerException {
             
               <div class="post-toc-content">
     <ol class=nav>
-      <li class="nav-item nav-level-2"> <a class="nav-link" href="#java反射机制"> <span class="nav-number">1</span> <span class="nav-text">Java反射机制</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#反射原理"> <span class="nav-number">1.1</span> <span class="nav-text">反射原理：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#反射的用途"> <span class="nav-number">1.2</span> <span class="nav-text">反射的用途：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#反射的缺点"> <span class="nav-number">1.3</span> <span class="nav-text">反射的缺点：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#获取对象类的方式"> <span class="nav-number">1.4</span> <span class="nav-text">获取对象类的方式:</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#获取类的成员变量"> <span class="nav-number">1.5</span> <span class="nav-text">获取类的成员变量：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#javalangreflectfield"> <span class="nav-number">1.6</span> <span class="nav-text">java.lang.reflect.Field</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#javalangreflectmethod"> <span class="nav-number">1.7</span> <span class="nav-text">java.lang.reflect.Method</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#javalangreflectconstructor"> <span class="nav-number">1.8</span> <span class="nav-text">java.lang.reflect.Constructor</span> </a> </li> </ol> </li>
+      <li class="nav-item nav-level-2"> <a class="nav-link" href="#java反射机制"> <span class="nav-number">1</span> <span class="nav-text">java反射机制</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#反射原理"> <span class="nav-number">1.1</span> <span class="nav-text">反射原理：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#反射的用途"> <span class="nav-number">1.2</span> <span class="nav-text">反射的用途：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#反射的缺点"> <span class="nav-number">1.3</span> <span class="nav-text">反射的缺点：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#获取对象类的方式"> <span class="nav-number">1.4</span> <span class="nav-text">获取对象类的方式:</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#获取类的成员变量"> <span class="nav-number">1.5</span> <span class="nav-text">获取类的成员变量：</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#javalangreflectfield"> <span class="nav-number">1.6</span> <span class="nav-text">java.lang.reflect.Field</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#javalangreflectmethod"> <span class="nav-number">1.7</span> <span class="nav-text">java.lang.reflect.Method</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#javalangreflectconstructor"> <span class="nav-number">1.8</span> <span class="nav-text">java.lang.reflect.Constructor</span> </a> </li> </ol> </li>
     </ol>
   </div>
             
