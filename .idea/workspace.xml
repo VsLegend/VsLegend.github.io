@@ -19,14 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="去掉页脚的多余部分">
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="代码块格式设置">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_includes/share.html" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/share.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/Functional-Programming/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/Functional-Programming/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/JAVA-reflection/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/css/screen.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/screen.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sass/_common/components/highlight/theme.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/_common/components/highlight/theme.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/screen.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/screen.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,11 +58,12 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="E:/Horizon4/jekyll-theme-next-master" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\DATA\project\VsLegend.github.io\assets" />
       <recent name="F:\DATA\project\VsLegend.github.io\assets\images" />
     </key>
   </component>
@@ -80,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621658665651</updated>
       <workItem from="1622013880158" duration="2354000" />
-      <workItem from="1622020753708" duration="4971000" />
+      <workItem from="1622020753708" duration="6386000" />
     </task>
     <task id="LOCAL-00001" summary="设置">
       <created>1621660495622</created>
@@ -208,7 +206,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622018604167</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="代码块格式设置">
+      <created>1622031724513</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1622031724513</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,7 +242,8 @@
     <MESSAGE value="静态资源访问问题" />
     <MESSAGE value="新增文章文章" />
     <MESSAGE value="去掉页脚的多余部分" />
-    <option name="LAST_COMMIT_MESSAGE" value="去掉页脚的多余部分" />
+    <MESSAGE value="代码块格式设置" />
+    <option name="LAST_COMMIT_MESSAGE" value="代码块格式设置" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621661733955">
@@ -268,10 +274,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="388" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661895450" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1622018605513">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1622031726108">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622018605513" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622031726108" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621671599134">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
