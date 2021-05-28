@@ -1,4 +1,785 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-26T21:52:40+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">函数式编程</title><link href="http://localhost:4000/java/2021/05/22/Functional-Programming/" rel="alternate" type="text/html" title="函数式编程" /><published>2021-05-22T00:00:00+08:00</published><updated>2021-05-22T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/05/22/Functional-Programming</id><content type="html" xml:base="http://localhost:4000/java/2021/05/22/Functional-Programming/">&lt;p&gt;函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-28T11:50:23+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">redis基础知识和底层数据结构</title><link href="http://localhost:4000/redis/2021/05/28/redis-data-structure/" rel="alternate" type="text/html" title="redis基础知识和底层数据结构" /><published>2021-05-28T00:00:00+08:00</published><updated>2021-05-28T00:00:00+08:00</updated><id>http://localhost:4000/redis/2021/05/28/redis-data-structure</id><content type="html" xml:base="http://localhost:4000/redis/2021/05/28/redis-data-structure/">&lt;p&gt;Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。&lt;/p&gt;
+
+&lt;h1 id=&quot;redis基础知识&quot;&gt;Redis基础知识&lt;/h1&gt;
+
+&lt;h2 id=&quot;概念&quot;&gt;&lt;strong&gt;概念：&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。&lt;/p&gt;
+
+&lt;h2 id=&quot;用途&quot;&gt;&lt;strong&gt;用途：&lt;/strong&gt;&lt;/h2&gt;
+
+&lt;p&gt;常被用于分布式、键值对数据库、高速缓存、消息代理等应用。&lt;/p&gt;
+
+&lt;h2 id=&quot;redis的优点&quot;&gt;redis的优点&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;内存操作，高性能&lt;/li&gt;
+  &lt;li&gt;单线程执行，天然支持并发&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;redis的底层数据结构&quot;&gt;Redis的底层数据结构&lt;/h1&gt;
+
+&lt;h2 id=&quot;简单动态字符串sds&quot;&gt;简单动态字符串：SDS&lt;/h2&gt;
+&lt;h3 id=&quot;描述&quot;&gt;描述&lt;/h3&gt;
+
+&lt;p&gt;Redis由C语言编写。它将SDS（simple dynamic string）用作默认的字符串表示方式。而C字符串仅用作字符串字面量（string literal），即无须对字符串值进行修改的地方。Redis的字符串类型的键值都是由SDS实现的。此外，SDS还可以被用作缓冲区（buffer），例如AOF缓冲区、输入缓冲区等。&lt;/p&gt;
+
+&lt;h3 id=&quot;定义&quot;&gt;定义&lt;/h3&gt;
+
+&lt;p&gt;SDS遵循C字符串以空字符结尾的惯例，保存空字符的1字节空间不计算在SDS的len属性里。该空字符的添加操作由SDS函数自动完成。这一操作的好处是，可以直接复用C语言的一些字符串操作。&lt;/p&gt;
+
+&lt;p&gt;每个sds.h/sdshdr表示一个SDS值，SDS的定义如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sdshdr&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 记录buf数组中已使用的字节数量，等于SDS所保存字符串的长度&lt;/span&gt;
+  
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;free&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 记录buf数组中未使用的字节数量&lt;/span&gt;
+  
+  &lt;span class=&quot;kt&quot;&gt;char&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;buf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 字节数组，用于保存字符串&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;特性&quot;&gt;特性&lt;/h3&gt;
+
+&lt;p&gt;前置知识点：
+内存的重新分配操作可能出现的问题&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;缓冲区溢出：增长字符串时，程序需要通过内存分配来来确定是否需要对底层数组的空间进行扩充，以便存放增长后的字符串的值。如果忘了这一步，那么保存字符串的数组就会发生越界行为，占用未分配给它的内存区域，从而导致其他数据被意外篡改，这就是缓冲区溢出。&lt;/li&gt;
+  &lt;li&gt;内存泄漏：缩短字符串时，同样需要重新分配内存释放掉不需要的那部分空间。如果忘了这一步，那么剩下那一部分空间将会一直处于未使用状态且无法分配给其他程序来使用，这就是内存泄漏。&lt;/li&gt;
+  &lt;li&gt;内存重分配设计辅助的算法，并且可能需要执行系统调用，所以它通常是一个比较耗时的操作。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;1-空间预分配&quot;&gt;1. 空间预分配&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;描述&lt;/strong&gt;：空间预分配操作用于优化SDS字符串的增长操作。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;实现&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;当修改后的SDS长度小于1MB时，那么程序将分配和len相同大小的未使用空间。这时len的值和free的值相同。&lt;/li&gt;
+  &lt;li&gt;SDS的长度大于等于1MB时，那么会分配1MB的未使用空间。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;作用&lt;/strong&gt;：通过内存重分配和空间预分配的策略，Redis可以减少连续执行字符串增长操作所需的内存重分配次数，从而提高性能&lt;/p&gt;
+
+&lt;h4 id=&quot;2-惰性空间释放&quot;&gt;2. 惰性空间释放&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;描述&lt;/strong&gt;：用于优化SDS字符串缩短操作。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;实现&lt;/strong&gt;：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;缩短字符串时，程序并不立即使用内存重分配来回收缩短后多出的字节，而是使用free属性将这些字节的数量记录起来，并等待将来使用。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;作用&lt;/strong&gt;：SDS避免了缩短字符串时所需的内存重分配操作。并为将来可能出现的增长操作提供了优化；不过有可能造成内存空间的浪费。&lt;/p&gt;
+
+&lt;h4 id=&quot;3-二进制安全&quot;&gt;3. 二进制安全&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;描述&lt;/strong&gt;：SDS的API都是二进制安全的。所有SDS API都会以处理二进制的方式来处理SDS存放在buf数组里的数据。&lt;/p&gt;
+
+&lt;h4 id=&quot;4-兼容部分c字符串函数&quot;&gt;4. 兼容部分C字符串函数&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;描述&lt;/strong&gt;：SDS末尾保存的空字串，使得其可以重用一部分&lt;string.h&gt;库定义的函数，从而避免了不必要的代码重复实现。&lt;/string.h&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;与c字符串相比的区别&quot;&gt;与C字符串相比的区别&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;长度获取简单。SDS用len属性记录了SDS字符串的长度，因此只需常熟复杂度就可以获取到字符串长度，而C字符串并不记录长度，它需要遍历整个字符串才能得出字符串长度。&lt;/li&gt;
+  &lt;li&gt;len属性解决了扩充时C字符串的缓冲区溢出（buffer overflow）问题；&lt;/li&gt;
+  &lt;li&gt;free属性减少修改字符串时带来的内存重分配次数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;链表&quot;&gt;链表&lt;/h2&gt;
+&lt;h3 id=&quot;描述-1&quot;&gt;描述&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;链表提供了高效的&lt;strong&gt;节点重排&lt;/strong&gt;能力，以及顺序性的节点访问方式。&lt;/li&gt;
+  &lt;li&gt;链表在redis中的应用非常广泛，列表键的底层实现之一就是链表（当一个列表键包含了数量比较多的元素，又或者列表中包含的元素都是比较长的字符串时）。&lt;/li&gt;
+  &lt;li&gt;此外，发布与订阅、慢查询、监视器等功能也用到了链表，Redis本身还是用链表保存多个客户端的状态信息。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;定义-1&quot;&gt;定义&lt;/h3&gt;
+
+&lt;p&gt;adlist.h/list表示一个链表，而每个链表节点使用一个adlist.h/listNode结构表示。&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;listNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;head&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;listNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tail&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;len&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 节点数量&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;list&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+
+
+&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listNode&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prev&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listNode&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 任意类型的值&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;listNod&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;字典&quot;&gt;字典&lt;/h2&gt;
+&lt;h3 id=&quot;描述-2&quot;&gt;描述&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;字典，又称符号表、关联数组、映射（map），用于保存键值对的抽象数据结构。&lt;/li&gt;
+  &lt;li&gt;C语言并没有内置字典。因此字典又Redis本身实现。&lt;/li&gt;
+  &lt;li&gt;除了用来表示数据库外，字典还是哈希键的底层实现之一，当一个哈希键包含的键值对比较多，又或者键值对中的元素都是长字符串时，Redis就会使用字典作为哈希键的底层实现。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;定义-2&quot;&gt;定义&lt;/h3&gt;
+
+&lt;p&gt;dict.h/dict表示一个字典。&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dict&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 特定类型函数&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;dictType&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 私有数据&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;privdata&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+  &lt;span class=&quot;c1&quot;&gt;// 哈希表&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;dictht&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;ht&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;];&lt;/span&gt; 
+  &lt;span class=&quot;c1&quot;&gt;// rehash索引，没有进行rehash时，值为-1&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;trehashidx&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;dict.h/dictht表示一个哈希表。&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dictht&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 哈希表，这里相当于Java中的 Object [] table;&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;dictEntry&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;**&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;table&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 大小，指数组&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;size&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+  &lt;span class=&quot;c1&quot;&gt;// 哈希表大小掩码，总是用于计算索引值，总是等于size - 1&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sizemask&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+  
+  &lt;span class=&quot;c1&quot;&gt;// 哈希表已有节点的数量&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;long&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;used&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dictht&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;而每个哈希节点使用dictEntry表示。&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dictEntry&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+
+  &lt;span class=&quot;c1&quot;&gt;// 值 可以是一个对象指针，或uint64_t整数或int64_t整数&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;union&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;val&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;uint64_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;u64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;kt&quot;&gt;int64_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;s64&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;v&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; 
+
+
+  &lt;span class=&quot;c1&quot;&gt;// 指向下一个哈希节点，用于解决键冲突（链地址法）&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dictEntry&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dictEntry&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;哈希算法&quot;&gt;哈希算法&lt;/h3&gt;
+
+&lt;p&gt;字典用作数据库底层实现，或哈希键的实现时，Redis使用的&lt;strong&gt;MurmurHash2&lt;/strong&gt;算法来计算哈希值&lt;/p&gt;
+
+&lt;p&gt;key：键&lt;/p&gt;
+
+&lt;p&gt;ht[x]：没有rehash时为ht[0]，rehash时ht[1]&lt;/p&gt;
+
+&lt;p&gt;计算哈希值：hash = dict-&amp;gt;type-&amp;gt;hashFunction(key);&lt;/p&gt;
+
+&lt;p&gt;计算在数组中的下标：index = hash &amp;amp; dict-&amp;gt;ht[x].sizemask;&lt;/p&gt;
+
+&lt;h3 id=&quot;哈希冲突&quot;&gt;哈希冲突&lt;/h3&gt;
+
+&lt;p&gt;Redis使用了链地址法解决，在产生冲突的下标地址的链表中，使用头插法插入哈希节点。&lt;/p&gt;
+
+&lt;h3 id=&quot;渐进式的rehash&quot;&gt;渐进式的Rehash&lt;/h3&gt;
+
+&lt;p&gt;Redis也有一个负载因子用于控制，哈希表的数组大小。当负载因子超过承受限制或远低于预期时，就会进行rehash的操作，进行扩展或缩小哈希表。&lt;/p&gt;
+
+&lt;p&gt;负载因子（load factor）计算方式：load_factor = ht[0].used / ht[0].size&lt;/p&gt;
+
+&lt;p&gt;扩展时：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;条件：&lt;/strong&gt;一般情况下，负载因子大于等于1，就进行扩展；在执行BGSAVE或BGREERITEAOF命令时，负载因子大于等于5才开始扩展。&lt;/p&gt;
+
+&lt;p&gt;方法：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;分配ht[1]的空间，size为：大于等于ht[0].used * 2的第一个2^n数&lt;/li&gt;
+  &lt;li&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;收缩时：&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;条件：&lt;/strong&gt;负载因子小于0.1，就开始收缩&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;跳跃表&quot;&gt;跳跃表&lt;/h2&gt;
+&lt;h3 id=&quot;描述-3&quot;&gt;描述&lt;/h3&gt;
+
+&lt;p&gt;Redis使用其作为有序集合键的底层实现之一。当一个有序集合包含的元素数量比较多，又或者集合中的元素都是长字符串时，Redis就会使用跳跃表作为有序集合的底层实现。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;整数集合&quot;&gt;整数集合&lt;/h2&gt;
+
+&lt;h3 id=&quot;描述-4&quot;&gt;描述&lt;/h3&gt;
+
+&lt;p&gt;整数集合是Redis用于保存整数值的集合抽象数据结构，当一个集合只包含整数值元素，且元素数量不多时，Redis就会使用整数集合作为集合键的底层实现。&lt;/p&gt;
+
+&lt;p&gt;它可以保存int16_t、int32_t、int64_t的整数值，并且保证集合有序且不会出现重复。&lt;/p&gt;
+
+&lt;h3 id=&quot;定义-3&quot;&gt;定义&lt;/h3&gt;
+
+&lt;p&gt;每个intset.h/intset结构表示一个整数集合&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;intset&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;uint32_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 编码 三种类型int16_t、int32_t、int64_t&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;uint32_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;length&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 元素数量&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int8_t&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;contents&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[];&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 保存元素的数组，其保存的正真类型取决于encoding&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;升级&quot;&gt;升级&lt;/h3&gt;
+
+&lt;p&gt;新元素超过当前类型的范围时，就要向上转型，redis称为升级（upgrade）。例如16-32，32-64。当然，整数集合不支持降级操作，一旦升级，编码就会一直保持升级后的状态，这一点跟Java一样。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;步骤：&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;根据升级类型，扩展底层数组的空间大小，并未新元素分配空间&lt;/li&gt;
+  &lt;li&gt;把数组中现有的元素转换成升级后的类型，并从最后一个元素开始将之移动到新的位置上（例如：16位的整数转为32位时，数组为每一个元素的空间都分配了32位。从最后一个元素开始移动，可以确保一次移动完毕，且不会造成数据损坏）&lt;/li&gt;
+  &lt;li&gt;将新元素添加到数组（由于新元素是向上转型，那么新元素只能是大于或小于当前数组的所有数的情况。比如一个32位的正整数或负整数）&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;压缩列表&quot;&gt;压缩列表&lt;/h2&gt;
+&lt;h3 id=&quot;描述-5&quot;&gt;描述&lt;/h3&gt;
+
+&lt;p&gt;压缩列表是Redis为了节约内存而开发的，是由一系列&lt;strong&gt;特殊编码&lt;/strong&gt;的&lt;strong&gt;连续内存块&lt;/strong&gt;组成的顺序性数据结构。&lt;/p&gt;
+
+&lt;p&gt;也是列表键和哈希键的底层实现之一，当一个列表键只包含少量列表项，并且列表项要么是小整数值、要么是比较短的字符串，那么Redis就会使用压缩列表做列表键的底层实现；当一个哈希键只包含少量键值对，并且键值对的键和值要么是小整数值、要么是比较短的字符串，那么Redis就会使用压缩列表做列表键的底层实现。&lt;/p&gt;
+
+&lt;h3 id=&quot;定义-4&quot;&gt;定义&lt;/h3&gt;
+
+&lt;p&gt;由于是连续的内存块，且经过特殊编码的，因此它跟之前的几种数据结构不同。整个压缩列表的结构如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;zlbyte&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zltail&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zllen&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;entry1&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;~~~&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;entryn&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zlend&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;zlbyet&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：列表占用的内存字节数&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;zltail&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：记录列表尾节点离列表的起始地址有多少字节&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;zllen&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：记录列表包含的节点数量&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;entry&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：每一个列表节点，数量不定&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;zlend&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：特殊值&lt;/span&gt;&lt;span class=&quot;mh&quot;&gt;0xFF&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;（十进制&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;），用于标记压缩列表的末端&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;每一个实体entry包含的内容如下：&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;n&quot;&gt;previous_entry_lenth&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;  &lt;span class=&quot;o&quot;&gt;|&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;previous_entry_lenth&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：记录压缩列表前一个节点的长度&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：记录节点&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;属性所保存数据的类型和长度&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;content&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;：保存节点值，可以是一个字节数组或者整数&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h2 id=&quot;对象&quot;&gt;对象&lt;/h2&gt;
+&lt;h3 id=&quot;描述-6&quot;&gt;描述：&lt;/h3&gt;
+
+&lt;p&gt;Redis没有直接使用上述的数据机构来实现键值对数据库，而是基于这些数据结构创建一个对象系统。&lt;/p&gt;
+
+&lt;p&gt;Redis创建一个键值对时，最少会建两个对象，键的对象和值的对象；键总是一个字符串对象，而值可以是对象系统的任一种。&lt;/p&gt;
+
+&lt;h3 id=&quot;对象系统&quot;&gt;对象系统：&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;对象系统&lt;/strong&gt;包含：字符串对象、列表对象、哈希对象、集合对象和有序集合对象五种。&lt;/li&gt;
+  &lt;li&gt;对象系统实现了基于引用计数技术的内存回收机制：当程序不再使用某个对象的时候（什么情况下才表示不再使用呢，即引用计数为0时），这个对象所占用的内存就会被自动释放。此外该技术实现了对象共享机制，通过让多个数据库键公用同一对象来节约内存。&lt;/li&gt;
+  &lt;li&gt;对象带有访问时间记录信息，其用于计算数据库键的空转时长（未被调用），在服务器启用了maxmemory功能的情况下，空转时长较大的键可能会被服务器优先删除。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;定义-5&quot;&gt;定义：&lt;/h3&gt;
+
+&lt;p&gt;每个对象都由一个redisObject结构表示：&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;redisObject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// 类型 REDIS_STRING REDIS_LIST REDIS_HASH REDIS_SET REDIS_ZSET&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;encoding&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 编码 决定了该类型使用什么底层数据结构&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;ptr&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 指向底层实现数据结构的指针&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;refcount&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 引用计数 用于内存回收机制、共享机制&lt;/span&gt;
+  &lt;span class=&quot;kt&quot;&gt;unsigned&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;lru&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;22&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 记录对象的最后一次被访问时间&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// ...&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;robj&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;ptr指针所指向数据结构，它的类型由encoding属性决定。encoding记录了对象所使用的编码，即对象使用了什么数据结构作为底层实现。&lt;/p&gt;
+
+&lt;h3 id=&quot;对象的常用命令&quot;&gt;对象的常用命令：&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;object encoding&lt;/th&gt;
+      &lt;th&gt;值的编码&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;object refcount&lt;/td&gt;
+      &lt;td&gt;对象的引用计数&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;object idletime&lt;/td&gt;
+      &lt;td&gt;对象的空转时长，该命令不会修改对象的lru属性&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;type&lt;/td&gt;
+      &lt;td&gt;对象类型&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;del&lt;/td&gt;
+      &lt;td&gt;删除键以及值&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rename&lt;/td&gt;
+      &lt;td&gt;重命键&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;expire&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;对象系统各编码使用的数据结构&quot;&gt;对象系统各编码使用的数据结构：&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;type类型&lt;/th&gt;
+      &lt;th&gt;encoding编码&lt;/th&gt;
+      &lt;th&gt;ptr指向的数据结构&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_STRING&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_INT&lt;/td&gt;
+      &lt;td&gt;整数值的实现的字符串对象&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_STRING&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_EMBSTR&lt;/td&gt;
+      &lt;td&gt;embstr编码的sds实现的字符串对象&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_STRING&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_RAW&lt;/td&gt;
+      &lt;td&gt;sds字符串实现的字符串对象&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_LIST&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_ZIPLIST&lt;/td&gt;
+      &lt;td&gt;压缩列表实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_LIST&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_LINKEDLIST&lt;/td&gt;
+      &lt;td&gt;链表实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_HASH&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_ZIPLIST&lt;/td&gt;
+      &lt;td&gt;压缩表实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_HASH&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_HT&lt;/td&gt;
+      &lt;td&gt;字典实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_SET&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_INTSET&lt;/td&gt;
+      &lt;td&gt;整数集合实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_SET&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_HT&lt;/td&gt;
+      &lt;td&gt;字典实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_ZSET&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_ZIPLIST&lt;/td&gt;
+      &lt;td&gt;压缩表实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_ZSET&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_SKIPLIST&lt;/td&gt;
+      &lt;td&gt;跳跃表和字典实现&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;数据结构的转换&quot;&gt;数据结构的转换：&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;类型&lt;/th&gt;
+      &lt;th&gt;转换规则&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_STRING&lt;/td&gt;
+      &lt;td&gt;为整数值且可以用long型表示使用int；当保存字符串，且长度小于等于39字节，使用embstr编码；否则使用SDS&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_LIST&lt;/td&gt;
+      &lt;td&gt;全是整数或短字符串且元素少使用压缩列表，否则使用链表&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_HASH&lt;/td&gt;
+      &lt;td&gt;全是整数或短字符串且元素少使用压缩列表，否则使用字典&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_SET&lt;/td&gt;
+      &lt;td&gt;全是整数且元素少使用整数列表，否则使用字典&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_ZSET&lt;/td&gt;
+      &lt;td&gt;全是整数或短字符串且元素少使用压缩列表，否则使用跳跃表和字典&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;字符串对象&quot;&gt;字符串对象&lt;/h3&gt;
+
+&lt;p&gt;int embstr raw&lt;/p&gt;
+
+&lt;p&gt;字符串对象是五种类型中，唯一一种会被其他四种对象嵌套的类型。&lt;/p&gt;
+
+&lt;p&gt;embstr编码与raw编码异同：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;两者都使用了redisObject机构和sdsstr结构表示字符串&lt;/li&gt;
+  &lt;li&gt;但是raw编码会调用两次内存分配函数来分别创建两个结构，而embstr只需一次且分配了连续的内存空间。&lt;/li&gt;
+  &lt;li&gt;意味着释放内存时，前者也需要释放两次，而后者只需要释放一次。&lt;/li&gt;
+  &lt;li&gt;embstr是读取连续内存空间的数据，因此读取速度更快&lt;/li&gt;
+  &lt;li&gt;embstr是只读的，而raw可读写。embstr是专门用于保存短字符串的一种优化编码方式。embstr无法修改的只读对象。若要对其进行修改，会将embstr先转为raw对象，再执行修改命令&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;常用命令：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;set&lt;/th&gt;
+      &lt;th&gt; &lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;get&lt;/td&gt;
+      &lt;td&gt; &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;append&lt;/td&gt;
+      &lt;td&gt;在值后添加&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;strlen&lt;/td&gt;
+      &lt;td&gt;字符串长度&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;列表对象&quot;&gt;列表对象&lt;/h3&gt;
+
+&lt;p&gt;ziplist linkedlist&lt;/p&gt;
+
+&lt;p&gt;编码转换：&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;字符串元素的长度小于64字节，元素数量小于512个时，使用ziplist&lt;/li&gt;
+  &lt;li&gt;通过配置文件修改：list-max-ziplist-value、list-max-ziplist-entries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;常用命令：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;lpush&lt;/th&gt;
+      &lt;th&gt;头部添加&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;lpop&lt;/td&gt;
+      &lt;td&gt;头部删除&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rpush&lt;/td&gt;
+      &lt;td&gt;尾部添加&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;rpop&lt;/td&gt;
+      &lt;td&gt;尾部删除&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;llen&lt;/td&gt;
+      &lt;td&gt;长度&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;lindex&lt;/td&gt;
+      &lt;td&gt;返回下标的元素&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;lset&lt;/td&gt;
+      &lt;td&gt;更新节点的元素&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;lrange key s e&lt;/td&gt;
+      &lt;td&gt;展示范围内的元素&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;哈希对象&quot;&gt;哈希对象&lt;/h3&gt;
+
+&lt;p&gt;ziplist hashtable&lt;/p&gt;
+
+&lt;p&gt;当使用ziplist保存哈希键值时，将键和值都作为一个entry，然后以键在前值在后的顺序插入压缩表&lt;/p&gt;
+
+&lt;p&gt;编码转换：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;所有键值对的键和值，都是用字符串，且长度小于64字节，键值对数量小于64个时，使用压缩表&lt;/li&gt;
+  &lt;li&gt;通过配置文件修改：hash-max-ziplist-value、hash-max-ziplist-entries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;常用命令：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;hset&lt;/th&gt;
+      &lt;th&gt;添加键值对&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hget&lt;/td&gt;
+      &lt;td&gt;获取键的值&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hdel&lt;/td&gt;
+      &lt;td&gt;删除键对应的键值对&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hlen&lt;/td&gt;
+      &lt;td&gt;长度&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;hgetall&lt;/td&gt;
+      &lt;td&gt;获取所有键值对&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;集合对象&quot;&gt;集合对象&lt;/h3&gt;
+
+&lt;p&gt;intset hashtable&lt;/p&gt;
+
+&lt;p&gt;使用hashtable时，字典的每个键都是一个字符串对象，值则全是NULL。&lt;/p&gt;
+
+&lt;p&gt;编码转换：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;集合对象保存的元素都是用整数值，且元素数量不超过512个时，使用intset&lt;/li&gt;
+  &lt;li&gt;通过配置文件修改：set-max-intset-entries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;常用命令：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;sadd&lt;/th&gt;
+      &lt;th&gt;添加元素&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;scard&lt;/td&gt;
+      &lt;td&gt;集合元素的数量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;sismember&lt;/td&gt;
+      &lt;td&gt;指定元素是否存在&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;smembers&lt;/td&gt;
+      &lt;td&gt;获取所有元素&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;spop&lt;/td&gt;
+      &lt;td&gt;随机删除一个元素并返回，在返回给客户端值后才会正真删除&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;有序集合对象&quot;&gt;有序集合对象&lt;/h3&gt;
+
+&lt;p&gt;ziplist skiplist&amp;amp;hashtable&lt;/p&gt;
+
+&lt;p&gt;压缩表的表现形式：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;使用压缩表时，元素按分值从小到大进行排序，分值小的靠近表头，分值大的靠近表尾。&lt;/li&gt;
+  &lt;li&gt;压缩表中，每个元素用两个连续的entry表示，第一个保存元素，第二个保存元素的分值。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;跳跃表和哈希表的表现形式：&lt;/p&gt;
+
+&lt;p&gt;skiplist编码的有序集合对象使用zset结构作为底层实现，其同时包含一个字典和一个跳跃表：&lt;/p&gt;
+
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;k&quot;&gt;typedef&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;struct&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;zset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;zskiplist&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zsl&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 跳跃表&lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;dict&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dict&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// 字典&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;zset&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;虽然zset同时使用字典和跳跃表保存有序集合，但这两种结构都通过指针来共享相同元素的成员和分值，因此不会造成浪费额外的内存。&lt;/p&gt;
+
+&lt;p&gt;编码转换：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;有序集合对象保存的元素长度都小于64字节，且元素数量小于128个时，使用ziplist&lt;/li&gt;
+  &lt;li&gt;通过配置文件修改：zset-max-ziplist-value、zset-max-ziplist-entries&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;常用命令：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;zadd&lt;/th&gt;
+      &lt;th&gt;添加元素&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;zrem&lt;/td&gt;
+      &lt;td&gt;删除元素中的指定成员&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;zcard&lt;/td&gt;
+      &lt;td&gt;集合元素的数量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;zcount&lt;/td&gt;
+      &lt;td&gt;分值在给定范围内的元素数量&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;zrange&lt;/td&gt;
+      &lt;td&gt;返回给定索引范围的所有元素&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;zrank&lt;/td&gt;
+      &lt;td&gt;元素的排名（相当于index+1）&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;zscore&lt;/td&gt;
+      &lt;td&gt;给定元素的分值&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;内存回收&quot;&gt;内存回收&lt;/h3&gt;
+
+&lt;p&gt;描述：&lt;/p&gt;
+
+&lt;p&gt;C语言并不具备自动内存回收的功能，Redis构建了一个引用计数（reference counting）计数实现的内存回收机制。&lt;/p&gt;
+
+&lt;p&gt;对于一个对象而言，它的生命周期为创建对象、操作对象、释放对象三个阶段。&lt;/p&gt;
+
+&lt;p&gt;引用计数：&lt;/p&gt;
+
+&lt;p&gt;程序通过跟踪对象的引用计数信息，在适当的时候自动释放对象并进行内存回收。&lt;/p&gt;
+
+&lt;p&gt;引用计数在对象系统中的属性为：refcount&lt;/p&gt;
+
+&lt;p&gt;refcount的状态变化：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;创建新对象时，对象的refcount值初始化为1&lt;/li&gt;
+  &lt;li&gt;对象被新程序使用时，refcount++&lt;/li&gt;
+  &lt;li&gt;新程序使用结束时，refcount–&lt;/li&gt;
+  &lt;li&gt;当对象的引用计数为0时，对象占用的内存会被释放&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;对象共享&quot;&gt;对象共享&lt;/h3&gt;
+
+&lt;p&gt;描述：&lt;/p&gt;
+
+&lt;p&gt;对象的共享也是通过上述的refcount实现的。&lt;/p&gt;
+
+&lt;p&gt;哪些对象会被共享：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Redis只对包含整数值的字符串对象进行共享。&lt;/li&gt;
+  &lt;li&gt;Redis初始化服务器时，创建0-9999的字符串对象，用以实现这些整数值的共享&lt;/li&gt;
+  &lt;li&gt;Redis不共享包含字符串的对象，那有会增加判断的复杂度，从而影响内存性能&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;共享的实现：&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;将数据库键的值指针指向一个现有的值对象；&lt;/li&gt;
+  &lt;li&gt;将被共享的值对象的引用计数加一&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;对象的空转时长&quot;&gt;对象的空转时长&lt;/h3&gt;
+
+&lt;p&gt;描述：&lt;/p&gt;
+
+&lt;p&gt;lru属性，记录对象最后一次被访问的时间。&lt;/p&gt;
+
+&lt;p&gt;作用：&lt;/p&gt;
+
+&lt;p&gt;当服务器打开了maxmemory选项时，且回收内存的算法为volatile-lru或者allkeys-lru，那么当服务器占用的内存数超过了maxmemory设置的上限值时，空转时长较高的那部分键会优先被服务器释放，从而回收内存。&lt;/p&gt;
+
+&lt;p&gt;参考：&lt;a href=&quot;https://redis.io/documentation&quot;&gt;Redis Documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Redis&quot;&gt;Redis维基百科&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[Redis设计与实现-黄健宏]&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="redis" /><category term="redis" /><category term="数据结构" /><summary type="html">Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。</summary></entry><entry><title type="html">函数式编程</title><link href="http://localhost:4000/java/2021/05/22/Functional-Programming/" rel="alternate" type="text/html" title="函数式编程" /><published>2021-05-22T00:00:00+08:00</published><updated>2021-05-22T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/05/22/Functional-Programming</id><content type="html" xml:base="http://localhost:4000/java/2021/05/22/Functional-Programming/">&lt;p&gt;函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。&lt;/p&gt;
 
 &lt;h2 id=&quot;函数式编程functional-programming&quot;&gt;函数式编程：Functional programming&lt;/h2&gt;
 
