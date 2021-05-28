@@ -83,7 +83,7 @@
 <link href="/assets/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Jekyll, NexT" />
+  <meta name="keywords" content="redis,key-value," />
 
 
 
@@ -111,14 +111,17 @@
 
 
 
-<meta name="keywords" content="Jekyll, NexT">
-<meta property="og:type" content="website">
-<meta property="og:title" content="WangJwi`s Blog">
-<meta property="og:url" content="http://localhost:4000/">
+<meta name="description" content="导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。">
+<meta name="keywords" content="redis, key-value">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis常用键值对解析">
+<meta property="og:url" content="http://localhost:4000/redis/2021/05/28/redis-key-value/">
 <meta property="og:site_name" content="WangJwi`s Blog">
+<meta property="og:description" content="导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="WangJwi`s Blog">
+<meta name="twitter:title" content="redis常用键值对解析">
+<meta name="twitter:description" content="导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -151,7 +154,7 @@
 
 
 
-  <title>WangJwi`s Blog</title>
+  <title>redis常用键值对解析 | WangJwi`s Blog</title>
   
 
 
@@ -176,7 +179,7 @@
   
   
 
-  <div class="container sidebar-position-left page-home ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -278,12 +281,9 @@
           <div id="content" class="content">
             
 
-
-
-<section id="posts" class="posts-expand">
+<div id="posts" class="posts-expand">
   
-    
-    
+  
 
   
 
@@ -312,12 +312,7 @@
           <h1 class="post-title" itemprop="name headline">
           
           
-            
-                
-                <a class="post-title-link" href="/redis/2021/05/28/redis-key-value/" itemprop="url">
-                redis常用键值对解析
-              </a>
-            
+            redis常用键值对解析
           
         </h1>
         
@@ -378,6 +373,8 @@
           
 
           
+            
+          
 
         </div>
       </header>
@@ -390,7 +387,6 @@
 
       
         
-          
   
   
 
@@ -407,561 +403,235 @@
 
   <p>导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。</p>
 
+<p><br /><br /></p>
+
+<hr />
+
+<h1 id="redis的常用键值对">Redis的常用键值对</h1>
+
+<h2 id="redis的键值对">Redis的键值对</h2>
+
+<p>Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，该值不仅限于简单的字符串，还可以容纳更复杂的数据结构。</p>
+
+<h3 id="redis-key">Redis-Key</h3>
+
+<p>Redis的键（Key）是二进制安全的字符串，这意味着可以使用任何二进制序列作为key，从“ foo”之类的字符串到JPEG文件的内容，同时空字符串也是有效的key键。</p>
+
+<p>在Redis的底层中由SDS实现。</p>
+
+<p>设置键的注意点：</p>
+
+<ul>
+  <li><strong>key使用的字节不宜过长</strong>：太长的key字节，在内存方面不仅是个负担，并且在数据集中查找key时可能需要进行一些代价高昂的密钥比较。</li>
+  <li><strong>key也不宜设置太短</strong>：与“ user：1000：followers”对比，“ u1000flw”写为key毫无意义，前者往往更具可读性。且与键对象本身和值对象使用的空间相比，单单添加key消耗的空间更少。</li>
+  <li><strong>key使用同一种设置类型</strong>：例如，“ object-type：id”是一个好主意，例如“ user：1000”。点或破折号通常用于多字字段，例如“ comment：1234：reply.to”或“ comment：1234：reply-to”中。</li>
+  <li>允许的最大key大小为<strong>512 MB</strong>。</li>
+</ul>
+
+<p><br /><br /></p>
+
+<hr />
+
+<h3 id="redis-value">Redis-Value</h3>
+
+<p>Redis的值（Value）支持以下几种类型：</p>
+
+<ul>
+  <li><strong>Binary-safe strings</strong>：二进制安全字符串。</li>
+  <li><strong>Lists</strong>：根据插入顺序排序的字符串元素的集合。它们基本上是<em>链表</em>。</li>
+  <li><strong>Sets</strong>：唯一，未排序的字符串元素的集合。</li>
+  <li><strong>Sorted sets</strong>：类似于集合，但是每个字符串元素在存入时都将于一个浮点数值的分数相关联，元素总是按照它们的分数排序，因此与Sets不同，可以检索一系列元素</li>
+  <li><strong>Hashes</strong>：键值组成的哈希映射，键值都是字符串。</li>
+  <li><strong>Bit arrays</strong> (or simply bitmaps)：可以使用特殊命令像位数组一样处理字符串值：可以设置和清除单个位，计数所有设置为1的位，找到第一个设置或未设置的位，等等。</li>
+  <li><strong>HyperLogLogs</strong>：这是一个概率数据结构，用于估计集合的基数。</li>
+  <li><strong>Streams</strong>：提供抽象日志数据类型的类地图项的仅追加集合。</li>
+</ul>
+
+<p>redis值的内部实现结构如下：</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>type类型</th>
+      <th>encoding编码</th>
+      <th>ptr指向的数据结构</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>REDIS_STRING</td>
+      <td>REDIS_ENCODING_INT</td>
+      <td>整数值的实现的字符串对象</td>
+    </tr>
+    <tr>
+      <td>REDIS_STRING</td>
+      <td>REDIS_ENCODING_EMBSTR</td>
+      <td>embstr编码的sds实现的字符串对象</td>
+    </tr>
+    <tr>
+      <td>REDIS_STRING</td>
+      <td>REDIS_ENCODING_RAW</td>
+      <td>sds字符串实现的字符串对象</td>
+    </tr>
+    <tr>
+      <td>REDIS_LIST</td>
+      <td>REDIS_ENCODING_ZIPLIST</td>
+      <td>压缩列表实现</td>
+    </tr>
+    <tr>
+      <td>REDIS_LIST</td>
+      <td>REDIS_ENCODING_LINKEDLIST</td>
+      <td>链表实现</td>
+    </tr>
+    <tr>
+      <td>REDIS_HASH</td>
+      <td>REDIS_ENCODING_ZIPLIST</td>
+      <td>压缩表实现</td>
+    </tr>
+    <tr>
+      <td>REDIS_HASH</td>
+      <td>REDIS_ENCODING_HT</td>
+      <td>字典实现</td>
+    </tr>
+    <tr>
+      <td>REDIS_SET</td>
+      <td>REDIS_ENCODING_INTSET</td>
+      <td>整数集合实现</td>
+    </tr>
+    <tr>
+      <td>REDIS_SET</td>
+      <td>REDIS_ENCODING_HT</td>
+      <td>字典实现</td>
+    </tr>
+    <tr>
+      <td>REDIS_ZSET</td>
+      <td>REDIS_ENCODING_ZIPLIST</td>
+      <td>压缩表实现</td>
+    </tr>
+    <tr>
+      <td>REDIS_ZSET</td>
+      <td>REDIS_ENCODING_SKIPLIST</td>
+      <td>跳跃表和字典实现</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><br /><br /></p>
+
+<hr />
+
+<h3 id="redis值的常用数据类型">Redis值的常用数据类型</h3>
+
+<p><strong>字符串：String</strong></p>
+
+<p>Redis字符串类型是与Redis键关联的最简单的值类型。它也是Memcached中唯一的数据类型。</p>
+
+<p>值是二进制安全的字符串，意味着redis的string可以包含任何数据。比如jpg图片或者序列化的对象。值最大能存储<strong>512 MB</strong>的数据。</p>
+
+<p><strong>列表：List</strong></p>
+
+<p>redis是由双向链表（Linked List）的方式实现，而非数组形式。它能从链表的头尾进行操作。它是根据插入的顺序进行排序的有序列表。</p>
+
+<p>列表的常用案例：记住用户发布到社交网络上的最新更新。频繁查看的日志。</p>
+
+<p><strong>集合：Set</strong></p>
+
+<p>set 的内部实现是一个 value永远为null的HashMap，实际就是通过计算hash的方式来快速排重的，这也是set能提供判断一个成员是否在集合内的原因。</p>
+
+<p>可以理解为一堆值不重复的列表，类似数学领域中的集合概念，且Redis也提供了针对集合的求交集、并集、差集等操作。</p>
+
+<p><strong>有序集合：Sorted Set</strong></p>
+
+<p>Redis有序集合类似Redis集合，不同的是增加了一个功能，即集合是有序的。一个有序集合的每个成员带有分数，用于进行排序。</p>
+
+<p>Redis有序集合添加、删除和测试的时间复杂度均为O(1)(固定时间，无论里面包含的元素集合的数量)。列表的最大长度为2^32- 1元素(4294967295，超过40亿每个元素的集合)。</p>
+
+<p>Redis sorted set的内部使用HashMap和跳跃表(SkipList)来保证数据的存储和有序，HashMap里放的是成员到score的映射，而跳跃表里存放的是所有的成员，排序依据是HashMap里存的score,使用跳跃表的结构可以获得比较高的查找效率，并且在实现上比较简单。</p>
+
+<p><strong>哈希表：Hash</strong></p>
+
+<p>对应Value内部实际就是一个HashMap，实际这里会有2种不同实现，这个Hash的成员比较少时Redis为了节省内存会采用类似一维数组的方式来紧凑存储，而不会采用真正的HashMap结构，对应的value redisObject的encoding为zipmap,当成员数量增大时会自动转成真正的HashMap,此时encoding为ht。</p>
+
+<p>每个 hash 可以存储 232 -1 键值对（40多亿）。</p>
+
+<hr />
+
+<p>参考：<a href="https://redis.io/documentation">Redis Documentation</a></p>
+
+<p><a href="https://en.wikipedia.org/wiki/Redis">Redis维基百科</a></p>
 
 
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/redis/2021/05/28/redis-key-value/#" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <div>
+      
+        
+
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-        
-        
-        
-        
-          <div class="post-eof"></div>
-        
-      
-    </footer>
-  </article>
-
-  
-    
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/redis/2021/05/28/redis-data-structure/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WangJwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="assets/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WangJwi`s Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-          
+        <div class="post-tags">
           
             
-                
-                <a class="post-title-link" href="/redis/2021/05/28/redis-data-structure/" itemprop="url">
-                redis基础知识和底层数据结构
+            <a href="/tag/#/redis" rel="tag"># redis</a>
+          
+            
+            <a href="/tag/#/key-value" rel="tag"># key-value</a>
+          
+        </div>
+      
+
+      
+      
+      
+      
+      
+
+      
+      
+        <div class="post-nav" id="post-nav-id">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/redis/2021/05/28/redis-data-structure/" rel="prev" title="redis基础知识和底层数据结构">
+                redis基础知识和底层数据结构 <i class="fa fa-chevron-right"></i>
               </a>
             
-          
-        </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-28T00:00:00+08:00">
-                2021-05-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/redis" itemprop="url" rel="index">
-                    <span itemprop="name">redis</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <p>导读：Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。</p>
-
-
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/redis/2021/05/28/redis-data-structure/#" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-          <!--/noindex-->
-        
+        </div>
       
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
       
 
-      
-
-      
-
-      
-        
-        
-        
-        
-          <div class="post-eof"></div>
-        
       
     </footer>
   </article>
 
-  
+  <div class="post-spread">
     
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/java/2021/05/22/Functional-Programming/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WangJwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="assets/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WangJwi`s Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-                
-                <a class="post-title-link" href="/java/2021/05/22/Functional-Programming/" itemprop="url">
-                函数式编程
-              </a>
-            
-          
-        </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-22T00:00:00+08:00">
-                2021-05-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/Java" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <p>导读：函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。</p>
-
-
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/java/2021/05/22/Functional-Programming/#" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-        
-        
-        
-        
-          <div class="post-eof"></div>
-        
-      
-    </footer>
-  </article>
-
-  
-    
-    
-
-  
-
-  
-  
-  
-
-  <article class="post post-type- " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://localhost:4000/java/2021/05/21/JAVA-reflection/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="WangJwi">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="assets/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="WangJwi`s Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-          
-          
-            
-                
-                <a class="post-title-link" href="/java/2021/05/21/JAVA-reflection/" itemprop="url">
-                java反射机制
-              </a>
-            
-          
-        </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-05-21T00:00:00+08:00">
-                2021-05-21
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/category/#/Java" itemprop="url" rel="index">
-                    <span itemprop="name">Java</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-  
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  <p>导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</p>
-
-
-
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/java/2021/05/21/JAVA-reflection/#" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-        
-        
-        
-        
-          <div class="post-eof"></div>
-        
-      
-    </footer>
-  </article>
-
-  
-</section>
-
-
-
+  </div>
+</div>
 
 
           </div>
@@ -969,6 +639,10 @@
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -986,10 +660,30 @@
     <div class="sidebar-inner">
 
       
+        
+        
+        
+
+
+
+
+
+
 
       
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/assets/images/avatar.gif"
@@ -1060,6 +754,34 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+
+
+
+
+
+
+
+            
+              <div class="post-toc-content">
+    <ol class=nav>
+      <li class="nav-item nav-level-1"> <a class="nav-link" href="#redis的常用键值对"> <span class="nav-number">1</span> <span class="nav-text">Redis的常用键值对</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-2"> <a class="nav-link" href="#redis的键值对"> <span class="nav-number">1.1</span> <span class="nav-text">Redis的键值对</span> </a> <ol class="nav-child"> <li class="nav-item nav-level-3"> <a class="nav-link" href="#redis-key"> <span class="nav-number">1.1.1</span> <span class="nav-text">Redis-Key</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#redis-value"> <span class="nav-number">1.1.2</span> <span class="nav-text">Redis-Value</span> </a> </li> <li class="nav-item nav-level-3"> <a class="nav-link" href="#redis值的常用数据类型"> <span class="nav-number">1.1.3</span> <span class="nav-text">Redis值的常用数据类型</span> </a> </li> </ol> </li> </ol> </li>
+    </ol>
+  </div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

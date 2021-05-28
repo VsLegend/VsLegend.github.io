@@ -1,4 +1,163 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-28T11:56:08+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">redis基础知识和底层数据结构</title><link href="http://localhost:4000/redis/2021/05/28/redis-data-structure/" rel="alternate" type="text/html" title="redis基础知识和底层数据结构" /><published>2021-05-28T00:00:00+08:00</published><updated>2021-05-28T00:00:00+08:00</updated><id>http://localhost:4000/redis/2021/05/28/redis-data-structure</id><content type="html" xml:base="http://localhost:4000/redis/2021/05/28/redis-data-structure/">&lt;p&gt;Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-28T12:16:43+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">redis常用键值对解析</title><link href="http://localhost:4000/redis/2021/05/28/redis-key-value/" rel="alternate" type="text/html" title="redis常用键值对解析" /><published>2021-05-28T00:00:00+08:00</published><updated>2021-05-28T00:00:00+08:00</updated><id>http://localhost:4000/redis/2021/05/28/redis-key-value</id><content type="html" xml:base="http://localhost:4000/redis/2021/05/28/redis-key-value/">&lt;p&gt;导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;redis的常用键值对&quot;&gt;Redis的常用键值对&lt;/h1&gt;
+
+&lt;h2 id=&quot;redis的键值对&quot;&gt;Redis的键值对&lt;/h2&gt;
+
+&lt;p&gt;Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，该值不仅限于简单的字符串，还可以容纳更复杂的数据结构。&lt;/p&gt;
+
+&lt;h3 id=&quot;redis-key&quot;&gt;Redis-Key&lt;/h3&gt;
+
+&lt;p&gt;Redis的键（Key）是二进制安全的字符串，这意味着可以使用任何二进制序列作为key，从“ foo”之类的字符串到JPEG文件的内容，同时空字符串也是有效的key键。&lt;/p&gt;
+
+&lt;p&gt;在Redis的底层中由SDS实现。&lt;/p&gt;
+
+&lt;p&gt;设置键的注意点：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;key使用的字节不宜过长&lt;/strong&gt;：太长的key字节，在内存方面不仅是个负担，并且在数据集中查找key时可能需要进行一些代价高昂的密钥比较。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;key也不宜设置太短&lt;/strong&gt;：与“ user：1000：followers”对比，“ u1000flw”写为key毫无意义，前者往往更具可读性。且与键对象本身和值对象使用的空间相比，单单添加key消耗的空间更少。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;key使用同一种设置类型&lt;/strong&gt;：例如，“ object-type：id”是一个好主意，例如“ user：1000”。点或破折号通常用于多字字段，例如“ comment：1234：reply.to”或“ comment：1234：reply-to”中。&lt;/li&gt;
+  &lt;li&gt;允许的最大key大小为&lt;strong&gt;512 MB&lt;/strong&gt;。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;redis-value&quot;&gt;Redis-Value&lt;/h3&gt;
+
+&lt;p&gt;Redis的值（Value）支持以下几种类型：&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;Binary-safe strings&lt;/strong&gt;：二进制安全字符串。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Lists&lt;/strong&gt;：根据插入顺序排序的字符串元素的集合。它们基本上是&lt;em&gt;链表&lt;/em&gt;。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sets&lt;/strong&gt;：唯一，未排序的字符串元素的集合。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Sorted sets&lt;/strong&gt;：类似于集合，但是每个字符串元素在存入时都将于一个浮点数值的分数相关联，元素总是按照它们的分数排序，因此与Sets不同，可以检索一系列元素&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Hashes&lt;/strong&gt;：键值组成的哈希映射，键值都是字符串。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Bit arrays&lt;/strong&gt; (or simply bitmaps)：可以使用特殊命令像位数组一样处理字符串值：可以设置和清除单个位，计数所有设置为1的位，找到第一个设置或未设置的位，等等。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;HyperLogLogs&lt;/strong&gt;：这是一个概率数据结构，用于估计集合的基数。&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Streams&lt;/strong&gt;：提供抽象日志数据类型的类地图项的仅追加集合。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;redis值的内部实现结构如下：&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;type类型&lt;/th&gt;
+      &lt;th&gt;encoding编码&lt;/th&gt;
+      &lt;th&gt;ptr指向的数据结构&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_STRING&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_INT&lt;/td&gt;
+      &lt;td&gt;整数值的实现的字符串对象&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_STRING&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_EMBSTR&lt;/td&gt;
+      &lt;td&gt;embstr编码的sds实现的字符串对象&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_STRING&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_RAW&lt;/td&gt;
+      &lt;td&gt;sds字符串实现的字符串对象&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_LIST&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_ZIPLIST&lt;/td&gt;
+      &lt;td&gt;压缩列表实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_LIST&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_LINKEDLIST&lt;/td&gt;
+      &lt;td&gt;链表实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_HASH&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_ZIPLIST&lt;/td&gt;
+      &lt;td&gt;压缩表实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_HASH&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_HT&lt;/td&gt;
+      &lt;td&gt;字典实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_SET&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_INTSET&lt;/td&gt;
+      &lt;td&gt;整数集合实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_SET&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_HT&lt;/td&gt;
+      &lt;td&gt;字典实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_ZSET&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_ZIPLIST&lt;/td&gt;
+      &lt;td&gt;压缩表实现&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;REDIS_ZSET&lt;/td&gt;
+      &lt;td&gt;REDIS_ENCODING_SKIPLIST&lt;/td&gt;
+      &lt;td&gt;跳跃表和字典实现&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h3 id=&quot;redis值的常用数据类型&quot;&gt;Redis值的常用数据类型&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;字符串：String&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Redis字符串类型是与Redis键关联的最简单的值类型。它也是Memcached中唯一的数据类型。&lt;/p&gt;
+
+&lt;p&gt;值是二进制安全的字符串，意味着redis的string可以包含任何数据。比如jpg图片或者序列化的对象。值最大能存储&lt;strong&gt;512 MB&lt;/strong&gt;的数据。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;列表：List&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;redis是由双向链表（Linked List）的方式实现，而非数组形式。它能从链表的头尾进行操作。它是根据插入的顺序进行排序的有序列表。&lt;/p&gt;
+
+&lt;p&gt;列表的常用案例：记住用户发布到社交网络上的最新更新。频繁查看的日志。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;集合：Set&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;set 的内部实现是一个 value永远为null的HashMap，实际就是通过计算hash的方式来快速排重的，这也是set能提供判断一个成员是否在集合内的原因。&lt;/p&gt;
+
+&lt;p&gt;可以理解为一堆值不重复的列表，类似数学领域中的集合概念，且Redis也提供了针对集合的求交集、并集、差集等操作。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;有序集合：Sorted Set&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;Redis有序集合类似Redis集合，不同的是增加了一个功能，即集合是有序的。一个有序集合的每个成员带有分数，用于进行排序。&lt;/p&gt;
+
+&lt;p&gt;Redis有序集合添加、删除和测试的时间复杂度均为O(1)(固定时间，无论里面包含的元素集合的数量)。列表的最大长度为2^32- 1元素(4294967295，超过40亿每个元素的集合)。&lt;/p&gt;
+
+&lt;p&gt;Redis sorted set的内部使用HashMap和跳跃表(SkipList)来保证数据的存储和有序，HashMap里放的是成员到score的映射，而跳跃表里存放的是所有的成员，排序依据是HashMap里存的score,使用跳跃表的结构可以获得比较高的查找效率，并且在实现上比较简单。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;哈希表：Hash&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;对应Value内部实际就是一个HashMap，实际这里会有2种不同实现，这个Hash的成员比较少时Redis为了节省内存会采用类似一维数组的方式来紧凑存储，而不会采用真正的HashMap结构，对应的value redisObject的encoding为zipmap,当成员数量增大时会自动转成真正的HashMap,此时encoding为ht。&lt;/p&gt;
+
+&lt;p&gt;每个 hash 可以存储 232 -1 键值对（40多亿）。&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参考：&lt;a href=&quot;https://redis.io/documentation&quot;&gt;Redis Documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Redis&quot;&gt;Redis维基百科&lt;/a&gt;&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="redis" /><category term="redis" /><category term="key-value" /><summary type="html">导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。</summary></entry><entry><title type="html">redis基础知识和底层数据结构</title><link href="http://localhost:4000/redis/2021/05/28/redis-data-structure/" rel="alternate" type="text/html" title="redis基础知识和底层数据结构" /><published>2021-05-28T00:00:00+08:00</published><updated>2021-05-28T00:00:00+08:00</updated><id>http://localhost:4000/redis/2021/05/28/redis-data-structure</id><content type="html" xml:base="http://localhost:4000/redis/2021/05/28/redis-data-structure/">&lt;p&gt;导读：Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h1 id=&quot;redis基础知识&quot;&gt;Redis基础知识&lt;/h1&gt;
 
@@ -779,7 +938,9 @@
 
 &lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Redis&quot;&gt;Redis维基百科&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;[Redis设计与实现-黄健宏]&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="redis" /><category term="redis" /><category term="数据结构" /><summary type="html">Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。</summary></entry><entry><title type="html">函数式编程</title><link href="http://localhost:4000/java/2021/05/22/Functional-Programming/" rel="alternate" type="text/html" title="函数式编程" /><published>2021-05-22T00:00:00+08:00</published><updated>2021-05-22T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/05/22/Functional-Programming</id><content type="html" xml:base="http://localhost:4000/java/2021/05/22/Functional-Programming/">&lt;p&gt;函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。&lt;/p&gt;
+&lt;p&gt;[Redis设计与实现-黄健宏]&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="redis" /><category term="redis" /><category term="数据结构" /><summary type="html">导读：Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。</summary></entry><entry><title type="html">函数式编程</title><link href="http://localhost:4000/java/2021/05/22/Functional-Programming/" rel="alternate" type="text/html" title="函数式编程" /><published>2021-05-22T00:00:00+08:00</published><updated>2021-05-22T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/05/22/Functional-Programming</id><content type="html" xml:base="http://localhost:4000/java/2021/05/22/Functional-Programming/">&lt;p&gt;导读：函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h2 id=&quot;函数式编程functional-programming&quot;&gt;函数式编程：Functional programming&lt;/h2&gt;
 
@@ -1139,7 +1300,9 @@
    
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;流式操作stream&quot;&gt;流式操作：Stream&lt;/h3&gt;</content><author><name>WangJwi</name></author><category term="Java" /><category term="Lambda" /><category term="Stream" /><category term="functional programming" /><summary type="html">函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。</summary></entry><entry><title type="html">java反射机制</title><link href="http://localhost:4000/java/2021/05/21/JAVA-reflection/" rel="alternate" type="text/html" title="java反射机制" /><published>2021-05-21T00:00:00+08:00</published><updated>2021-05-21T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/05/21/JAVA-reflection</id><content type="html" xml:base="http://localhost:4000/java/2021/05/21/JAVA-reflection/">&lt;p&gt;反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。&lt;/p&gt;
+&lt;h3 id=&quot;流式操作stream&quot;&gt;流式操作：Stream&lt;/h3&gt;</content><author><name>WangJwi</name></author><category term="Java" /><category term="Lambda" /><category term="Stream" /><category term="functional programming" /><summary type="html">导读：函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。</summary></entry><entry><title type="html">java反射机制</title><link href="http://localhost:4000/java/2021/05/21/JAVA-reflection/" rel="alternate" type="text/html" title="java反射机制" /><published>2021-05-21T00:00:00+08:00</published><updated>2021-05-21T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/05/21/JAVA-reflection</id><content type="html" xml:base="http://localhost:4000/java/2021/05/21/JAVA-reflection/">&lt;p&gt;导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。&lt;/p&gt;
+
+&lt;hr /&gt;
 
 &lt;h2 id=&quot;java反射机制&quot;&gt;java反射机制&lt;/h2&gt;
 
@@ -1499,4 +1662,4 @@
 
 &lt;h3 id=&quot;javalangreflectconstructor&quot;&gt;java.lang.reflect.Constructor&lt;/h3&gt;
 
-&lt;p&gt;Constructor与Method相似，但有两个主要例外：第一，构造函数没有返回值；第二，构造函数的调用为给定的类创建对象的新实例。&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="Java" /><category term="Java" /><category term="反射" /><category term="Reflection" /><summary type="html">反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</summary></entry></feed>
+&lt;p&gt;Constructor与Method相似，但有两个主要例外：第一，构造函数没有返回值；第二，构造函数的调用为给定的类创建对象的新实例。&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="Java" /><category term="Java" /><category term="反射" /><category term="Reflection" /><summary type="html">导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</summary></entry></feed>
