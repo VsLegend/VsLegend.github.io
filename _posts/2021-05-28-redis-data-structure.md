@@ -694,7 +694,9 @@ lru属性，记录对象最后一次被访问的时间。
 当服务器打开了maxmemory选项时，且回收内存的算法为volatile-lru或者allkeys-lru，那么当服务器占用的内存数超过了maxmemory设置的上限值时，空转时长较高的那部分键会优先被服务器释放，从而回收内存。
 
 
-参考：[Redis Documentation](https://redis.io/documentation)
+参考：
+
+[Redis Documentation](https://redis.io/documentation)
 
 [Redis维基百科](https://en.wikipedia.org/wiki/Redis)
 

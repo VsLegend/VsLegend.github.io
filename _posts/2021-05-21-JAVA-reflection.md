@@ -15,15 +15,12 @@ tags:
 
 ------
 
-## java反射机制
-
-参考：[The Reflection API](https://docs.oracle.com/javase/tutorial/reflect/index.html)
-
-### 反射原理：
+# java反射机制
+## 反射原理：
 java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。
 
 
-### 反射的用途：
+## 反射的用途：
 反射功能通常用于检查或修改java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。
 
 - 在运行中分析类的能力，可以通过完全限定类名创建类的对象实例。
@@ -33,14 +30,14 @@ java在编译之后会生成一个class文件，反射通过字节码文件找�
 注意：要有选择的使用反射功能，如果可以直接执行操作，那么最好不要使用反射。
 
 
-### 反射的缺点：
+## 反射的缺点：
 
 - 额外的性能开销（**Performance Overhead**）：由于反射涉及动态类型的解析，它无法执行某些java虚拟机优化，因此反射操作的性能通常要比非反射操作慢。
 - 安全限制（**Security Restrictions**）：反射需要运行时操作权限，此操作可能在一些安全管理器下不被允许。
 - 内部泄露（**Exposure of Internals**）：由于反射允许代码执行非反射代码中非法的操作（例如访问私有字段和方法），因此使用反射可能会导致意外的副作用，这可能会使代码无法正常工作并可能破坏可移植性。反射性代码破坏了抽象，因此可能会随着平台的升级而改变行为。
 
 
-### 获取对象类的方式:
+## 获取对象类的方式:
 
 1. **Object.getClass()**。从一个实例对象中获取它的类。这仅适用于继承自Object的引用类型（当然java的类默认继承于Object）。
 
@@ -121,7 +118,7 @@ try {
 
 
 
-### 获取类的成员变量：
+## 获取类的成员变量：
 
 获取字段：
 
@@ -156,7 +153,7 @@ try {
 
 
 
-### java.lang.reflect.Field
+## java.lang.reflect.Field
 
 Field字段具有类型和值。Field提供访问属性对象类型信息的方法；以及获取和设置字段值的方法。
 
@@ -265,7 +262,7 @@ public class FieldReflectDemo {
 
 
 
-### java.lang.reflect.Method
+## java.lang.reflect.Method
 
 Method方法具有参数和返回值，并且方法可能抛出异常。Method提供获取参数信息、返回值的方法；它也可以调用（invoke）给定对象的方法。
 
@@ -316,6 +313,12 @@ public int getNumByName(String name) throws NullPointerException {
 
 
 
-### java.lang.reflect.Constructor
+## java.lang.reflect.Constructor
 
 Constructor与Method相似，但有两个主要例外：第一，构造函数没有返回值；第二，构造函数的调用为给定的类创建对象的新实例。
+
+
+
+参考：
+
+[The Reflection API](https://docs.oracle.com/javase/tutorial/reflect/index.html)

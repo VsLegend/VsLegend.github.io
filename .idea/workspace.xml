@@ -19,26 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="404">
-      <change afterPath="$PROJECT_DIR$/_posts/2021-05-28-redis-key-value.md" afterDir="false" />
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="redis的键值对">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-21-JAVA-reflection.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-05-28-redis-data-structure.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-28-redis-data-structure.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/archives/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/archives/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/atom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/atom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/categories/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/categories/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/category/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/category/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/java/2021/05/21/JAVA-reflection/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/java/2021/05/21/JAVA-reflection/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/java/2021/05/22/Functional-Programming/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/java/2021/05/22/Functional-Programming/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/redis/2021/05/28/redis-data-structure/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/redis/2021/05/28/redis-data-structure/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/search.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tag/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tag/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-05-28-redis-key-value.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-28-redis-key-value.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -259,7 +242,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622174232676</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="redis的键值对">
+      <created>1622175457598</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1622175457598</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -291,7 +281,8 @@
     <MESSAGE value="代码块格式设置" />
     <MESSAGE value="更新文章" />
     <MESSAGE value="404" />
-    <option name="LAST_COMMIT_MESSAGE" value="404" />
+    <MESSAGE value="redis的键值对" />
+    <option name="LAST_COMMIT_MESSAGE" value="redis的键值对" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621661733955">
@@ -326,10 +317,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="388" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661895450" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1622174407268">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1622175459554">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622174407268" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622175459554" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621671599134">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

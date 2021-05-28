@@ -118,10 +118,12 @@ Redis sorted set的内部使用HashMap和跳跃表(SkipList)来保证数据的�
 
 对应Value内部实际就是一个HashMap，实际这里会有2种不同实现，这个Hash的成员比较少时Redis为了节省内存会采用类似一维数组的方式来紧凑存储，而不会采用真正的HashMap结构，对应的value redisObject的encoding为zipmap,当成员数量增大时会自动转成真正的HashMap,此时encoding为ht。
 
-每个 hash 可以存储 232 -1 键值对（40多亿）。
+每个 hash 可以存储 2^32 -1 键值对（40多亿）。
 
 ------
 
-参考：[Redis Documentation](https://redis.io/documentation)
+参考：
+
+[Redis Documentation](https://redis.io/documentation)
 
 [Redis维基百科](https://en.wikipedia.org/wiki/Redis)

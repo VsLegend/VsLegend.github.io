@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-28T12:16:43+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">redis常用键值对解析</title><link href="http://localhost:4000/redis/2021/05/28/redis-key-value/" rel="alternate" type="text/html" title="redis常用键值对解析" /><published>2021-05-28T00:00:00+08:00</published><updated>2021-05-28T00:00:00+08:00</updated><id>http://localhost:4000/redis/2021/05/28/redis-key-value</id><content type="html" xml:base="http://localhost:4000/redis/2021/05/28/redis-key-value/">&lt;p&gt;导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-05-28T12:32:01+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">redis常用键值对解析</title><link href="http://localhost:4000/redis/2021/05/28/redis-key-value/" rel="alternate" type="text/html" title="redis常用键值对解析" /><published>2021-05-28T00:00:00+08:00</published><updated>2021-05-28T00:00:00+08:00</updated><id>http://localhost:4000/redis/2021/05/28/redis-key-value</id><content type="html" xml:base="http://localhost:4000/redis/2021/05/28/redis-key-value/">&lt;p&gt;导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
@@ -149,11 +149,13 @@
 
 &lt;p&gt;对应Value内部实际就是一个HashMap，实际这里会有2种不同实现，这个Hash的成员比较少时Redis为了节省内存会采用类似一维数组的方式来紧凑存储，而不会采用真正的HashMap结构，对应的value redisObject的encoding为zipmap,当成员数量增大时会自动转成真正的HashMap,此时encoding为ht。&lt;/p&gt;
 
-&lt;p&gt;每个 hash 可以存储 232 -1 键值对（40多亿）。&lt;/p&gt;
+&lt;p&gt;每个 hash 可以存储 2^32 -1 键值对（40多亿）。&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;参考：&lt;a href=&quot;https://redis.io/documentation&quot;&gt;Redis Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://redis.io/documentation&quot;&gt;Redis Documentation&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Redis&quot;&gt;Redis维基百科&lt;/a&gt;&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="redis" /><category term="redis" /><category term="key-value" /><summary type="html">导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。</summary></entry><entry><title type="html">redis基础知识和底层数据结构</title><link href="http://localhost:4000/redis/2021/05/28/redis-data-structure/" rel="alternate" type="text/html" title="redis基础知识和底层数据结构" /><published>2021-05-28T00:00:00+08:00</published><updated>2021-05-28T00:00:00+08:00</updated><id>http://localhost:4000/redis/2021/05/28/redis-data-structure</id><content type="html" xml:base="http://localhost:4000/redis/2021/05/28/redis-data-structure/">&lt;p&gt;导读：Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。&lt;/p&gt;
 
@@ -934,7 +936,9 @@
 
 &lt;p&gt;当服务器打开了maxmemory选项时，且回收内存的算法为volatile-lru或者allkeys-lru，那么当服务器占用的内存数超过了maxmemory设置的上限值时，空转时长较高的那部分键会优先被服务器释放，从而回收内存。&lt;/p&gt;
 
-&lt;p&gt;参考：&lt;a href=&quot;https://redis.io/documentation&quot;&gt;Redis Documentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://redis.io/documentation&quot;&gt;Redis Documentation&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Redis&quot;&gt;Redis维基百科&lt;/a&gt;&lt;/p&gt;
 
@@ -943,14 +947,6 @@
 &lt;hr /&gt;
 
 &lt;h2 id=&quot;函数式编程functional-programming&quot;&gt;函数式编程：Functional programming&lt;/h2&gt;
-
-&lt;p&gt;参考：&lt;a href=&quot;https://www.logicbig.com/how-to/code-snippets/jcode-java-8-streams-stream-collect.html&quot;&gt;java 8 Stream&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html&quot;&gt;Lambda Expressions&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://www.baeldung.com/java-functional-programming&quot;&gt;Functional Programming in java&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Functional_programming&quot;&gt;Functional programming&lt;/a&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;什么是函数式编程&quot;&gt;什么是函数式编程&lt;/h3&gt;
 
@@ -1300,18 +1296,25 @@
    
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;流式操作stream&quot;&gt;流式操作：Stream&lt;/h3&gt;</content><author><name>WangJwi</name></author><category term="Java" /><category term="Lambda" /><category term="Stream" /><category term="functional programming" /><summary type="html">导读：函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。</summary></entry><entry><title type="html">java反射机制</title><link href="http://localhost:4000/java/2021/05/21/JAVA-reflection/" rel="alternate" type="text/html" title="java反射机制" /><published>2021-05-21T00:00:00+08:00</published><updated>2021-05-21T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/05/21/JAVA-reflection</id><content type="html" xml:base="http://localhost:4000/java/2021/05/21/JAVA-reflection/">&lt;p&gt;导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。&lt;/p&gt;
+&lt;h3 id=&quot;流式操作stream&quot;&gt;流式操作：Stream&lt;/h3&gt;
+
+&lt;p&gt;参考：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.logicbig.com/how-to/code-snippets/jcode-java-8-streams-stream-collect.html&quot;&gt;java 8 Stream&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html&quot;&gt;Lambda Expressions&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://www.baeldung.com/java-functional-programming&quot;&gt;Functional Programming in java&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Functional_programming&quot;&gt;Functional programming&lt;/a&gt;&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="Java" /><category term="Lambda" /><category term="Stream" /><category term="functional programming" /><summary type="html">导读：函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。</summary></entry><entry><title type="html">java反射机制</title><link href="http://localhost:4000/java/2021/05/21/JAVA-reflection/" rel="alternate" type="text/html" title="java反射机制" /><published>2021-05-21T00:00:00+08:00</published><updated>2021-05-21T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/05/21/JAVA-reflection</id><content type="html" xml:base="http://localhost:4000/java/2021/05/21/JAVA-reflection/">&lt;p&gt;导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h2 id=&quot;java反射机制&quot;&gt;java反射机制&lt;/h2&gt;
-
-&lt;p&gt;参考：&lt;a href=&quot;https://docs.oracle.com/javase/tutorial/reflect/index.html&quot;&gt;The Reflection API&lt;/a&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;反射原理&quot;&gt;反射原理：&lt;/h3&gt;
+&lt;h1 id=&quot;java反射机制&quot;&gt;java反射机制&lt;/h1&gt;
+&lt;h2 id=&quot;反射原理&quot;&gt;反射原理：&lt;/h2&gt;
 &lt;p&gt;java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。&lt;/p&gt;
 
-&lt;h3 id=&quot;反射的用途&quot;&gt;反射的用途：&lt;/h3&gt;
+&lt;h2 id=&quot;反射的用途&quot;&gt;反射的用途：&lt;/h2&gt;
 &lt;p&gt;反射功能通常用于检查或修改java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。&lt;/p&gt;
 
 &lt;ul&gt;
@@ -1322,7 +1325,7 @@
 
 &lt;p&gt;注意：要有选择的使用反射功能，如果可以直接执行操作，那么最好不要使用反射。&lt;/p&gt;
 
-&lt;h3 id=&quot;反射的缺点&quot;&gt;反射的缺点：&lt;/h3&gt;
+&lt;h2 id=&quot;反射的缺点&quot;&gt;反射的缺点：&lt;/h2&gt;
 
 &lt;ul&gt;
   &lt;li&gt;额外的性能开销（&lt;strong&gt;Performance Overhead&lt;/strong&gt;）：由于反射涉及动态类型的解析，它无法执行某些java虚拟机优化，因此反射操作的性能通常要比非反射操作慢。&lt;/li&gt;
@@ -1330,7 +1333,7 @@
   &lt;li&gt;内部泄露（&lt;strong&gt;Exposure of Internals&lt;/strong&gt;）：由于反射允许代码执行非反射代码中非法的操作（例如访问私有字段和方法），因此使用反射可能会导致意外的副作用，这可能会使代码无法正常工作并可能破坏可移植性。反射性代码破坏了抽象，因此可能会随着平台的升级而改变行为。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;获取对象类的方式&quot;&gt;获取对象类的方式:&lt;/h3&gt;
+&lt;h2 id=&quot;获取对象类的方式&quot;&gt;获取对象类的方式:&lt;/h2&gt;
 
 &lt;ol&gt;
   &lt;li&gt;&lt;strong&gt;Object.getClass()&lt;/strong&gt;。从一个实例对象中获取它的类。这仅适用于继承自Object的引用类型（当然java的类默认继承于Object）。&lt;/li&gt;
@@ -1400,7 +1403,7 @@
 &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;获取类的成员变量&quot;&gt;获取类的成员变量：&lt;/h3&gt;
+&lt;h2 id=&quot;获取类的成员变量&quot;&gt;获取类的成员变量：&lt;/h2&gt;
 
 &lt;p&gt;获取字段：&lt;/p&gt;
 
@@ -1519,7 +1522,7 @@
   &lt;/tbody&gt;
 &lt;/table&gt;
 
-&lt;h3 id=&quot;javalangreflectfield&quot;&gt;java.lang.reflect.Field&lt;/h3&gt;
+&lt;h2 id=&quot;javalangreflectfield&quot;&gt;java.lang.reflect.Field&lt;/h2&gt;
 
 &lt;p&gt;Field字段具有类型和值。Field提供访问属性对象类型信息的方法；以及获取和设置字段值的方法。&lt;/p&gt;
 
@@ -1614,7 +1617,7 @@
 
 &lt;p&gt;因为JVM在编译时期, 就把final类型的&lt;strong&gt;直接赋值的String&lt;/strong&gt;进行了优化, 在编译时期就会把String处理成常量。反射成功将其值修改成功了，但是在它的get方法中，返回的不是当前变量，而是返回JVM优化好的一个常量值。&lt;/p&gt;
 
-&lt;h3 id=&quot;javalangreflectmethod&quot;&gt;java.lang.reflect.Method&lt;/h3&gt;
+&lt;h2 id=&quot;javalangreflectmethod&quot;&gt;java.lang.reflect.Method&lt;/h2&gt;
 
 &lt;p&gt;Method方法具有参数和返回值，并且方法可能抛出异常。Method提供获取参数信息、返回值的方法；它也可以调用（invoke）给定对象的方法。&lt;/p&gt;
 
@@ -1660,6 +1663,10 @@
   &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;javalangreflectconstructor&quot;&gt;java.lang.reflect.Constructor&lt;/h3&gt;
+&lt;h2 id=&quot;javalangreflectconstructor&quot;&gt;java.lang.reflect.Constructor&lt;/h2&gt;
 
-&lt;p&gt;Constructor与Method相似，但有两个主要例外：第一，构造函数没有返回值；第二，构造函数的调用为给定的类创建对象的新实例。&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="Java" /><category term="Java" /><category term="反射" /><category term="Reflection" /><summary type="html">导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</summary></entry></feed>
+&lt;p&gt;Constructor与Method相似，但有两个主要例外：第一，构造函数没有返回值；第二，构造函数的调用为给定的类创建对象的新实例。&lt;/p&gt;
+
+&lt;p&gt;参考：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://docs.oracle.com/javase/tutorial/reflect/index.html&quot;&gt;The Reflection API&lt;/a&gt;&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="Java" /><category term="Java" /><category term="反射" /><category term="Reflection" /><summary type="html">导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</summary></entry></feed>

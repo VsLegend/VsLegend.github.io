@@ -15,14 +15,6 @@ tags:
 
 ## 函数式编程：Functional programming
 
-参考：[java 8 Stream](https://www.logicbig.com/how-to/code-snippets/jcode-java-8-streams-stream-collect.html)
-
-[Lambda Expressions](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
-
-[Functional Programming in java](https://www.baeldung.com/java-functional-programming)
-
-[Functional programming](https://en.wikipedia.org/wiki/Functional_programming)
-
 ### 什么是函数式编程
 
 函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。而且，λ演算的函数可以接受函数作为输入参数和输出返回值。
@@ -395,3 +387,15 @@ public class MethodReferencesExamples {
 
 
 ### 流式操作：Stream
+
+
+
+参考：
+
+[java 8 Stream](https://www.logicbig.com/how-to/code-snippets/jcode-java-8-streams-stream-collect.html)
+
+[Lambda Expressions](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+
+[Functional Programming in java](https://www.baeldung.com/java-functional-programming)
+
+[Functional programming](https://en.wikipedia.org/wiki/Functional_programming)
