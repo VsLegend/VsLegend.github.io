@@ -20,11 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="更新文章">
-      <change afterPath="$PROJECT_DIR$/_posts/2021-05-28-redis-data-structure.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/_common/scaffolding/base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/_common/scaffolding/base.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/_variables/base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/_variables/base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/404.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/about/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/about/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/archives/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/archives/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css" afterDir="false" />
@@ -34,6 +32,7 @@
       <change beforePath="$PROJECT_DIR$/_site/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/java/2021/05/21/JAVA-reflection/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/java/2021/05/21/JAVA-reflection/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/java/2021/05/22/Functional-Programming/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/java/2021/05/22/Functional-Programming/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/redis/2021/05/28/redis-data-structure/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/redis/2021/05/28/redis-data-structure/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/search.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/sitemap.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/sitemap.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/_site/tag/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tag/index.html" afterDir="false" />
