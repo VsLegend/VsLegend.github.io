@@ -19,9 +19,19 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="redis的键值对">
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="格式修改">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_posts/2021-05-28-redis-key-value.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-28-redis-key-value.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_config.yml" beforeDir="false" afterPath="$PROJECT_DIR$/_config.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" beforeDir="false" afterPath="$PROJECT_DIR$/_posts/2021-05-22-Functional-Programming.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sass/_common/scaffolding/base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/_common/scaffolding/base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_sass/_variables/base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/_variables/base.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/_site/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/atom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/atom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/java/2021/05/22/Functional-Programming/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/java/2021/05/22/Functional-Programming/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/search.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/search.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tag/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tag/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_site/tags/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/_site/tags/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,9 +64,10 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/_posts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
@@ -80,6 +91,9 @@
       <workItem from="1622020753708" duration="6386000" />
       <workItem from="1622036363938" duration="911000" />
       <workItem from="1622170711234" duration="3042000" />
+      <workItem from="1622179326113" duration="11000" />
+      <workItem from="1622210255438" duration="466000" />
+      <workItem from="1622263707112" duration="2698000" />
     </task>
     <task id="LOCAL-00001" summary="设置">
       <created>1621660495622</created>
@@ -249,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622175457598</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="格式修改">
+      <created>1622176346126</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1622176346126</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -282,7 +303,8 @@
     <MESSAGE value="更新文章" />
     <MESSAGE value="404" />
     <MESSAGE value="redis的键值对" />
-    <option name="LAST_COMMIT_MESSAGE" value="redis的键值对" />
+    <MESSAGE value="格式修改" />
+    <option name="LAST_COMMIT_MESSAGE" value="格式修改" />
   </component>
   <component name="WindowStateProjectService">
     <state x="414" y="174" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1621661733955">
@@ -317,10 +339,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="790" y="388" key="VCS.EditChangelistDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621661895450" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1622175459554">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1622176347702">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622175459554" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622176347702" />
     <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" timestamp="1621671599134">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -333,10 +355,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="754" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1920.1040@0.0.1920.1040" timestamp="1622170736247" />
-    <state x="662" y="223" width="678" height="754" key="find.popup" timestamp="1622173602428">
+    <state x="662" y="223" width="678" height="754" key="find.popup" timestamp="1622268307640">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="662" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622173602428" />
+    <state x="662" y="223" width="678" height="754" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1622268307640" />
     <state x="720" y="231" key="git4idea.branch.GitSmartOperationDialog" timestamp="1622035742481">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

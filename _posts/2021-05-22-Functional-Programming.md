@@ -4,6 +4,7 @@ author: WangJwi
 categories:
 - Java
 tags:
+- Java
 - Lambda
 - Stream
 - functional programming
