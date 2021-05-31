@@ -111,17 +111,17 @@
 
 
 
-<meta name="description" content="导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
+<meta name="description" content="导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
 <meta name="keywords" content="Java, 反射, Reflection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java反射机制">
 <meta property="og:url" content="http://localhost:4000/java/2021/05/21/JAVA-reflection/">
 <meta property="og:site_name" content="WangJwi`s Blog">
-<meta property="og:description" content="导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
+<meta property="og:description" content="导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
 <meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java反射机制">
-<meta name="twitter:description" content="导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
+<meta name="twitter:description" content="导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。反射是一种强大的技术，可以使应用程序执行原本不可能的操作。">
 
 
 <script type="text/javascript" id="hexo.configurations">
@@ -401,13 +401,19 @@
 
 
 
-  <p>导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</p>
+  <p>导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</p>
 
 <hr />
 
 <h1 id="java反射机制">java反射机制</h1>
 <h2 id="反射原理">反射原理：</h2>
-<p>java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。</p>
+<p>java在编译之后，会将Java代码生成为class源文件，JVM启动时，将会载入所有的源文件，并将<strong>类型信息</strong>存放到<strong>方法区</strong>中，将所有<strong>对象实例</strong>存放在<strong>Java堆</strong>中。</p>
+
+<ul>
+  <li>对于获取或创建新的类型实例：反射是在运行时，通过读取方法区中的字节码，来动态的找到其反射的类或类的方法和属性等（实际上就是在运行时，根据全类型名在方法区找对应的类），以实现类型的检查或创建该类的实例对象。</li>
+  <li>对于修改或获取存在的实例对象：一般来说，我们不通过反射构建的实例对象，通过编译器后都能预先的知道该实例对象有哪些属性和方法，从而可以直接获取或调用方法或属性。
+  而反射则不同，由于是运行时进行操作，它没法知道反射的这个实例对象有哪些属性和方法，因此需要先获取该对象的类型信息，从而通过该类型信息的属性或方法来修改实例对象。</li>
+</ul>
 
 <h2 id="反射的用途">反射的用途：</h2>
 <p>反射功能通常用于检查或修改java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。</p>
@@ -720,7 +726,7 @@
 
 <p>方法声明包含了方法名、修饰符、参数、返回类型以及抛出的多个异常。</p>
 
-<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36</pre></td><td class="code"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MethodReflectDemo</span> <span class="o">{</span>
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36<br/>37<br/>38<br/>39</pre></td><td class="code"><pre class="highlight"><code><span class="kd">public</span> <span class="kd">class</span> <span class="nc">MethodReflectDemo</span> <span class="o">{</span>
 
 
 <span class="kd">public</span> <span class="nf">MethodReflectDemo</span><span class="o">()</span> <span class="o">{</span>
@@ -752,6 +758,9 @@
       <span class="c1">// 异常</span>
       <span class="nc">Class</span><span class="o">&lt;?&gt;[]</span> <span class="n">exceptionTypes</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">getExceptionTypes</span><span class="o">();</span>
       <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+      <span class="c1">// 实例对象调用方法</span>
+      <span class="nc">Object</span> <span class="n">invoke</span> <span class="o">=</span> <span class="n">method</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">methodReflectDemo</span><span class="o">,</span> <span class="s">"名称"</span><span class="o">);</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">invoke</span><span class="o">);</span>
     <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NoSuchMethodException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
       <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
     <span class="o">}</span>
@@ -760,7 +769,49 @@
 
 <h2 id="javalangreflectconstructor">java.lang.reflect.Constructor</h2>
 
-<p>Constructor与Method相似，但有两个主要例外：第一，构造函数没有返回值；第二，构造函数的调用为给定的类创建对象的新实例。</p>
+<p>Constructor与Method相似，但有几点不同：</p>
+<ul>
+  <li>构造函数没有返回值</li>
+  <li>构造函数无法被实例对象执行，它的调用只能为给定的类创建对象的新实例。</li>
+</ul>
+
+<div class="language-java highlighter-rouge"><div class="highlight"><table style="margin: 0px"><tbody><tr><td class="gutter"><pre>1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21<br/>22<br/>23<br/>24<br/>25<br/>26<br/>27<br/>28<br/>29<br/>30<br/>31<br/>32<br/>33<br/>34<br/>35<br/>36</pre></td><td class="code"><pre class="highlight"><code>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ConstructorReflectDemo</span> <span class="o">{</span>
+
+  <span class="kd">public</span> <span class="nf">ConstructorReflectDemo</span><span class="o">()</span> <span class="o">{}</span>
+
+  <span class="kd">private</span> <span class="kt">void</span> <span class="nf">getNothing</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getNumByName</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">NullPointerException</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="nc">StringUtils</span><span class="o">.</span><span class="na">isEmpty</span><span class="o">(</span><span class="n">name</span><span class="o">))</span>
+      <span class="k">throw</span> <span class="k">new</span> <span class="nf">NullPointerException</span><span class="o">(</span><span class="s">"名字为空"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">name</span><span class="o">.</span><span class="na">length</span><span class="o">();</span>
+  <span class="o">}</span>
+
+  <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">ConstructorReflectDemo</span> <span class="n">methodReflectDemo</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ConstructorReflectDemo</span><span class="o">();</span>
+    <span class="k">try</span> <span class="o">{</span>
+      <span class="nc">Class</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">ConstructorReflectDemo</span><span class="o">&gt;</span> <span class="n">demoClass</span> <span class="o">=</span> <span class="n">methodReflectDemo</span><span class="o">.</span><span class="na">getClass</span><span class="o">();</span>
+      <span class="nc">Constructor</span><span class="o">&lt;?</span> <span class="kd">extends</span> <span class="nc">ConstructorReflectDemo</span><span class="o">&gt;</span> <span class="n">constructor</span> <span class="o">=</span> <span class="n">demoClass</span><span class="o">.</span><span class="na">getConstructor</span><span class="o">();</span>
+      <span class="nc">String</span> <span class="n">name</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="na">getName</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"构造方法名："</span> <span class="o">+</span> <span class="n">name</span><span class="o">);</span>
+      <span class="c1">// 修饰符</span>
+      <span class="kt">int</span> <span class="n">modifiers</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="na">getModifiers</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"所有修饰符："</span> <span class="o">+</span> <span class="nc">Modifier</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">modifiers</span><span class="o">));</span>
+      <span class="c1">// 参数</span>
+      <span class="nc">Parameter</span><span class="o">[]</span> <span class="n">parameters</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="na">getParameters</span><span class="o">();</span>
+      <span class="c1">// 异常</span>
+      <span class="nc">Class</span><span class="o">&lt;?&gt;[]</span> <span class="n">exceptionTypes</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="na">getExceptionTypes</span><span class="o">();</span>
+      <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+      <span class="c1">// 构造方法无法被调用，只可以创建新实例</span>
+      <span class="nc">ConstructorReflectDemo</span> <span class="n">constructorReflectDemo</span> <span class="o">=</span> <span class="n">constructor</span><span class="o">.</span><span class="na">newInstance</span><span class="o">();</span>
+    <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">NoSuchMethodException</span> <span class="o">|</span> <span class="nc">IllegalAccessException</span> <span class="o">|</span> <span class="nc">InstantiationException</span> <span class="o">|</span> <span class="nc">InvocationTargetException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+      <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+    <span class="o">}</span>
+  <span class="o">}</span>
+
+<span class="o">}</span>
+</code></pre></td></tr></tbody></table></div></div>
 
 <p>参考：</p>
 

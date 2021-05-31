@@ -10,14 +10,18 @@ tags:
 ---
 
 
-导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。这是一个相对高级的功能，只应由对语言基础有很深了解的开发人员使用。考虑到这一警告，反射是一种强大的技术，可以使应用程序执行原本不可能的操作。
+导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。反射是一种强大的技术，可以使应用程序执行原本不可能的操作。
 
 
 ------
 
 # java反射机制
 ## 反射原理：
-java在编译之后会生成一个class文件，反射通过字节码文件找到其类中的方法和属性等。
+java在编译之后，会将Java代码生成为class源文件，JVM启动时，将会载入所有的源文件，并将**类型信息**存放到**方法区**中，将所有**对象实例**存放在**Java堆**中。
+
+- 对于获取或创建新的类型实例：反射是在运行时，通过读取方法区中的字节码，来动态的找到其反射的类或类的方法和属性等（实际上就是在运行时，根据全类型名在方法区找对应的类），以实现类型的检查或创建该类的实例对象。
+- 对于修改或获取存在的实例对象：一般来说，我们不通过反射构建的实例对象，通过编译器后都能预先的知道该实例对象有哪些属性和方法，从而可以直接获取或调用方法或属性。
+    而反射则不同，由于是运行时进行操作，它没法知道反射的这个实例对象有哪些属性和方法，因此需要先获取该对象的类型信息，从而通过该类型信息的属性或方法来修改实例对象。
 
 
 ## 反射的用途：
@@ -305,6 +309,9 @@ public int getNumByName(String name) throws NullPointerException {
       // 异常
       Class<?>[] exceptionTypes = method.getExceptionTypes();
       System.out.println("");
+      // 实例对象调用方法
+      Object invoke = method.invoke(methodReflectDemo, "名称");
+      System.out.println(invoke);
     } catch (NoSuchMethodException e) {
       e.printStackTrace();
     }
@@ -315,7 +322,49 @@ public int getNumByName(String name) throws NullPointerException {
 
 ## java.lang.reflect.Constructor
 
-Constructor与Method相似，但有两个主要例外：第一，构造函数没有返回值；第二，构造函数的调用为给定的类创建对象的新实例。
+Constructor与Method相似，但有几点不同：
+- 构造函数没有返回值
+- 构造函数无法被实例对象执行，它的调用只能为给定的类创建对象的新实例。
+
+
+``` java
+
+public class ConstructorReflectDemo {
+
+  public ConstructorReflectDemo() {}
+
+  private void getNothing(String name) { }
+
+  public int getNumByName(String name) throws NullPointerException {
+    if (StringUtils.isEmpty(name))
+      throw new NullPointerException("名字为空");
+    return name.length();
+  }
+
+  public static void main(String[] args) {
+    ConstructorReflectDemo methodReflectDemo = new ConstructorReflectDemo();
+    try {
+      Class<? extends ConstructorReflectDemo> demoClass = methodReflectDemo.getClass();
+      Constructor<? extends ConstructorReflectDemo> constructor = demoClass.getConstructor();
+      String name = constructor.getName();
+      System.out.println("构造方法名：" + name);
+      // 修饰符
+      int modifiers = constructor.getModifiers();
+      System.out.println("所有修饰符：" + Modifier.toString(modifiers));
+      // 参数
+      Parameter[] parameters = constructor.getParameters();
+      // 异常
+      Class<?>[] exceptionTypes = constructor.getExceptionTypes();
+      System.out.println("");
+      // 构造方法无法被调用，只可以创建新实例
+      ConstructorReflectDemo constructorReflectDemo = constructor.newInstance();
+    } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+      e.printStackTrace();
+    }
+  }
+
+}
+```
 
 
 
