@@ -19,11 +19,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="代码块格式设置">
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="文字选择颜色修改">
+      <change afterPath="$PROJECT_DIR$/assets/images/pageSetting.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_includes/share.html" beforeDir="false" afterPath="$PROJECT_DIR$/_includes/share.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_sass/_common/components/highlight/theme.scss" beforeDir="false" afterPath="$PROJECT_DIR$/_sass/_common/components/highlight/theme.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_site/feed.xml" beforeDir="false" afterPath="$PROJECT_DIR$/_site/feed.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,7 +33,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="hexo" />
+        <entry key="$PROJECT_DIR$" value="second" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -58,13 +58,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/images" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="F:\DATA\project\VsLegend.github.io\assets" />
       <recent name="F:\DATA\project\VsLegend.github.io\assets\images" />
+      <recent name="F:\DATA\project\VsLegend.github.io\assets" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -254,18 +254,18 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="675" y="320" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1621670968408" />
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1621671599134">
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1622433574471">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621671599134" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622433574471" />
     <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1622030737053">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1622030737053" />
-    <state x="709" y="221" key="RollbackChangesDialog" timestamp="1621670117050">
+    <state x="709" y="221" key="RollbackChangesDialog" timestamp="1622433575657">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="709" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1621670117050" />
+    <state x="709" y="221" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1622433575657" />
     <state x="461" y="164" key="SettingsEditor" timestamp="1622015222176">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
