@@ -1,4 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-06-02T11:58:46+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">redis常用键值对解析</title><link href="http://localhost:4000/redis/2021/05/28/redis-key-value/" rel="alternate" type="text/html" title="redis常用键值对解析" /><published>2021-05-28T00:00:00+08:00</published><updated>2021-05-28T00:00:00+08:00</updated><id>http://localhost:4000/redis/2021/05/28/redis-key-value</id><content type="html" xml:base="http://localhost:4000/redis/2021/05/28/redis-key-value/">&lt;p&gt;导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-08-03T22:58:59+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">Java并发（一）—多线程的异常捕获</title><link href="http://localhost:4000/java/2021/08/03/java-concurrency-1/" rel="alternate" type="text/html" title="Java并发（一）—多线程的异常捕获" /><published>2021-08-03T00:00:00+08:00</published><updated>2021-08-03T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/08/03/java-concurrency-1</id><content type="html" xml:base="http://localhost:4000/java/2021/08/03/java-concurrency-1/">&lt;p&gt;导读：当我们的线程池中任务数量多且线程执行存在未知的异常时，我们很可能会忽略它们，从而使得数据缺失或流程中断。因此如何捕获和处理这些异常就显得尤为重要。&lt;/p&gt;
+
+&lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;h1 id=&quot;java并发一多线程的异常捕获与处理&quot;&gt;Java并发（一）—多线程的异常捕获与处理&lt;/h1&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;参考：&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://redis.io/documentation&quot;&gt;Redis Documentation&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://en.wikipedia.org/wiki/Redis&quot;&gt;Redis维基百科&lt;/a&gt;&lt;/p&gt;</content><author><name>WangJwi</name></author><category term="java" /><category term="thread pool" /><category term="concurrency" /><summary type="html">导读：当我们的线程池中任务数量多且线程执行存在未知的异常时，我们很可能会忽略它们，从而使得数据缺失或流程中断。因此如何捕获和处理这些异常就显得尤为重要。</summary></entry><entry><title type="html">redis常用键值对解析</title><link href="http://localhost:4000/redis/2021/05/28/redis-key-value/" rel="alternate" type="text/html" title="redis常用键值对解析" /><published>2021-05-28T00:00:00+08:00</published><updated>2021-05-28T00:00:00+08:00</updated><id>http://localhost:4000/redis/2021/05/28/redis-key-value</id><content type="html" xml:base="http://localhost:4000/redis/2021/05/28/redis-key-value/">&lt;p&gt;导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
