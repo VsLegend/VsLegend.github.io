@@ -2,6 +2,25 @@
 <search>
   
     <entry>
+      <title><![CDATA[Java并发： 使用CompletionService来接收线程池计算的结果]]></title>
+      <url>/java/2021/08/03/java-concurrency-2/</url>
+      <content type="text"><![CDATA[导读：当我们向线程池提交一组任务，并希望返回结果时，我们通常会保留任务的Future，并在循环中反复调用isDone判断该任务是否完成。这一方法虽然可行，但有些繁琐，幸运的是，CompletionService可以更好的完成这一任务。Java并发 使用CompletionService来接收线程池计算的结果参考：Redis DocumentationRedis维基百科]]></content>
+      <categories>
+        
+          <category> java </category>
+        
+      </categories>
+      <tags>
+        
+          <tag> thread pool </tag>
+        
+          <tag> concurrency </tag>
+        
+      </tags>
+      <tags></tags>
+    </entry>
+  
+    <entry>
       <title><![CDATA[Java并发： 多线程的异常捕获]]></title>
       <url>/java/2021/08/03/java-concurrency-1/</url>
       <content type="text"><![CDATA[导读：当我们的线程池中任务数量多且线程执行存在未知的异常时，我们很可能会忽略它们，从而使得数据缺失或流程中断。因此如何捕获和处理这些异常就显得尤为重要。Java并发 多线程的异常捕获参考：Redis DocumentationRedis维基百科]]></content>
