@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-08-03T22:58:59+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">Java并发（一）—多线程的异常捕获</title><link href="http://localhost:4000/java/2021/08/03/java-concurrency-1/" rel="alternate" type="text/html" title="Java并发（一）—多线程的异常捕获" /><published>2021-08-03T00:00:00+08:00</published><updated>2021-08-03T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/08/03/java-concurrency-1</id><content type="html" xml:base="http://localhost:4000/java/2021/08/03/java-concurrency-1/">&lt;p&gt;导读：当我们的线程池中任务数量多且线程执行存在未知的异常时，我们很可能会忽略它们，从而使得数据缺失或流程中断。因此如何捕获和处理这些异常就显得尤为重要。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/atom.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-08-03T23:02:20+08:00</updated><id>http://localhost:4000/atom.xml</id><title type="html">WangJwi`s Blog</title><author><name>WangJwi</name></author><entry><title type="html">Java并发： 多线程的异常捕获</title><link href="http://localhost:4000/java/2021/08/03/java-concurrency-1/" rel="alternate" type="text/html" title="Java并发： 多线程的异常捕获" /><published>2021-08-03T00:00:00+08:00</published><updated>2021-08-03T00:00:00+08:00</updated><id>http://localhost:4000/java/2021/08/03/java-concurrency-1</id><content type="html" xml:base="http://localhost:4000/java/2021/08/03/java-concurrency-1/">&lt;p&gt;导读：当我们的线程池中任务数量多且线程执行存在未知的异常时，我们很可能会忽略它们，从而使得数据缺失或流程中断。因此如何捕获和处理这些异常就显得尤为重要。&lt;/p&gt;
 
 &lt;p&gt;&lt;br /&gt;&lt;br /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;h1 id=&quot;java并发一多线程的异常捕获与处理&quot;&gt;Java并发（一）—多线程的异常捕获与处理&lt;/h1&gt;
+&lt;h1 id=&quot;java并发-多线程的异常捕获&quot;&gt;Java并发 多线程的异常捕获&lt;/h1&gt;
 
 &lt;hr /&gt;
 

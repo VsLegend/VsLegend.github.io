@@ -1,5 +1,5 @@
 ---
-title:  "Java并发（一）---多线程的异常捕获"
+title:  "Java并发： 多线程的异常捕获"
 author: WangJwi
 categories:
 - java
@@ -15,7 +15,7 @@ tags:
 
 ------
 
-# Java并发（一）---多线程的异常捕获与处理
+# Java并发 多线程的异常捕获
 
 
 
