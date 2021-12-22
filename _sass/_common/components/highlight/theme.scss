@@ -15,8 +15,8 @@ $highlight_theme : jekyll-config("highlight_theme");
   $highlight-blue         : #4271ae !global;
   $highlight-purple       : #8959a8 !global;
   $highlight-gutter       : (
-          color: #869194,
-          bg-color: #eff2f3
+    color: #869194,
+    bg-color: #eff2f3
   ) !global;
 }
 
@@ -34,8 +34,8 @@ $highlight_theme : jekyll-config("highlight_theme");
   $highlight-blue         : #81a2be !global;
   $highlight-purple       : #b294bb !global;
   $highlight-gutter       : (
-          color: scale-color($highlight-background, $lightness: 50%),
-          bg-color: scale-color($highlight-background, $lightness: -100%)
+    color: scale-color($highlight-background, $lightness: 50%),
+    bg-color: scale-color($highlight-background, $lightness: -100%)
   ) !global;
 }
 
@@ -53,8 +53,8 @@ $highlight_theme : jekyll-config("highlight_theme");
   $highlight-blue         : #6699cc !global;
   $highlight-purple       : #cc99cc !global;
   $highlight-gutter       : (
-          color: $highlight-comment,
-          bg-color: scale-color($highlight-background, $lightness: -40%)
+    color: $highlight-comment,
+    bg-color: scale-color($highlight-background, $lightness: -40%)
   ) !global;
 }
 
@@ -72,8 +72,8 @@ $highlight_theme : jekyll-config("highlight_theme");
   $highlight-blue         : #bbdaff !global;
   $highlight-purple       : #ebbbff !global;
   $highlight-gutter       : (
-          color: $highlight-comment,
-          bg-color: scale-color($highlight-background, $lightness: -60%)
+    color: $highlight-comment,
+    bg-color: scale-color($highlight-background, $lightness: -60%)
   ) !global;
 }
 
@@ -91,7 +91,7 @@ $highlight_theme : jekyll-config("highlight_theme");
   $highlight-blue         : #7aa6da !global;
   $highlight-purple       : #c397d8 !global;
   $highlight-gutter       : (
-          color: scale-color($highlight-background, $lightness: 40%),
-          bg-color: scale-color($highlight-background, $lightness: 16%)
+    color: scale-color($highlight-background, $lightness: 40%),
+    bg-color: scale-color($highlight-background, $lightness: 16%)
   ) !global;
 }
