@@ -1,0 +1,1503 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://example.com/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="Wang Junwei">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-2021-08-03-java-concurrency-2" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/22/2021-08-03-java-concurrency-2/" class="article-date">
+  <time datetime="2021-12-22T07:32:13.065Z" itemprop="datePublished">2021-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/22/2021-08-03-java-concurrency-2/">Java并发： 使用CompletionService来接收线程池计算的结果</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>导读：当我们向线程池提交一组任务，并希望返回结果时，我们通常会保留任务的Future，并在循环中反复调用isDone判断该任务是否完成。这一方法虽然可行，但有些繁琐，幸运的是，CompletionService可以更好的完成这一任务。</p>
+<p><br><br></p>
+<hr>
+<h1 id="Java并发-使用CompletionService来接收线程池计算的结果"><a href="#Java并发-使用CompletionService来接收线程池计算的结果" class="headerlink" title="Java并发 使用CompletionService来接收线程池计算的结果"></a>Java并发 使用CompletionService来接收线程池计算的结果</h1><hr>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/documentation">Redis Documentation</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Redis">Redis维基百科</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/22/2021-08-03-java-concurrency-2/" data-id="ckxh8313n00065cv1gf6k5a7f" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/concurrency/" rel="tag">concurrency</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread-pool/" rel="tag">thread pool</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-08-03-java-concurrency-1" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/22/2021-08-03-java-concurrency-1/" class="article-date">
+  <time datetime="2021-12-22T07:32:13.063Z" itemprop="datePublished">2021-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/java/">java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/22/2021-08-03-java-concurrency-1/">Java并发： 多线程的异常捕获</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>导读：当我们的线程池中任务数量多且线程执行存在未知的异常时，我们很可能会忽略它们，从而使得数据缺失或流程中断。因此如何捕获和处理这些异常就显得尤为重要。</p>
+<p><br><br></p>
+<hr>
+<h1 id="Java并发-多线程的异常捕获"><a href="#Java并发-多线程的异常捕获" class="headerlink" title="Java并发 多线程的异常捕获"></a>Java并发 多线程的异常捕获</h1><hr>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/documentation">Redis Documentation</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Redis">Redis维基百科</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/22/2021-08-03-java-concurrency-1/" data-id="ckxh8313p00095cv1b8sx0j4n" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/concurrency/" rel="tag">concurrency</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/thread-pool/" rel="tag">thread pool</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-05-28-redis-key-value" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/22/2021-05-28-redis-key-value/" class="article-date">
+  <time datetime="2021-12-22T07:32:13.060Z" itemprop="datePublished">2021-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/redis/">redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/22/2021-05-28-redis-key-value/">redis常用键值对解析</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>导读：Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，其值不仅限于简单的字符串，还可以容纳更复杂的数据结构。</p>
+<p><br><br></p>
+<hr>
+<h1 id="Redis的常用键值对"><a href="#Redis的常用键值对" class="headerlink" title="Redis的常用键值对"></a>Redis的常用键值对</h1><h2 id="Redis的键值对"><a href="#Redis的键值对" class="headerlink" title="Redis的键值对"></a>Redis的键值对</h2><p>Redis不是简单的键值（Key-Value）存储，它实际上是一个支持不同类型值的数据结构服务器。在传统键值存储中，一般将字符串键与字符串值相关联，而在Redis中，该值不仅限于简单的字符串，还可以容纳更复杂的数据结构。</p>
+<h3 id="Redis-Key"><a href="#Redis-Key" class="headerlink" title="Redis-Key"></a>Redis-Key</h3><p>Redis的键（Key）是二进制安全的字符串，这意味着可以使用任何二进制序列作为key，从“ foo”之类的字符串到JPEG文件的内容，同时空字符串也是有效的key键。</p>
+<p>在Redis的底层中由SDS实现。</p>
+<p>设置键的注意点：</p>
+<ul>
+<li><strong>key使用的字节不宜过长</strong>：太长的key字节，在内存方面不仅是个负担，并且在数据集中查找key时可能需要进行一些代价高昂的密钥比较。</li>
+<li><strong>key也不宜设置太短</strong>：与“ user：1000：followers”对比，“ u1000flw”写为key毫无意义，前者往往更具可读性。且与键对象本身和值对象使用的空间相比，单单添加key消耗的空间更少。</li>
+<li><strong>key使用同一种设置类型</strong>：例如，“ object-type：id”是一个好主意，例如“ user：1000”。点或破折号通常用于多字字段，例如“ comment：1234：reply.to”或“ comment：1234：reply-to”中。</li>
+<li>允许的最大key大小为<strong>512 MB</strong>。</li>
+</ul>
+<p><br><br></p>
+<hr>
+<h3 id="Redis-Value"><a href="#Redis-Value" class="headerlink" title="Redis-Value"></a>Redis-Value</h3><p>Redis的值（Value）支持以下几种类型：</p>
+<ul>
+<li><strong>Binary-safe strings</strong>：二进制安全字符串。</li>
+<li><strong>Lists</strong>：根据插入顺序排序的字符串元素的集合。它们基本上是<em>链表</em>。</li>
+<li><strong>Sets</strong>：唯一，未排序的字符串元素的集合。</li>
+<li><strong>Sorted sets</strong>：类似于集合，但是每个字符串元素在存入时都将于一个浮点数值的分数相关联，元素总是按照它们的分数排序，因此与Sets不同，可以检索一系列元素</li>
+<li><strong>Hashes</strong>：键值组成的哈希映射，键值都是字符串。</li>
+<li><strong>Bit arrays</strong> (or simply bitmaps)：可以使用特殊命令像位数组一样处理字符串值：可以设置和清除单个位，计数所有设置为1的位，找到第一个设置或未设置的位，等等。</li>
+<li><strong>HyperLogLogs</strong>：这是一个概率数据结构，用于估计集合的基数。</li>
+<li><strong>Streams</strong>：提供抽象日志数据类型的类地图项的仅追加集合。</li>
+</ul>
+<p>redis值的内部实现结构如下：</p>
+<table>
+<thead>
+<tr>
+<th>type类型</th>
+<th>encoding编码</th>
+<th>ptr指向的数据结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>REDIS_STRING</td>
+<td>REDIS_ENCODING_INT</td>
+<td>整数值的实现的字符串对象</td>
+</tr>
+<tr>
+<td>REDIS_STRING</td>
+<td>REDIS_ENCODING_EMBSTR</td>
+<td>embstr编码的sds实现的字符串对象</td>
+</tr>
+<tr>
+<td>REDIS_STRING</td>
+<td>REDIS_ENCODING_RAW</td>
+<td>sds字符串实现的字符串对象</td>
+</tr>
+<tr>
+<td>REDIS_LIST</td>
+<td>REDIS_ENCODING_ZIPLIST</td>
+<td>压缩列表实现</td>
+</tr>
+<tr>
+<td>REDIS_LIST</td>
+<td>REDIS_ENCODING_LINKEDLIST</td>
+<td>链表实现</td>
+</tr>
+<tr>
+<td>REDIS_HASH</td>
+<td>REDIS_ENCODING_ZIPLIST</td>
+<td>压缩表实现</td>
+</tr>
+<tr>
+<td>REDIS_HASH</td>
+<td>REDIS_ENCODING_HT</td>
+<td>字典实现</td>
+</tr>
+<tr>
+<td>REDIS_SET</td>
+<td>REDIS_ENCODING_INTSET</td>
+<td>整数集合实现</td>
+</tr>
+<tr>
+<td>REDIS_SET</td>
+<td>REDIS_ENCODING_HT</td>
+<td>字典实现</td>
+</tr>
+<tr>
+<td>REDIS_ZSET</td>
+<td>REDIS_ENCODING_ZIPLIST</td>
+<td>压缩表实现</td>
+</tr>
+<tr>
+<td>REDIS_ZSET</td>
+<td>REDIS_ENCODING_SKIPLIST</td>
+<td>跳跃表和字典实现</td>
+</tr>
+</tbody></table>
+<p><br><br></p>
+<hr>
+<h3 id="Redis值的常用数据类型"><a href="#Redis值的常用数据类型" class="headerlink" title="Redis值的常用数据类型"></a>Redis值的常用数据类型</h3><p><strong>字符串：String</strong></p>
+<p>Redis字符串类型是与Redis键关联的最简单的值类型。它也是Memcached中唯一的数据类型。</p>
+<p>值是二进制安全的字符串，意味着redis的string可以包含任何数据。比如jpg图片或者序列化的对象。值最大能存储<strong>512 MB</strong>的数据。</p>
+<p><strong>列表：List</strong></p>
+<p>redis是由双向链表（Linked List）的方式实现，而非数组形式。它能从链表的头尾进行操作。它是根据插入的顺序进行排序的有序列表。</p>
+<p>列表的常用案例：记住用户发布到社交网络上的最新更新。频繁查看的日志。</p>
+<p><strong>集合：Set</strong></p>
+<p>set 的内部实现是一个 value永远为null的HashMap，实际就是通过计算hash的方式来快速排重的，这也是set能提供判断一个成员是否在集合内的原因。</p>
+<p>可以理解为一堆值不重复的列表，类似数学领域中的集合概念，且Redis也提供了针对集合的求交集、并集、差集等操作。</p>
+<p><strong>有序集合：Sorted Set</strong></p>
+<p>Redis有序集合类似Redis集合，不同的是增加了一个功能，即集合是有序的。一个有序集合的每个成员带有分数，用于进行排序。</p>
+<p>Redis有序集合添加、删除和测试的时间复杂度均为O(1)(固定时间，无论里面包含的元素集合的数量)。列表的最大长度为2^32- 1元素(4294967295，超过40亿每个元素的集合)。</p>
+<p>Redis sorted set的内部使用HashMap和跳跃表(SkipList)来保证数据的存储和有序，HashMap里放的是成员到score的映射，而跳跃表里存放的是所有的成员，排序依据是HashMap里存的score,使用跳跃表的结构可以获得比较高的查找效率，并且在实现上比较简单。</p>
+<p><strong>哈希表：Hash</strong></p>
+<p>对应Value内部实际就是一个HashMap，实际这里会有2种不同实现，这个Hash的成员比较少时Redis为了节省内存会采用类似一维数组的方式来紧凑存储，而不会采用真正的HashMap结构，对应的value redisObject的encoding为zipmap,当成员数量增大时会自动转成真正的HashMap,此时encoding为ht。</p>
+<p>每个 hash 可以存储 2^32 -1 键值对（40多亿）。</p>
+<hr>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/documentation">Redis Documentation</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Redis">Redis维基百科</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/22/2021-05-28-redis-key-value/" data-id="ckxh8313i00015cv13kac4vk8" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/key-value/" rel="tag">key-value</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-05-28-redis-data-structure" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/22/2021-05-28-redis-data-structure/" class="article-date">
+  <time datetime="2021-12-22T07:32:13.057Z" itemprop="datePublished">2021-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/redis/">redis</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/22/2021-05-28-redis-data-structure/">redis基础知识和底层数据结构</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>导读：Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。</p>
+<hr>
+<h1 id="Redis基础知识"><a href="#Redis基础知识" class="headerlink" title="Redis基础知识"></a>Redis基础知识</h1><h2 id="概念："><a href="#概念：" class="headerlink" title="概念："></a><strong>概念：</strong></h2><p>Redis（Remote Dictionary Server）是一个在内存中运行的数据结构的存储服务器（an in-memory data structure store）。Redis支持各种抽象数据结构，例如字符串，列表，映射，集合，排序集合，HyperLogLogs，位图，流和空间索引。</p>
+<h2 id="用途："><a href="#用途：" class="headerlink" title="用途："></a><strong>用途：</strong></h2><p>常被用于分布式、键值对数据库、高速缓存、消息代理等应用。</p>
+<h2 id="redis的优点"><a href="#redis的优点" class="headerlink" title="redis的优点"></a>redis的优点</h2><ol>
+<li>内存操作，高性能</li>
+<li>单线程执行，天然支持并发</li>
+</ol>
+<p><br><br></p>
+<hr>
+<h1 id="Redis的底层数据结构"><a href="#Redis的底层数据结构" class="headerlink" title="Redis的底层数据结构"></a>Redis的底层数据结构</h1><h2 id="简单动态字符串：SDS"><a href="#简单动态字符串：SDS" class="headerlink" title="简单动态字符串：SDS"></a>简单动态字符串：SDS</h2><h3 id="描述"><a href="#描述" class="headerlink" title="描述"></a>描述</h3><p>Redis由C语言编写。它将SDS（simple dynamic string）用作默认的字符串表示方式。而C字符串仅用作字符串字面量（string literal），即无须对字符串值进行修改的地方。Redis的字符串类型的键值都是由SDS实现的。此外，SDS还可以被用作缓冲区（buffer），例如AOF缓冲区、输入缓冲区等。</p>
+<h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>SDS遵循C字符串以空字符结尾的惯例，保存空字符的1字节空间不计算在SDS的len属性里。该空字符的添加操作由SDS函数自动完成。这一操作的好处是，可以直接复用C语言的一些字符串操作。</p>
+<p>每个sds.h/sdshdr表示一个SDS值，SDS的定义如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">sdshdr</span> &#123;</span></span><br><span class="line">  <span class="keyword">int</span> len; <span class="comment">// 记录buf数组中已使用的字节数量，等于SDS所保存字符串的长度</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">int</span> <span class="built_in">free</span>; <span class="comment">// 记录buf数组中未使用的字节数量</span></span><br><span class="line">  </span><br><span class="line">  <span class="keyword">char</span> buf[]; <span class="comment">// 字节数组，用于保存字符串</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="特性"><a href="#特性" class="headerlink" title="特性"></a>特性</h3><p>前置知识点：<br>内存的重新分配操作可能出现的问题</p>
+<ul>
+<li>缓冲区溢出：增长字符串时，程序需要通过内存分配来来确定是否需要对底层数组的空间进行扩充，以便存放增长后的字符串的值。如果忘了这一步，那么保存字符串的数组就会发生越界行为，占用未分配给它的内存区域，从而导致其他数据被意外篡改，这就是缓冲区溢出。</li>
+<li>内存泄漏：缩短字符串时，同样需要重新分配内存释放掉不需要的那部分空间。如果忘了这一步，那么剩下那一部分空间将会一直处于未使用状态且无法分配给其他程序来使用，这就是内存泄漏。</li>
+<li>内存重分配设计辅助的算法，并且可能需要执行系统调用，所以它通常是一个比较耗时的操作。</li>
+</ul>
+<h4 id="1-空间预分配"><a href="#1-空间预分配" class="headerlink" title="1. 空间预分配"></a>1. 空间预分配</h4><p><strong>描述</strong>：空间预分配操作用于优化SDS字符串的增长操作。</p>
+<p><strong>实现</strong>：</p>
+<ul>
+<li>当修改后的SDS长度小于1MB时，那么程序将分配和len相同大小的未使用空间。这时len的值和free的值相同。</li>
+<li>SDS的长度大于等于1MB时，那么会分配1MB的未使用空间。</li>
+</ul>
+<p><strong>作用</strong>：通过内存重分配和空间预分配的策略，Redis可以减少连续执行字符串增长操作所需的内存重分配次数，从而提高性能</p>
+<h4 id="2-惰性空间释放"><a href="#2-惰性空间释放" class="headerlink" title="2. 惰性空间释放"></a>2. 惰性空间释放</h4><p><strong>描述</strong>：用于优化SDS字符串缩短操作。</p>
+<p><strong>实现</strong>：</p>
+<ul>
+<li>缩短字符串时，程序并不立即使用内存重分配来回收缩短后多出的字节，而是使用free属性将这些字节的数量记录起来，并等待将来使用。</li>
+</ul>
+<p><strong>作用</strong>：SDS避免了缩短字符串时所需的内存重分配操作。并为将来可能出现的增长操作提供了优化；不过有可能造成内存空间的浪费。</p>
+<h4 id="3-二进制安全"><a href="#3-二进制安全" class="headerlink" title="3. 二进制安全"></a>3. 二进制安全</h4><p><strong>描述</strong>：SDS的API都是二进制安全的。所有SDS API都会以处理二进制的方式来处理SDS存放在buf数组里的数据。</p>
+<h4 id="4-兼容部分C字符串函数"><a href="#4-兼容部分C字符串函数" class="headerlink" title="4. 兼容部分C字符串函数"></a>4. 兼容部分C字符串函数</h4><p><strong>描述</strong>：SDS末尾保存的空字串，使得其可以重用一部分&lt;string.h&gt;库定义的函数，从而避免了不必要的代码重复实现。</p>
+<h3 id="与C字符串相比的区别"><a href="#与C字符串相比的区别" class="headerlink" title="与C字符串相比的区别"></a>与C字符串相比的区别</h3><ul>
+<li>长度获取简单。SDS用len属性记录了SDS字符串的长度，因此只需常熟复杂度就可以获取到字符串长度，而C字符串并不记录长度，它需要遍历整个字符串才能得出字符串长度。</li>
+<li>len属性解决了扩充时C字符串的缓冲区溢出（buffer overflow）问题；</li>
+<li>free属性减少修改字符串时带来的内存重分配次数。</li>
+</ul>
+<p><br><br></p>
+<hr>
+<h2 id="链表"><a href="#链表" class="headerlink" title="链表"></a>链表</h2><h3 id="描述-1"><a href="#描述-1" class="headerlink" title="描述"></a>描述</h3><ul>
+<li>链表提供了高效的<strong>节点重排</strong>能力，以及顺序性的节点访问方式。</li>
+<li>链表在redis中的应用非常广泛，列表键的底层实现之一就是链表（当一个列表键包含了数量比较多的元素，又或者列表中包含的元素都是比较长的字符串时）。</li>
+<li>此外，发布与订阅、慢查询、监视器等功能也用到了链表，Redis本身还是用链表保存多个客户端的状态信息。</li>
+</ul>
+<h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><p>adlist.h/list表示一个链表，而每个链表节点使用一个adlist.h/listNode结构表示。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">list</span> &#123;</span></span><br><span class="line">  listNode *head;</span><br><span class="line">  listNode *tail;</span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> len; <span class="comment">// 节点数量</span></span><br><span class="line">&#125; <span class="built_in">list</span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">listNode</span> &#123;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">listNode</span> *<span class="title">prev</span>;</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">listNode</span> *<span class="title">next</span>;</span></span><br><span class="line">  <span class="comment">// 任意类型的值</span></span><br><span class="line">  <span class="keyword">void</span> *value;</span><br><span class="line">&#125; listNod</span><br></pre></td></tr></table></figure>
+
+
+<p><br><br></p>
+<hr>
+<h2 id="字典"><a href="#字典" class="headerlink" title="字典"></a>字典</h2><h3 id="描述-2"><a href="#描述-2" class="headerlink" title="描述"></a>描述</h3><ul>
+<li>字典，又称符号表、关联数组、映射（map），用于保存键值对的抽象数据结构。</li>
+<li>C语言并没有内置字典。因此字典又Redis本身实现。</li>
+<li>除了用来表示数据库外，字典还是哈希键的底层实现之一，当一个哈希键包含的键值对比较多，又或者键值对中的元素都是长字符串时，Redis就会使用字典作为哈希键的底层实现。</li>
+</ul>
+<h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><p>dict.h/dict表示一个字典。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dict</span> &#123;</span></span><br><span class="line">  <span class="comment">// 特定类型函数</span></span><br><span class="line">  dictType *type;</span><br><span class="line">  <span class="comment">// 私有数据</span></span><br><span class="line">  <span class="keyword">void</span> *privdata; </span><br><span class="line">  <span class="comment">// 哈希表</span></span><br><span class="line">  dictht ht[<span class="number">2</span>]; </span><br><span class="line">  <span class="comment">// rehash索引，没有进行rehash时，值为-1</span></span><br><span class="line">  <span class="keyword">int</span> trehashidx;</span><br><span class="line">&#125; dict;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>dict.h/dictht表示一个哈希表。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictht</span> &#123;</span></span><br><span class="line">  <span class="comment">// 哈希表，这里相当于Java中的 Object [] table;</span></span><br><span class="line">  dictEntry **table;</span><br><span class="line">  <span class="comment">// 大小，指数组</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> size; </span><br><span class="line">  <span class="comment">// 哈希表大小掩码，总是用于计算索引值，总是等于size - 1</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> sizemask; </span><br><span class="line">  </span><br><span class="line">  <span class="comment">// 哈希表已有节点的数量</span></span><br><span class="line">  <span class="keyword">unsigned</span> <span class="keyword">long</span> used; </span><br><span class="line">&#125; dictht;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>而每个哈希节点使用dictEntry表示。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span>&#123;</span></span><br><span class="line">  <span class="keyword">void</span> *key;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 值 可以是一个对象指针，或uint64_t整数或int64_t整数</span></span><br><span class="line">  <span class="class"><span class="keyword">union</span> &#123;</span></span><br><span class="line">    <span class="keyword">void</span> *val;</span><br><span class="line">    <span class="keyword">uint64_t</span> u64;</span><br><span class="line">    <span class="keyword">int64_t</span> s64;</span><br><span class="line">  &#125; v; </span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 指向下一个哈希节点，用于解决键冲突（链地址法）</span></span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">dictEntry</span> *<span class="title">next</span>;</span></span><br><span class="line">&#125; dictEntry</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="哈希算法"><a href="#哈希算法" class="headerlink" title="哈希算法"></a>哈希算法</h3><p>字典用作数据库底层实现，或哈希键的实现时，Redis使用的<strong>MurmurHash2</strong>算法来计算哈希值</p>
+<p>key：键</p>
+<p>ht[x]：没有rehash时为ht[0]，rehash时ht[1]</p>
+<p>计算哈希值：hash = dict-&gt;type-&gt;hashFunction(key);</p>
+<p>计算在数组中的下标：index = hash &amp; dict-&gt;ht[x].sizemask;</p>
+<h3 id="哈希冲突"><a href="#哈希冲突" class="headerlink" title="哈希冲突"></a>哈希冲突</h3><p>Redis使用了链地址法解决，在产生冲突的下标地址的链表中，使用头插法插入哈希节点。</p>
+<h3 id="渐进式的Rehash"><a href="#渐进式的Rehash" class="headerlink" title="渐进式的Rehash"></a>渐进式的Rehash</h3><p>Redis也有一个负载因子用于控制，哈希表的数组大小。当负载因子超过承受限制或远低于预期时，就会进行rehash的操作，进行扩展或缩小哈希表。</p>
+<p>负载因子（load factor）计算方式：load_factor = ht[0].used / ht[0].size</p>
+<p>扩展时：</p>
+<p><strong>条件：</strong>一般情况下，负载因子大于等于1，就进行扩展；在执行BGSAVE或BGREERITEAOF命令时，负载因子大于等于5才开始扩展。</p>
+<p>方法：</p>
+<ol>
+<li>分配ht[1]的空间，size为：大于等于ht[0].used * 2的第一个2^n数</li>
+<li></li>
+</ol>
+<p>收缩时：</p>
+<p><strong>条件：</strong>负载因子小于0.1，就开始收缩</p>
+<p><br><br></p>
+<hr>
+<h2 id="跳跃表"><a href="#跳跃表" class="headerlink" title="跳跃表"></a>跳跃表</h2><h3 id="描述-3"><a href="#描述-3" class="headerlink" title="描述"></a>描述</h3><p>Redis使用其作为有序集合键的底层实现之一。当一个有序集合包含的元素数量比较多，又或者集合中的元素都是长字符串时，Redis就会使用跳跃表作为有序集合的底层实现。</p>
+<p><br><br></p>
+<hr>
+<h2 id="整数集合"><a href="#整数集合" class="headerlink" title="整数集合"></a>整数集合</h2><h3 id="描述-4"><a href="#描述-4" class="headerlink" title="描述"></a>描述</h3><p>整数集合是Redis用于保存整数值的集合抽象数据结构，当一个集合只包含整数值元素，且元素数量不多时，Redis就会使用整数集合作为集合键的底层实现。</p>
+<p>它可以保存int16_t、int32_t、int64_t的整数值，并且保证集合有序且不会出现重复。</p>
+<h3 id="定义-3"><a href="#定义-3" class="headerlink" title="定义"></a>定义</h3><p>每个intset.h/intset结构表示一个整数集合</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">intset</span> &#123;</span></span><br><span class="line">  <span class="keyword">uint32_t</span> encoding; <span class="comment">// 编码 三种类型int16_t、int32_t、int64_t</span></span><br><span class="line">  <span class="keyword">uint32_t</span> length; <span class="comment">// 元素数量</span></span><br><span class="line">  <span class="keyword">int8_t</span> contents []; <span class="comment">// 保存元素的数组，其保存的正真类型取决于encoding</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+
+<h3 id="升级"><a href="#升级" class="headerlink" title="升级"></a>升级</h3><p>新元素超过当前类型的范围时，就要向上转型，redis称为升级（upgrade）。例如16-32，32-64。当然，整数集合不支持降级操作，一旦升级，编码就会一直保持升级后的状态，这一点跟Java一样。</p>
+<p><strong>步骤：</strong></p>
+<ol>
+<li>根据升级类型，扩展底层数组的空间大小，并未新元素分配空间</li>
+<li>把数组中现有的元素转换成升级后的类型，并从最后一个元素开始将之移动到新的位置上（例如：16位的整数转为32位时，数组为每一个元素的空间都分配了32位。从最后一个元素开始移动，可以确保一次移动完毕，且不会造成数据损坏）</li>
+<li>将新元素添加到数组（由于新元素是向上转型，那么新元素只能是大于或小于当前数组的所有数的情况。比如一个32位的正整数或负整数）</li>
+</ol>
+<p><br><br></p>
+<hr>
+<h2 id="压缩列表"><a href="#压缩列表" class="headerlink" title="压缩列表"></a>压缩列表</h2><h3 id="描述-5"><a href="#描述-5" class="headerlink" title="描述"></a>描述</h3><p>压缩列表是Redis为了节约内存而开发的，是由一系列<strong>特殊编码</strong>的<strong>连续内存块</strong>组成的顺序性数据结构。</p>
+<p>也是列表键和哈希键的底层实现之一，当一个列表键只包含少量列表项，并且列表项要么是小整数值、要么是比较短的字符串，那么Redis就会使用压缩列表做列表键的底层实现；当一个哈希键只包含少量键值对，并且键值对的键和值要么是小整数值、要么是比较短的字符串，那么Redis就会使用压缩列表做列表键的底层实现。</p>
+<h3 id="定义-4"><a href="#定义-4" class="headerlink" title="定义"></a>定义</h3><p>由于是连续的内存块，且经过特殊编码的，因此它跟之前的几种数据结构不同。整个压缩列表的结构如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">zlbyte | zltail | zllen | entry1~~~entryn | zlend</span><br><span class="line">zlbyet：列表占用的内存字节数</span><br><span class="line">zltail：记录列表尾节点离列表的起始地址有多少字节</span><br><span class="line">zllen：记录列表包含的节点数量</span><br><span class="line">entry：每一个列表节点，数量不定</span><br><span class="line">zlend：特殊值<span class="number">0xFF</span>（十进制<span class="number">255</span>），用于标记压缩列表的末端</span><br></pre></td></tr></table></figure>
+
+
+
+<p>每一个实体entry包含的内容如下：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">previous_entry_lenth  |  encoding  |  content</span><br><span class="line">previous_entry_lenth：记录压缩列表前一个节点的长度</span><br><span class="line">encoding：记录节点content属性所保存数据的类型和长度</span><br><span class="line">content：保存节点值，可以是一个字节数组或者整数</span><br></pre></td></tr></table></figure>
+
+
+
+<p><br><br></p>
+<hr>
+<h2 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h2><h3 id="描述："><a href="#描述：" class="headerlink" title="描述："></a>描述：</h3><p>Redis没有直接使用上述的数据机构来实现键值对数据库，而是基于这些数据结构创建一个对象系统。</p>
+<p>Redis创建一个键值对时，最少会建两个对象，键的对象和值的对象；键总是一个字符串对象，而值可以是对象系统的任一种。</p>
+<h3 id="对象系统："><a href="#对象系统：" class="headerlink" title="对象系统："></a>对象系统：</h3><ul>
+<li><strong>对象系统</strong>包含：字符串对象、列表对象、哈希对象、集合对象和有序集合对象五种。</li>
+<li>对象系统实现了基于引用计数技术的内存回收机制：当程序不再使用某个对象的时候（什么情况下才表示不再使用呢，即引用计数为0时），这个对象所占用的内存就会被自动释放。此外该技术实现了对象共享机制，通过让多个数据库键公用同一对象来节约内存。</li>
+<li>对象带有访问时间记录信息，其用于计算数据库键的空转时长（未被调用），在服务器启用了maxmemory功能的情况下，空转时长较大的键可能会被服务器优先删除。</li>
+</ul>
+<h3 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h3><p>每个对象都由一个redisObject结构表示：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">redisObject</span>&#123;</span></span><br><span class="line">  <span class="comment">// 类型 REDIS_STRING REDIS_LIST REDIS_HASH REDIS_SET REDIS_ZSET</span></span><br><span class="line">  <span class="keyword">unsigned</span> type:<span class="number">4</span>;</span><br><span class="line">  <span class="keyword">unsigned</span> encoding; <span class="comment">// 编码 决定了该类型使用什么底层数据结构</span></span><br><span class="line">  <span class="keyword">void</span> *ptr; <span class="comment">// 指向底层实现数据结构的指针</span></span><br><span class="line">  <span class="keyword">int</span> refcount; <span class="comment">// 引用计数 用于内存回收机制、共享机制</span></span><br><span class="line">  <span class="keyword">unsigned</span> lru:<span class="number">22</span>; <span class="comment">// 记录对象的最后一次被访问时间</span></span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125; robj;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>ptr指针所指向数据结构，它的类型由encoding属性决定。encoding记录了对象所使用的编码，即对象使用了什么数据结构作为底层实现。</p>
+<h3 id="对象的常用命令："><a href="#对象的常用命令：" class="headerlink" title="对象的常用命令："></a>对象的常用命令：</h3><table>
+<thead>
+<tr>
+<th>object encoding</th>
+<th>值的编码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>object refcount</td>
+<td>对象的引用计数</td>
+</tr>
+<tr>
+<td>object idletime</td>
+<td>对象的空转时长，该命令不会修改对象的lru属性</td>
+</tr>
+<tr>
+<td>type</td>
+<td>对象类型</td>
+</tr>
+<tr>
+<td>del</td>
+<td>删除键以及值</td>
+</tr>
+<tr>
+<td>rename</td>
+<td>重命键</td>
+</tr>
+<tr>
+<td>expire</td>
+<td></td>
+</tr>
+</tbody></table>
+<h3 id="对象系统各编码使用的数据结构："><a href="#对象系统各编码使用的数据结构：" class="headerlink" title="对象系统各编码使用的数据结构："></a>对象系统各编码使用的数据结构：</h3><table>
+<thead>
+<tr>
+<th>type类型</th>
+<th>encoding编码</th>
+<th>ptr指向的数据结构</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>REDIS_STRING</td>
+<td>REDIS_ENCODING_INT</td>
+<td>整数值的实现的字符串对象</td>
+</tr>
+<tr>
+<td>REDIS_STRING</td>
+<td>REDIS_ENCODING_EMBSTR</td>
+<td>embstr编码的sds实现的字符串对象</td>
+</tr>
+<tr>
+<td>REDIS_STRING</td>
+<td>REDIS_ENCODING_RAW</td>
+<td>sds字符串实现的字符串对象</td>
+</tr>
+<tr>
+<td>REDIS_LIST</td>
+<td>REDIS_ENCODING_ZIPLIST</td>
+<td>压缩列表实现</td>
+</tr>
+<tr>
+<td>REDIS_LIST</td>
+<td>REDIS_ENCODING_LINKEDLIST</td>
+<td>链表实现</td>
+</tr>
+<tr>
+<td>REDIS_HASH</td>
+<td>REDIS_ENCODING_ZIPLIST</td>
+<td>压缩表实现</td>
+</tr>
+<tr>
+<td>REDIS_HASH</td>
+<td>REDIS_ENCODING_HT</td>
+<td>字典实现</td>
+</tr>
+<tr>
+<td>REDIS_SET</td>
+<td>REDIS_ENCODING_INTSET</td>
+<td>整数集合实现</td>
+</tr>
+<tr>
+<td>REDIS_SET</td>
+<td>REDIS_ENCODING_HT</td>
+<td>字典实现</td>
+</tr>
+<tr>
+<td>REDIS_ZSET</td>
+<td>REDIS_ENCODING_ZIPLIST</td>
+<td>压缩表实现</td>
+</tr>
+<tr>
+<td>REDIS_ZSET</td>
+<td>REDIS_ENCODING_SKIPLIST</td>
+<td>跳跃表和字典实现</td>
+</tr>
+</tbody></table>
+<h3 id="数据结构的转换："><a href="#数据结构的转换：" class="headerlink" title="数据结构的转换："></a>数据结构的转换：</h3><table>
+<thead>
+<tr>
+<th>类型</th>
+<th>转换规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>REDIS_STRING</td>
+<td>为整数值且可以用long型表示使用int；当保存字符串，且长度小于等于39字节，使用embstr编码；否则使用SDS</td>
+</tr>
+<tr>
+<td>REDIS_LIST</td>
+<td>全是整数或短字符串且元素少使用压缩列表，否则使用链表</td>
+</tr>
+<tr>
+<td>REDIS_HASH</td>
+<td>全是整数或短字符串且元素少使用压缩列表，否则使用字典</td>
+</tr>
+<tr>
+<td>REDIS_SET</td>
+<td>全是整数且元素少使用整数列表，否则使用字典</td>
+</tr>
+<tr>
+<td>REDIS_ZSET</td>
+<td>全是整数或短字符串且元素少使用压缩列表，否则使用跳跃表和字典</td>
+</tr>
+</tbody></table>
+<h3 id="字符串对象"><a href="#字符串对象" class="headerlink" title="字符串对象"></a>字符串对象</h3><p>int embstr raw</p>
+<p>字符串对象是五种类型中，唯一一种会被其他四种对象嵌套的类型。</p>
+<p>embstr编码与raw编码异同：</p>
+<ul>
+<li>两者都使用了redisObject机构和sdsstr结构表示字符串</li>
+<li>但是raw编码会调用两次内存分配函数来分别创建两个结构，而embstr只需一次且分配了连续的内存空间。</li>
+<li>意味着释放内存时，前者也需要释放两次，而后者只需要释放一次。</li>
+<li>embstr是读取连续内存空间的数据，因此读取速度更快</li>
+<li>embstr是只读的，而raw可读写。embstr是专门用于保存短字符串的一种优化编码方式。embstr无法修改的只读对象。若要对其进行修改，会将embstr先转为raw对象，再执行修改命令</li>
+</ul>
+<p>常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>set</th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>get</td>
+<td></td>
+</tr>
+<tr>
+<td>append</td>
+<td>在值后添加</td>
+</tr>
+<tr>
+<td>strlen</td>
+<td>字符串长度</td>
+</tr>
+</tbody></table>
+<h3 id="列表对象"><a href="#列表对象" class="headerlink" title="列表对象"></a>列表对象</h3><p>ziplist linkedlist</p>
+<p>编码转换：</p>
+<ul>
+<li>字符串元素的长度小于64字节，元素数量小于512个时，使用ziplist</li>
+<li>通过配置文件修改：list-max-ziplist-value、list-max-ziplist-entries</li>
+</ul>
+<p>常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>lpush</th>
+<th>头部添加</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>lpop</td>
+<td>头部删除</td>
+</tr>
+<tr>
+<td>rpush</td>
+<td>尾部添加</td>
+</tr>
+<tr>
+<td>rpop</td>
+<td>尾部删除</td>
+</tr>
+<tr>
+<td>llen</td>
+<td>长度</td>
+</tr>
+<tr>
+<td>lindex</td>
+<td>返回下标的元素</td>
+</tr>
+<tr>
+<td>lset</td>
+<td>更新节点的元素</td>
+</tr>
+<tr>
+<td>lrange key s e</td>
+<td>展示范围内的元素</td>
+</tr>
+</tbody></table>
+<h3 id="哈希对象"><a href="#哈希对象" class="headerlink" title="哈希对象"></a>哈希对象</h3><p>ziplist hashtable</p>
+<p>当使用ziplist保存哈希键值时，将键和值都作为一个entry，然后以键在前值在后的顺序插入压缩表</p>
+<p>编码转换：</p>
+<ul>
+<li>所有键值对的键和值，都是用字符串，且长度小于64字节，键值对数量小于64个时，使用压缩表</li>
+<li>通过配置文件修改：hash-max-ziplist-value、hash-max-ziplist-entries</li>
+</ul>
+<p>常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>hset</th>
+<th>添加键值对</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>hget</td>
+<td>获取键的值</td>
+</tr>
+<tr>
+<td>hdel</td>
+<td>删除键对应的键值对</td>
+</tr>
+<tr>
+<td>hlen</td>
+<td>长度</td>
+</tr>
+<tr>
+<td>hgetall</td>
+<td>获取所有键值对</td>
+</tr>
+</tbody></table>
+<h3 id="集合对象"><a href="#集合对象" class="headerlink" title="集合对象"></a>集合对象</h3><p>intset hashtable</p>
+<p>使用hashtable时，字典的每个键都是一个字符串对象，值则全是NULL。</p>
+<p>编码转换：</p>
+<ul>
+<li>集合对象保存的元素都是用整数值，且元素数量不超过512个时，使用intset</li>
+<li>通过配置文件修改：set-max-intset-entries</li>
+</ul>
+<p>常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>sadd</th>
+<th>添加元素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>scard</td>
+<td>集合元素的数量</td>
+</tr>
+<tr>
+<td>sismember</td>
+<td>指定元素是否存在</td>
+</tr>
+<tr>
+<td>smembers</td>
+<td>获取所有元素</td>
+</tr>
+<tr>
+<td>spop</td>
+<td>随机删除一个元素并返回，在返回给客户端值后才会正真删除</td>
+</tr>
+</tbody></table>
+<h3 id="有序集合对象"><a href="#有序集合对象" class="headerlink" title="有序集合对象"></a>有序集合对象</h3><p>ziplist skiplist&amp;hashtable</p>
+<p>压缩表的表现形式：</p>
+<ul>
+<li>使用压缩表时，元素按分值从小到大进行排序，分值小的靠近表头，分值大的靠近表尾。</li>
+<li>压缩表中，每个元素用两个连续的entry表示，第一个保存元素，第二个保存元素的分值。</li>
+</ul>
+<p>跳跃表和哈希表的表现形式：</p>
+<p>skiplist编码的有序集合对象使用zset结构作为底层实现，其同时包含一个字典和一个跳跃表：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">zset</span>&#123;</span></span><br><span class="line">  zskiplist *zsl; <span class="comment">// 跳跃表</span></span><br><span class="line">  dict *dict; <span class="comment">// 字典</span></span><br><span class="line">&#125;zset;</span><br></pre></td></tr></table></figure>
+
+<p>虽然zset同时使用字典和跳跃表保存有序集合，但这两种结构都通过指针来共享相同元素的成员和分值，因此不会造成浪费额外的内存。</p>
+<p>编码转换：</p>
+<ul>
+<li>有序集合对象保存的元素长度都小于64字节，且元素数量小于128个时，使用ziplist</li>
+<li>通过配置文件修改：zset-max-ziplist-value、zset-max-ziplist-entries</li>
+</ul>
+<p>常用命令：</p>
+<table>
+<thead>
+<tr>
+<th>zadd</th>
+<th>添加元素</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>zrem</td>
+<td>删除元素中的指定成员</td>
+</tr>
+<tr>
+<td>zcard</td>
+<td>集合元素的数量</td>
+</tr>
+<tr>
+<td>zcount</td>
+<td>分值在给定范围内的元素数量</td>
+</tr>
+<tr>
+<td>zrange</td>
+<td>返回给定索引范围的所有元素</td>
+</tr>
+<tr>
+<td>zrank</td>
+<td>元素的排名（相当于index+1）</td>
+</tr>
+<tr>
+<td>zscore</td>
+<td>给定元素的分值</td>
+</tr>
+</tbody></table>
+<h3 id="内存回收"><a href="#内存回收" class="headerlink" title="内存回收"></a>内存回收</h3><p>描述：</p>
+<p>C语言并不具备自动内存回收的功能，Redis构建了一个引用计数（reference counting）计数实现的内存回收机制。</p>
+<p>对于一个对象而言，它的生命周期为创建对象、操作对象、释放对象三个阶段。</p>
+<p>引用计数：</p>
+<p>程序通过跟踪对象的引用计数信息，在适当的时候自动释放对象并进行内存回收。</p>
+<p>引用计数在对象系统中的属性为：refcount</p>
+<p>refcount的状态变化：</p>
+<ul>
+<li>创建新对象时，对象的refcount值初始化为1</li>
+<li>对象被新程序使用时，refcount++</li>
+<li>新程序使用结束时，refcount–</li>
+<li>当对象的引用计数为0时，对象占用的内存会被释放</li>
+</ul>
+<h3 id="对象共享"><a href="#对象共享" class="headerlink" title="对象共享"></a>对象共享</h3><p>描述：</p>
+<p>对象的共享也是通过上述的refcount实现的。</p>
+<p>哪些对象会被共享：</p>
+<ul>
+<li>Redis只对包含整数值的字符串对象进行共享。</li>
+<li>Redis初始化服务器时，创建0-9999的字符串对象，用以实现这些整数值的共享</li>
+<li>Redis不共享包含字符串的对象，那有会增加判断的复杂度，从而影响内存性能</li>
+</ul>
+<p>共享的实现：</p>
+<ol>
+<li>将数据库键的值指针指向一个现有的值对象；</li>
+<li>将被共享的值对象的引用计数加一</li>
+</ol>
+<h3 id="对象的空转时长"><a href="#对象的空转时长" class="headerlink" title="对象的空转时长"></a>对象的空转时长</h3><p>描述：</p>
+<p>lru属性，记录对象最后一次被访问的时间。</p>
+<p>作用：</p>
+<p>当服务器打开了maxmemory选项时，且回收内存的算法为volatile-lru或者allkeys-lru，那么当服务器占用的内存数超过了maxmemory设置的上限值时，空转时长较高的那部分键会优先被服务器释放，从而回收内存。</p>
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://redis.io/documentation">Redis Documentation</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Redis">Redis维基百科</a></p>
+<p>[Redis设计与实现-黄健宏]</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/22/2021-05-28-redis-data-structure/" data-id="ckxh8313c00005cv1c2f81tmp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-05-22-Functional-Programming" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/22/2021-05-22-Functional-Programming/" class="article-date">
+  <time datetime="2021-12-22T07:32:13.047Z" itemprop="datePublished">2021-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/22/2021-05-22-Functional-Programming/">函数式编程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>导读：函数式编程，或称函数程序设计、泛函编程，是一种编程范式，它将电脑运算视为函数运算，并且避免使用程序状态以及易变对象。其中，λ演算为该语言最重要的基础。</p>
+<hr>
+<h2 id="函数式编程：Functional-programming"><a href="#函数式编程：Functional-programming" class="headerlink" title="函数式编程：Functional programming"></a>函数式编程：Functional programming</h2><h3 id="函数式编程的一些基本概念"><a href="#函数式编程的一些基本概念" class="headerlink" title="函数式编程的一些基本概念"></a>函数式编程的一些基本概念</h3><p>函数式编程，又称函数程序设计、泛函编程，是一种编程范式。</p>
+<p><br><br></p>
+<h4 id="函数式编程的定义："><a href="#函数式编程的定义：" class="headerlink" title="函数式编程的定义："></a>函数式编程的定义：</h4><p>简单来说：函数式编程就是将计算机的程序运算比作数学中的函数运算，函数运算的最终结果只能取决于输入值。当使用相同参数调用函数时，它将始终返回相同的结果。</p>
+<p>规范来说：函数式编程有时被视为纯函数式编程的同义词，是将所有函数视为确定性数学函数或纯函数的函数式编程的一个子集。当使用一些给定参数调用纯函数时，它将始终返回相同的结果，并且不受任何可变状态或其他副作用(<strong>side effect</strong>)的影响。</p>
+<p><br><br></p>
+<h4 id="程序的副作用："><a href="#程序的副作用：" class="headerlink" title="程序的副作用："></a>程序的副作用：</h4><p>定义：如果一次操作、一个方法或一个表达式在其本地环境之外修改了一些变量的状态，那么就可以认为程序产生了副作用。</p>
+<p>副作用包括修改非局部变量、修改静态局部变量、修改通过引用传递的可变参数、执行I/O或调用其他副作用函数。</p>
+<p><strong>副作用的表现</strong>：</p>
+<ul>
+<li>在方法变更一个状态后将其从新变更为新的状态</li>
+<li>在方法执行期间变更本地（非当前方法的局部变量）或全局的变量</li>
+<li>方法执行未返回前的一次数据库保存操作</li>
+<li>在方法中打印的日志</li>
+<li>在方法中执行I/O操作</li>
+</ul>
+<br>
+
+<h4 id="函数编程与数学函数："><a href="#函数编程与数学函数：" class="headerlink" title="函数编程与数学函数："></a>函数编程与数学函数：</h4><p>数学中的函数：将函数输入和输出相关联的表达式，函数的输出值始终依赖于函数的输入值。此外，多个函数可以组合成一个新的函数形式。</p>
+<p>类似如下例子。表达式：y=x^2 - 1，输入：x=5，输出：y=24，且当x=5时，输出始终为24；</p>
+<p>那么函数式编程也是类似的，有表达式：函数体（代码块），输入：方法参数，输出：返回值。</p>
+<br>
+
+<h4 id="设计函数式编程应该遵循的原则："><a href="#设计函数式编程应该遵循的原则：" class="headerlink" title="设计函数式编程应该遵循的原则："></a>设计函数式编程应该遵循的原则：</h4><ul>
+<li>First-Class and Higher-Order Functions</li>
+<li>纯函数</li>
+<li>不变性</li>
+<li>引用透明</li>
+</ul>
+<p>当然以上原则并不需要完全遵循，只是作为更为完美的函数设计的参考。下面将对上述的原则一一解释</p>
+<p>⭐<strong>First-Class and Higher-Order Functions</strong></p>
+<p><em><strong>First-Class Function</strong></em>：一等函数，即在一门编程语言中，函数与变量并没有实质区别，函数也可以同普通变量一样，作为参数传递给其他函数，或将它们作为其他函数的值返回，并将它们分配给变量或将它们存储在数据结构中。这就意味着，函数名称与普通变量一样，其将被定义为函数类型 + 函数名称，如同 int a一样，只是这里的函数名称实际是由代码块组成的函数运算块。</p>
+<p><em><strong>Higher-Order Function</strong></em>：高阶函数有两以下两个特征：</p>
+<ol>
+<li>将一个或多个函数作为参数</li>
+<li>将函数作为结果返回</li>
+</ol>
+<p><em><strong>一等函数和高阶函数的区别</strong></em>：</p>
+<ol>
+<li>一等函数针对编程语言：当某种语言具有一等函数特性时，那么该语言将会把函数视为普通变量。更常见的说法是“一种语言是否支持一等函数”。</li>
+<li>高阶函数针对函数：高阶函数是对其他函数起作用的函数，当一个函数有N个函数作为参数或将函数作为返回值，那么该函数就是一个高阶函数。</li>
+<li>这两件事密切相关，因为很难想象一种具有一流函数的语言不支持高阶函数，相反，很难想象具有高阶函数但没有一流函数支持的语言。</li>
+</ol>
+<p>⭐<strong>纯函数</strong>（Pure Functions）：即是没有副作用的函数。</p>
+<p>⭐<strong>不变性</strong>（Immutability）：即一个对象被实例化后，其属性不能够被改变。这是语言级别的设计支持的。在 Java 中，我们必须自己创建不可变的数据结构（正如String、基本类型、math类一样）。<a target="_blank" rel="noopener" href="https://www.baeldung.com/immutables">Immutables</a>和<a target="_blank" rel="noopener" href="https://www.baeldung.com/intro-to-project-lombok">Project Lombok</a>提供了现成的框架，用于在 Java 中定义不可变数据结构。</p>
+<p>⭐<strong>引用透明</strong>（Referential Transparency）：如果将表达式替换为其相应的值，且没有对程序的行为造成影响时，那么该表达式就是引用透明的。换句话说，引用透明的表达式没有副作用且具有不变性。</p>
+<p>下面是baeldung的一个例子：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleData</span> </span>&#123;</span><br><span class="line">  <span class="keyword">private</span> Logger logger = Logger.getGlobal();</span><br><span class="line">  <span class="keyword">private</span> String data;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> String <span class="title">getData</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    logger.log(Level.INFO, <span class="string">&quot;Get data called for SimpleData&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> data;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">public</span> SimpleData <span class="title">setData</span><span class="params">(String data)</span> </span>&#123;</span><br><span class="line">    logger.log(Level.INFO, <span class="string">&quot;Set data called for SimpleData&quot;</span>);</span><br><span class="line">    <span class="keyword">this</span>.data = data;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对logger的三个调用在语义上是等效的，但在引用上并不透明</span></span><br><span class="line">String data = <span class="keyword">new</span> SimpleData().setData(<span class="string">&quot;Baeldung&quot;</span>).getData();</span><br><span class="line"><span class="comment">// 不是引用透明的，因为它会产生副作用，其将会打印一条日志。如果我们像第三次调用一样用它的值替换这个调用，我们将不会打印该日志。</span></span><br><span class="line">logger.log(Level.INFO, <span class="keyword">new</span> SimpleData().setData(<span class="string">&quot;Baeldung&quot;</span>).getData());</span><br><span class="line"><span class="comment">// 不是引用透明的，因为SimpleData是可变的。</span></span><br><span class="line">logger.log(Level.INFO, data);</span><br><span class="line">logger.log(Level.INFO, <span class="string">&quot;Baeldung&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<p><br><br></p>
+<h4 id="函数式编程的作用："><a href="#函数式编程的作用：" class="headerlink" title="函数式编程的作用："></a>函数式编程的作用：</h4><p>采用函数式编程的最大优势是纯函数和不可变状态。大多数编程的挑战的根源在于副作用和可变状态。去掉它们会使我们的程序更易于阅读、推理、测试和维护。</p>
+<p><br><br><br></p>
+<hr>
+<h3 id="函数式接口"><a href="#函数式接口" class="headerlink" title="函数式接口"></a>函数式接口</h3><h4 id="说明："><a href="#说明：" class="headerlink" title="说明："></a>说明：</h4><p>函数式接口实际上只是函数式编程的定义，它将作为方法参数，被传给其他方法，而实现这些接口的方法一般被表现为lambda表达式（当然你也可以用一般接口的形式来实现函数式接口，也可以通过匿名内部类来实现，但lambda表达式实际上就是为了简化上述情况而产生的）。</p>
+<p><br><br></p>
+<h4 id="函数式接口的定义："><a href="#函数式接口的定义：" class="headerlink" title="函数式接口的定义："></a>函数式接口的定义：</h4><p>要定义一个函数式接口，需要满足以下两种情况</p>
+<ol>
+<li>使用@FunctionalInterface注解，标注接口为函数式接口</li>
+<li>接口内部必须只有一个或以下的普通接口方法。但可以有任意数量的接口默认方法和接口静态方法，这些都不影响函数式接口的定义。</li>
+</ol>
+<p><br><br></p>
+<h4 id="JDK中的函数式接口："><a href="#JDK中的函数式接口：" class="headerlink" title="JDK中的函数式接口："></a>JDK中的函数式接口：</h4><p><strong>Function</strong>：接受一个参数，并返回一个结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Function</span>&lt;<span class="title">T</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 接受一个参数，并返回一个结果</span></span><br><span class="line">    <span class="function">R <span class="title">apply</span><span class="params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// apply方法的组合实现 表示before.apply(v)的函数输出值r将作为this.apply(r)的输入值</span></span><br><span class="line">    <span class="keyword">default</span> &lt;V&gt; <span class="function">Function&lt;V, R&gt; <span class="title">compose</span><span class="params">(Function&lt;? <span class="keyword">super</span> V, ? extends T&gt; before)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(before);</span><br><span class="line">        <span class="keyword">return</span> (V v) -&gt; apply(before.apply(v));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// apply方法的组合实现 表示this.apply(t)的函数输出值r将作为after.apply(r)的输入值</span></span><br><span class="line">    <span class="keyword">default</span> &lt;V&gt; <span class="function">Function&lt;T, V&gt; <span class="title">andThen</span><span class="params">(Function&lt;? <span class="keyword">super</span> R, ? extends V&gt; after)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(after);</span><br><span class="line">        <span class="keyword">return</span> (T t) -&gt; after.apply(apply(t));</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 函数将永远将输入参数作为输出参数</span></span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; <span class="function">Function&lt;T, T&gt; <span class="title">identity</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> t -&gt; t;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>Predicate</strong>：接受一个参数，返回Boolean</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Predicate</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 接受一个参数，返回Boolean</span></span><br><span class="line">    <span class="function"><span class="keyword">boolean</span> <span class="title">test</span><span class="params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 表示两个Predicate的与判断 this.test(t) and a.test(t)</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Predicate&lt;T&gt; <span class="title">and</span><span class="params">(Predicate&lt;? <span class="keyword">super</span> T&gt; other)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) &amp;&amp; other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 表示非Predicate的判断 !this.test(t)</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Predicate&lt;T&gt; <span class="title">negate</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; !test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 表示两个Predicate的或判断 this.test(t) or a.test(t)</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Predicate&lt;T&gt; <span class="title">or</span><span class="params">(Predicate&lt;? <span class="keyword">super</span> T&gt; other)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(other);</span><br><span class="line">        <span class="keyword">return</span> (t) -&gt; test(t) || other.test(t);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> &lt;T&gt; <span class="function">Predicate&lt;T&gt; <span class="title">isEqual</span><span class="params">(Object targetRef)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (<span class="keyword">null</span> == targetRef)</span><br><span class="line">                ? Objects::isNull</span><br><span class="line">                : object -&gt; targetRef.equals(object);</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+
+
+<br>
+
+
+<p><strong>Supplier</strong>：无参返回一个结果。该函数可以接受无参构造方法、无参方法来返回一个结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Supplier</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 无参返回一个结果</span></span><br><span class="line">    <span class="function">T <span class="title">get</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p><strong>Consumer</strong>：接受一个参数，并处理，无返回结果</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@FunctionalInterface</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Consumer</span>&lt;<span class="title">T</span>&gt; </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 接受一个参数，并处理，无返回结果</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">accept</span><span class="params">(T t)</span></span>;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 组合操作 表示消费的先后顺序，当前实例消费完成后，after才开始消费</span></span><br><span class="line">    <span class="function"><span class="keyword">default</span> Consumer&lt;T&gt; <span class="title">andThen</span><span class="params">(Consumer&lt;? <span class="keyword">super</span> T&gt; after)</span> </span>&#123;</span><br><span class="line">        Objects.requireNonNull(after);</span><br><span class="line">        <span class="keyword">return</span> (T t) -&gt; &#123; accept(t); after.accept(t); &#125;;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p><br><br></p>
+<h4 id="实例："><a href="#实例：" class="headerlink" title="实例："></a>实例：</h4><p>使用上面的函数接口实现简单的判断和输出功能：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FITest</span>&lt;<span class="title">T</span>, <span class="title">R</span>&gt; </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 判断输入的密码是否正确 正确时计算并返回结果</span></span><br><span class="line">        FITest&lt;String, String&gt; fiTest = <span class="keyword">new</span> FITest&lt;&gt;();</span><br><span class="line">        Scanner sc = <span class="keyword">new</span> Scanner(System.in);</span><br><span class="line">        System.out.print(<span class="string">&quot;请输入密码： &quot;</span>);</span><br><span class="line">        String key = sc.next();</span><br><span class="line">        String result = fiTest.getIfTrue(key, <span class="comment">// 输入数据</span></span><br><span class="line">                k1 -&gt; k1 + <span class="string">&quot; Is Right KEY! &quot;</span>, <span class="comment">// Predicate判断为真时的回调方法</span></span><br><span class="line">                k2 -&gt; k2.equals(<span class="string">&quot;KEY&quot;</span>) <span class="comment">// 判断条件</span></span><br><span class="line">        );</span><br><span class="line">        System.out.println(result);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">// 判断正确时打印输出</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> R <span class="title">getIfTrue</span><span class="params">(T t, Function&lt;T, R&gt; function, Predicate&lt;T&gt; predicate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (!predicate.test(t)) &#123;</span><br><span class="line">            System.err.println(<span class="string">&quot;密码错误！&quot;</span>);</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">null</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> function.apply(t);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 输入输出结果</span></span><br><span class="line">请输入密码： NKEY</span><br><span class="line"><span class="keyword">null</span></span><br><span class="line">密码错误！</span><br><span class="line">----------------------</span><br><span class="line">请输入密码： KEY</span><br><span class="line">KEY Is Right KEY! </span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<p><br><br><br></p>
+<hr>
+<h3 id="Lambda表达式：Lambda-Expressions"><a href="#Lambda表达式：Lambda-Expressions" class="headerlink" title="Lambda表达式：Lambda Expressions"></a>Lambda表达式：Lambda Expressions</h3><h4 id="概念："><a href="#概念：" class="headerlink" title="概念："></a>概念：</h4><p>即是一个<strong>匿名函数</strong>，即没有函数名的函数。Lambda表达式可以让我们不用实现函数式接口，而是通过函数体完成其接口方法。Lambda是实现回调函数（callback function）的一种方式。</p>
+<p><br><br></p>
+<h4 id="结构："><a href="#结构：" class="headerlink" title="结构："></a>结构：</h4><p>（输入 +） 函数体 （+ 输出）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 输入(String a)   </span></span><br><span class="line"><span class="comment">// &quot;-&gt;&quot; 符号后的部分都可以当作函数体 </span></span><br><span class="line"><span class="comment">// 输出一个String类型的变量upper</span></span><br><span class="line">(String a) -&gt; &#123;</span><br><span class="line">    String upper = a.toUpperCase();</span><br><span class="line">    System.out.println(upper);</span><br><span class="line">    <span class="keyword">return</span> upper;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><br><br></p>
+<h4 id="语法规则："><a href="#语法规则：" class="headerlink" title="语法规则："></a>语法规则：</h4><ol>
+<li>声明类型、不声明类型</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">int</span> a, <span class="keyword">int</span> b) -&gt; a + b</span><br><span class="line"></span><br><span class="line">(a, b) -&gt; a - b</span><br><span class="line"></span><br><span class="line"><span class="comment">// 前面两个表达式含义相同，相当于下面的方法</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">sum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a +b;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>注意：单个参数需要声明类型时，必须使用“()”圆括号。<br><br></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 一个入参</span></span><br><span class="line">(List&lt;String&gt; l) -&gt; &#123;</span><br><span class="line">  l.forEach(element -&gt; System.out.println(element));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<br>
+
+
+
+<ol start="2">
+<li>有输入参数、没有输入参数</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">(String a) -&gt; <span class="keyword">new</span> String(a)</span><br><span class="line"><span class="comment">// 需要一个没有内容的括号表示无参</span></span><br><span class="line">() -&gt; <span class="keyword">new</span> String()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 以上相当于一个是有参方法，一个是无参方法</span></span><br><span class="line"><span class="function">String <span class="title">newStr</span><span class="params">(String a)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> String(a);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">String <span class="title">newStr</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> String();</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<ol start="3">
+<li>单条执行语句、多条执行语句</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">() -&gt; <span class="string">&quot;lambda&quot;</span>.toUpperCase()</span><br><span class="line"></span><br><span class="line">() -&gt; &#123;</span><br><span class="line">    <span class="comment">// other statement</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">&quot;lambda&quot;</span>.toUpperCase();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意：单条语句可以省去“{}”</p>
+<br>
+
+<ol start="4">
+<li>带有输出的Lambda表达式、不带有输出</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 有返回值</span></span><br><span class="line">(List&lt;String&gt; list) -&gt; &#123;</span><br><span class="line">    <span class="keyword">return</span> list;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(List&lt;String&gt; list) -&gt; list</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 无返回值</span></span><br><span class="line">(List&lt;String&gt; list) -&gt; &#123;</span><br><span class="line">    list.clear();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">(List&lt;String&gt; list) -&gt; list.clear()</span><br></pre></td></tr></table></figure>
+
+<p>注意：</p>
+<ol>
+<li>当函数体只有一条且为输出语句时，需要确保简写表达式语句有返回值</li>
+<li>当无返回值的表达式只有一条时，需要确保简写表达式不会有返回值</li>
+</ol>
+<p><br><br><br></p>
+<hr>
+<h3 id="方法引用：Method-Reference"><a href="#方法引用：Method-Reference" class="headerlink" title="方法引用：Method Reference"></a>方法引用：Method Reference</h3><h4 id="定义："><a href="#定义：" class="headerlink" title="定义："></a>定义：</h4><p>当使用一个Lambda表达式创建一个匿名函数时，如果该函数什么都不做，仅仅只是调用一个现有的方法时，就可以使用方法的名字来代表该方法的调用。</p>
+<br>
+
+<p>方法引用即是用现有方法的名字，来紧凑的表达一个易于阅读的Lambda表达式。</p>
+<br>
+
+<p>方法引用使用两个冒号 <strong>::</strong> 表示</p>
+<p><br><br></p>
+<h4 id="方法引用种类："><a href="#方法引用种类：" class="headerlink" title="方法引用种类："></a>方法引用种类：</h4><table>
+<thead>
+<tr>
+<th>种类</th>
+<th>句法</th>
+<th>例子</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>引用静态方法</td>
+<td>ContainingClass::staticMethodName</td>
+<td>Person::compareByAgeMethodReferencesExamples::appendStrings</td>
+</tr>
+<tr>
+<td>引用类的实例对象的方法</td>
+<td>containingObject::instanceMethodName</td>
+<td>myComparisonProvider::compareByNamemyApp::appendStrings2</td>
+</tr>
+<tr>
+<td>引用特殊类型的任意对象的实例方法</td>
+<td>ContainingType::methodName</td>
+<td>String::compareToIgnoreCaseString::concat</td>
+</tr>
+<tr>
+<td>引用构造函数</td>
+<td>ClassName::new</td>
+<td>HashSet::new</td>
+</tr>
+</tbody></table>
+<br>
+下面的代码是Oracle文档的一段代码实例：
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.function.BiFunction;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodReferencesExamples</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> &lt;T&gt; <span class="function">T <span class="title">mergeThings</span><span class="params">(T a, T b, BiFunction&lt;T, T, T&gt; merger)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> merger.apply(a, b);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> String <span class="title">appendStrings</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">appendStrings2</span><span class="params">(String a, String b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        </span><br><span class="line">        MethodReferencesExamples myApp = <span class="keyword">new</span> MethodReferencesExamples();</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Calling the method mergeThings with a lambda expression</span></span><br><span class="line">        System.out.println(MethodReferencesExamples.</span><br><span class="line">            mergeThings(<span class="string">&quot;Hello &quot;</span>, <span class="string">&quot;World!&quot;</span>, (a, b) -&gt; a + b));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Reference to a static method</span></span><br><span class="line">        System.out.println(MethodReferencesExamples.</span><br><span class="line">            mergeThings(<span class="string">&quot;Hello &quot;</span>, <span class="string">&quot;World!&quot;</span>, MethodReferencesExamples::appendStrings));</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">        <span class="comment">// Reference to an instance method of a particular object        </span></span><br><span class="line">        System.out.println(MethodReferencesExamples.</span><br><span class="line">            mergeThings(<span class="string">&quot;Hello &quot;</span>, <span class="string">&quot;World!&quot;</span>, myApp::appendStrings2));</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// Reference to an instance method of an arbitrary object of a</span></span><br><span class="line">        <span class="comment">// particular type</span></span><br><span class="line">        System.out.println(MethodReferencesExamples.</span><br><span class="line">            mergeThings(<span class="string">&quot;Hello &quot;</span>, <span class="string">&quot;World!&quot;</span>, String::concat));</span><br><span class="line">   </span><br></pre></td></tr></table></figure>
+
+<p><br><br></p>
+<p><strong>结语</strong>：花费了大概一周的空闲时间，终于对函数式编程有了初步的了解，接下来，将会继续学习函数式编程在Java中的实际应用：Stream流式操作。也希望能在实际的编码中能写出优美、可读性强且可维护性高的函数式编程语句，加油！</p>
+<p>当然，如果文中有错误，也希望能即时提醒。</p>
+<p><br><br></p>
+<hr>
+<h3 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h3><p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html">Lambda Expressions</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.baeldung.com/java-functional-programming">Functional Programming in Java</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Functional_programming">Functional programming</a><br><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/java/javaOO/methodreferences.html">Method References</a></p>
+<p><a target="_blank" rel="noopener" href="https://stackoverflow.com/questions/10141124/any-difference-between-first-class-function-and-high-order-function">Any difference between First Class Function and High Order Function</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_30849591/article/details/95599961">first-class functions：函数是一等公民</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Higher-order_function">Higher-order_function</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/First-class_function">First-class_function</a></p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Side_effect_(computer_science)">Side effect</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/22/2021-05-22-Functional-Programming/" data-id="ckxh8313m00055cv1ezjhe91b" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Stream/" rel="tag">Stream</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/functional-programming/" rel="tag">functional programming</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-2021-05-21-JAVA-reflection" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/22/2021-05-21-JAVA-reflection/" class="article-date">
+  <time datetime="2021-12-22T07:32:13.033Z" itemprop="datePublished">2021-12-22</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Java/">Java</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/22/2021-05-21-JAVA-reflection/">java反射机制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。反射是一种强大的技术，可以使应用程序执行原本不可能的操作。</p>
+<hr>
+<h1 id="java反射机制"><a href="#java反射机制" class="headerlink" title="java反射机制"></a>java反射机制</h1><h2 id="反射原理："><a href="#反射原理：" class="headerlink" title="反射原理："></a>反射原理：</h2><p>java在编译之后，会将Java代码生成为class源文件，JVM启动时，将会载入所有的源文件，并将<strong>类型信息</strong>存放到<strong>方法区</strong>中，将所有<strong>对象实例</strong>存放在<strong>Java堆</strong>中。</p>
+<ul>
+<li>对于获取或创建新的类型实例：反射是在运行时，通过读取方法区中的字节码，来动态的找到其反射的类或类的方法和属性等（实际上就是在运行时，根据全类型名在方法区找对应的类），以实现类型的检查或创建该类的实例对象。</li>
+<li>对于修改或获取存在的实例对象：一般来说，我们不通过反射构建的实例对象，通过编译器后都能预先的知道该实例对象有哪些属性和方法，从而可以直接获取或调用方法或属性。<br>  而反射则不同，由于是运行时进行操作，它没法知道反射的这个实例对象有哪些属性和方法，因此需要先获取该对象的类型信息，从而通过该类型信息的属性或方法来修改实例对象。</li>
+</ul>
+<h2 id="反射的用途："><a href="#反射的用途：" class="headerlink" title="反射的用途："></a>反射的用途：</h2><p>反射功能通常用于检查或修改java虚拟机运行中（runtime）的应用程序的行为。反射是一种强大的技术，可以运行原本不可能的操作。</p>
+<ul>
+<li>在运行中分析类的能力，可以通过完全限定类名创建类的对象实例。</li>
+<li>在运行中查看和操作对象，可以遍历类的成员变量。</li>
+<li>反射允许代码执行非反射代码中非法的操作，可以检索和访问类的私有成员变量，包括私有属性、方法等。</li>
+</ul>
+<p>注意：要有选择的使用反射功能，如果可以直接执行操作，那么最好不要使用反射。</p>
+<h2 id="反射的缺点："><a href="#反射的缺点：" class="headerlink" title="反射的缺点："></a>反射的缺点：</h2><ul>
+<li>额外的性能开销（<strong>Performance Overhead</strong>）：由于反射涉及动态类型的解析，它无法执行某些java虚拟机优化，因此反射操作的性能通常要比非反射操作慢。</li>
+<li>安全限制（<strong>Security Restrictions</strong>）：反射需要运行时操作权限，此操作可能在一些安全管理器下不被允许。</li>
+<li>内部泄露（<strong>Exposure of Internals</strong>）：由于反射允许代码执行非反射代码中非法的操作（例如访问私有字段和方法），因此使用反射可能会导致意外的副作用，这可能会使代码无法正常工作并可能破坏可移植性。反射性代码破坏了抽象，因此可能会随着平台的升级而改变行为。</li>
+</ul>
+<h2 id="获取对象类的方式"><a href="#获取对象类的方式" class="headerlink" title="获取对象类的方式:"></a>获取对象类的方式:</h2><ol>
+<li>**Object.getClass()**。从一个实例对象中获取它的类。这仅适用于继承自Object的引用类型（当然java的类默认继承于Object）。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Map&lt;String, String&gt; hashMap = <span class="keyword">new</span> HashMap&lt;&gt;();</span><br><span class="line">Class&lt;? extends Map&gt; aClass = hashMap.getClass();</span><br><span class="line">String text = <span class="string">&quot;text&quot;</span>;</span><br><span class="line">Class&lt;? extends String&gt; aClass1 = text.getClass();</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Object类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">native</span> Class&lt;?&gt; getClass();</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="2">
+<li><strong>XXX.class</strong>。直接从未实例化的类获取类。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;Integer&gt; integerClass = <span class="keyword">int</span>.class;</span><br><span class="line">Class&lt;HashMap&gt; hashMapClass = HashMap.class;</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="3">
+<li>**Class.forName()**。通过完全限定类名获取类。即包名加类名（java.util.HashMap）。否则会报找不到类错误。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;HashMap&gt; hashMapClass = Class.forName(<span class="string">&quot;java.util.HashMap&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// class类</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> Class&lt;?&gt; forName(String className)</span><br><span class="line">            <span class="keyword">throws</span> ClassNotFoundException &#123;</span><br><span class="line">    Class&lt;?&gt; caller = Reflection.getCallerClass();</span><br><span class="line">    <span class="keyword">return</span> forName0(className, <span class="keyword">true</span>, ClassLoader.getClassLoader(caller), caller);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="4">
+<li><strong>Integer.TYPE</strong>。基本类型的包装类通过TYPE获取类。都是java早期版本的产物，已过时。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Integer</span></span><br><span class="line"><span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Class&lt;Integer&gt;  TYPE = (Class&lt;Integer&gt;) Class.getPrimitiveClass(<span class="string">&quot;int&quot;</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Double</span></span><br><span class="line"><span class="meta">@SuppressWarnings(&quot;unchecked&quot;)</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> Class&lt;Double&gt;   TYPE = (Class&lt;Double&gt;) Class.getPrimitiveClass(<span class="string">&quot;double&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+
+
+<ol start="5">
+<li>通过反射类ClassAPI获取类。注意，只有在已经直接或间接获得一个类的情况下，才可以访问这些API。</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  Class&lt;?&gt; className = Class.forName(<span class="string">&quot;java.lang.String&quot;</span>);</span><br><span class="line">  <span class="comment">// 获取父类</span></span><br><span class="line">  Class&lt;?&gt; superclass = className.getSuperclass();</span><br><span class="line">  <span class="comment">// 返回调用类的成员变量，包括所有公共的类、接口和枚举</span></span><br><span class="line">  Class&lt;?&gt;[] classes = className.getClasses();</span><br><span class="line">  <span class="comment">// 返回调用类的依赖，包括所有类、接口和显式声明的枚举</span></span><br><span class="line">  Class&lt;?&gt;[] declaredClasses = className.getDeclaredClasses();</span><br><span class="line">&#125; <span class="keyword">catch</span> (ClassNotFoundException e) &#123;</span><br><span class="line">  e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="获取类的成员变量："><a href="#获取类的成员变量：" class="headerlink" title="获取类的成员变量："></a>获取类的成员变量：</h2><p>获取字段：</p>
+<table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html">Class</a> API</th>
+<th>是否是列表</th>
+<th>是否获取父类属性</th>
+<th>能否能获取私有字段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredField-java.lang.String-">getDeclaredField()</a></td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getField-java.lang.String-">getField()</a></td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredFields--">getDeclaredFields()</a></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getFields--">getFields()</a></td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+</tbody></table>
+<p>获取方法：</p>
+<table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html">Class</a> API</th>
+<th>List of members?</th>
+<th>Inherited members?</th>
+<th>Private members?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredMethod-java.lang.String-java.lang.Class...-">getDeclaredMethod()</a></td>
+<td>no</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getMethod-java.lang.String-java.lang.Class...-">getMethod()</a></td>
+<td>no</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredMethods--">getDeclaredMethods()</a></td>
+<td>yes</td>
+<td>no</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getMethods--">getMethods()</a></td>
+<td>yes</td>
+<td>yes</td>
+<td>no</td>
+</tr>
+</tbody></table>
+<p>获取构造器：</p>
+<table>
+<thead>
+<tr>
+<th><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html">Class</a> API</th>
+<th>List of members?</th>
+<th>Inherited members?</th>
+<th>Private members?</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredConstructor-java.lang.Class...-">getDeclaredConstructor()</a></td>
+<td>no</td>
+<td>N/A1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getConstructor-java.lang.Class...-">getConstructor()</a></td>
+<td>no</td>
+<td>N/A1</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getDeclaredConstructors--">getDeclaredConstructors()</a></td>
+<td>yes</td>
+<td>N/A1</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/8/docs/api/java/lang/Class.html#getConstructors--">getConstructors()</a></td>
+<td>yes</td>
+<td>N/A1</td>
+<td>no</td>
+</tr>
+</tbody></table>
+<h2 id="java-lang-reflect-Field"><a href="#java-lang-reflect-Field" class="headerlink" title="java.lang.reflect.Field"></a>java.lang.reflect.Field</h2><p>Field字段具有类型和值。Field提供访问属性对象类型信息的方法；以及获取和设置字段值的方法。</p>
+<p><strong>获取字段类型：</strong></p>
+<p>字段可以是原始类型或引用类型。</p>
+<p>有八种基本类型：boolean，byte，short，int，long，char，float，和double。</p>
+<p>引用类型是java.lang.Object类的直接或间接子类，包含接口，数组和枚举类型等 。</p>
+<p><strong>获取字段修饰符：</strong></p>
+<ul>
+<li>访问修饰符：public，protected，和private</li>
+<li>仅用于字段的控制运行时行为的修饰符：transient和volatile</li>
+<li>限制单实例的修饰符： static</li>
+<li>禁止值修改的修饰符： final</li>
+<li>注解</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Class&lt;?&gt; className = Class.forName(<span class="string">&quot;java.util.HashMap&quot;</span>);</span><br><span class="line">Field table = className.getDeclaredField(<span class="string">&quot;table&quot;</span>);</span><br><span class="line"><span class="comment">// 获取属性的名字</span></span><br><span class="line">String name = table.getName();</span><br><span class="line"><span class="comment">// 获取属性的类型</span></span><br><span class="line">Class&lt;?&gt; type = table.getType();</span><br><span class="line"><span class="comment">// 获取修饰符</span></span><br><span class="line"><span class="keyword">int</span> modifiers = table.getModifiers();</span><br><span class="line">System.out.println(Modifier.toString(modifiers));</span><br><span class="line"><span class="comment">// 获取注解</span></span><br><span class="line">Override annotation = table.getDeclaredAnnotation(Override.class);</span><br><span class="line">Annotation[] declaredAnnotations = table.getDeclaredAnnotations();</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>获取和设置字段值：</strong></p>
+<p>给定一个类的实例，可以使用反射来设置该类中字段的值。通常仅在特殊情况下无法以常规方式设置值时才执行此操作。因为这样的访问通常会违反该类的设计意图，所以应绝对谨慎地使用它。</p>
+<p><strong>注意</strong>：通过反射设置字段的值会有一定的性能开销，因为必须进行各种操作，例如验证访问权限。从运行时的角度来看，效果是相同的，并且操作是原子的，就好像直接在类代码中更改了值一样。除此之外，反射会破坏java原本的设定，列如可以重新设置final属性的值等。</p>
+<p><strong>反射修改final修饰的属性值到JVM对String的优化：</strong></p>
+<p>反射功能强大，能修改private以及final修饰的变量。如下代码中，展示了JVM的优化以及反射的一些劣势。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Data</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">FieldReflectDemo</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 引用直接指向常量池中的常量值</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String constantStr = <span class="string">&quot;FinalConstantStringField&quot;</span>;</span><br><span class="line">  <span class="comment">// JVM优化了getter方法，直接将对constantStr引用全部替换成了常量</span></span><br><span class="line"><span class="comment">//  public String getConstantStr() &#123;return &quot;FinalConstantStringField&quot;;&#125;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// 在堆中新建了一个对象</span></span><br><span class="line">  <span class="keyword">private</span> <span class="keyword">final</span> String newStr = <span class="keyword">new</span> String(<span class="string">&quot;FinalNewStringField&quot;</span>);</span><br><span class="line">  </span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">FieldReflectDemo</span><span class="params">()</span></span>&#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    FieldReflectDemo fieldReflectDemo = <span class="keyword">new</span> FieldReflectDemo();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      Class&lt;?&gt; className = fieldReflectDemo.getClass();</span><br><span class="line">      Field constantStr = className.getDeclaredField(<span class="string">&quot;constantStr&quot;</span>);</span><br><span class="line">      Field newStr = className.getDeclaredField(<span class="string">&quot;newStr&quot;</span>);</span><br><span class="line">      <span class="comment">// 获取实例对象的字段值</span></span><br><span class="line">      System.out.println(<span class="string">&quot;constantStr原：&quot;</span> + constantStr.get(fieldReflectDemo));</span><br><span class="line">      System.out.println(<span class="string">&quot;newStr原：&quot;</span> + newStr.get(fieldReflectDemo));</span><br><span class="line">      constantStr.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">      newStr.setAccessible(<span class="keyword">true</span>);</span><br><span class="line">      constantStr.set(fieldReflectDemo, <span class="string">&quot;New Filed Name&quot;</span>);</span><br><span class="line">      newStr.set(fieldReflectDemo, <span class="string">&quot;New Filed Name&quot;</span>);</span><br><span class="line">      System.out.println(<span class="string">&quot;constantStr反射修改：&quot;</span> + constantStr.get(fieldReflectDemo));</span><br><span class="line">      System.out.println(<span class="string">&quot;newStr反射修改：&quot;</span> + newStr.get(fieldReflectDemo));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchFieldException | IllegalAccessException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">    System.out.println(<span class="string">&quot;constantStr实例对象值：&quot;</span> + fieldReflectDemo.getConstantStr());</span><br><span class="line">    System.out.println(<span class="string">&quot;newStr实例对象值：&quot;</span> + fieldReflectDemo.getNewStr());</span><br><span class="line">  &#125;</span><br><span class="line">  </span><br><span class="line">  <span class="comment">/**</span></span><br><span class="line"><span class="comment">   * 输出</span></span><br><span class="line"><span class="comment">   * constantStr原：FinalConstantStringField</span></span><br><span class="line"><span class="comment">   * newStr原：FinalNewStringField</span></span><br><span class="line"><span class="comment">   * constantStr反射修改：New Filed Name</span></span><br><span class="line"><span class="comment">   * newStr反射修改：New Filed Name</span></span><br><span class="line"><span class="comment">   * constantStr实例对象值：FinalConstantStringField</span></span><br><span class="line"><span class="comment">   * newStr实例对象值：New Filed Name</span></span><br><span class="line"><span class="comment">   */</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>因为JVM在编译时期, 就把final类型的<strong>直接赋值的String</strong>进行了优化, 在编译时期就会把String处理成常量。反射成功将其值修改成功了，但是在它的get方法中，返回的不是当前变量，而是返回JVM优化好的一个常量值。</p>
+<h2 id="java-lang-reflect-Method"><a href="#java-lang-reflect-Method" class="headerlink" title="java.lang.reflect.Method"></a>java.lang.reflect.Method</h2><p>Method方法具有参数和返回值，并且方法可能抛出异常。Method提供获取参数信息、返回值的方法；它也可以调用（invoke）给定对象的方法。</p>
+<p><strong>获取方法类型的信息：</strong></p>
+<p>方法声明包含了方法名、修饰符、参数、返回类型以及抛出的多个异常。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">MethodReflectDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="title">MethodReflectDemo</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">getNothing</span><span class="params">(String name)</span> </span>&#123;</span><br><span class="line">  </span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNumByName</span><span class="params">(String name)</span> <span class="keyword">throws</span> NullPointerException </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (StringUtils.isEmpty(name))</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;名字为空&quot;</span>);</span><br><span class="line">  <span class="keyword">return</span> name.length();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    MethodReflectDemo methodReflectDemo = <span class="keyword">new</span> MethodReflectDemo();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      Class&lt;? extends MethodReflectDemo&gt; demoClass = methodReflectDemo.getClass();</span><br><span class="line">      Method method = demoClass.getDeclaredMethod(<span class="string">&quot;getNumByName&quot;</span>, String.class);</span><br><span class="line">      String name = method.getName();</span><br><span class="line">      System.out.println(<span class="string">&quot;方法名：&quot;</span> + name);</span><br><span class="line">      <span class="comment">// 修饰符</span></span><br><span class="line">      <span class="keyword">int</span> modifiers = method.getModifiers();</span><br><span class="line">      System.out.println(<span class="string">&quot;所有修饰符：&quot;</span> + Modifier.toString(modifiers));</span><br><span class="line">      <span class="comment">// 参数</span></span><br><span class="line">      Parameter[] parameters = method.getParameters();</span><br><span class="line">      <span class="comment">// 返回类型</span></span><br><span class="line">      Class&lt;?&gt; returnType = method.getReturnType();</span><br><span class="line">      System.out.println(<span class="string">&quot;返回类型：&quot;</span> + returnType.getTypeName());</span><br><span class="line">      <span class="comment">// 异常</span></span><br><span class="line">      Class&lt;?&gt;[] exceptionTypes = method.getExceptionTypes();</span><br><span class="line">      System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">      <span class="comment">// 实例对象调用方法</span></span><br><span class="line">      Object invoke = method.invoke(methodReflectDemo, <span class="string">&quot;名称&quot;</span>);</span><br><span class="line">      System.out.println(invoke);</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchMethodException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="java-lang-reflect-Constructor"><a href="#java-lang-reflect-Constructor" class="headerlink" title="java.lang.reflect.Constructor"></a>java.lang.reflect.Constructor</h2><p>Constructor与Method相似，但有几点不同：</p>
+<ul>
+<li>构造函数没有返回值</li>
+<li>构造函数无法被实例对象执行，它的调用只能为给定的类创建对象的新实例。</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConstructorReflectDemo</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="title">ConstructorReflectDemo</span><span class="params">()</span> </span>&#123;&#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">getNothing</span><span class="params">(String name)</span> </span>&#123; &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getNumByName</span><span class="params">(String name)</span> <span class="keyword">throws</span> NullPointerException </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (StringUtils.isEmpty(name))</span><br><span class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> NullPointerException(<span class="string">&quot;名字为空&quot;</span>);</span><br><span class="line">    <span class="keyword">return</span> name.length();</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    ConstructorReflectDemo methodReflectDemo = <span class="keyword">new</span> ConstructorReflectDemo();</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      Class&lt;? extends ConstructorReflectDemo&gt; demoClass = methodReflectDemo.getClass();</span><br><span class="line">      Constructor&lt;? extends ConstructorReflectDemo&gt; constructor = demoClass.getConstructor();</span><br><span class="line">      String name = constructor.getName();</span><br><span class="line">      System.out.println(<span class="string">&quot;构造方法名：&quot;</span> + name);</span><br><span class="line">      <span class="comment">// 修饰符</span></span><br><span class="line">      <span class="keyword">int</span> modifiers = constructor.getModifiers();</span><br><span class="line">      System.out.println(<span class="string">&quot;所有修饰符：&quot;</span> + Modifier.toString(modifiers));</span><br><span class="line">      <span class="comment">// 参数</span></span><br><span class="line">      Parameter[] parameters = constructor.getParameters();</span><br><span class="line">      <span class="comment">// 异常</span></span><br><span class="line">      Class&lt;?&gt;[] exceptionTypes = constructor.getExceptionTypes();</span><br><span class="line">      System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">      <span class="comment">// 构造方法无法被调用，只可以创建新实例</span></span><br><span class="line">      ConstructorReflectDemo constructorReflectDemo = constructor.newInstance();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) &#123;</span><br><span class="line">      e.printStackTrace();</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>参考：</p>
+<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/tutorial/reflect/index.html">The Reflection API</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/22/2021-05-21-JAVA-reflection/" data-id="ckxh8313l00045cv1cwwn5ii0" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Reflection/" rel="tag">Reflection</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E5%8F%8D%E5%B0%84/" rel="tag">反射</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2021/12/22/hello-world/" class="article-date">
+  <time datetime="2021-12-22T07:30:00.786Z" itemprop="datePublished">2021-12-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/22/hello-world/">Hello World</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://example.com/2021/12/22/hello-world/" data-id="ckxh8313q000a5cv1bzinaqlf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java/">Java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/java/">java</a></li><li class="category-list-item"><a class="category-list-link" href="/categories/redis/">redis</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Reflection/" rel="tag">Reflection</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Stream/" rel="tag">Stream</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/concurrency/" rel="tag">concurrency</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/functional-programming/" rel="tag">functional programming</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/key-value/" rel="tag">key-value</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/redis/" rel="tag">redis</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/thread-pool/" rel="tag">thread pool</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%8F%8D%E5%B0%84/" rel="tag">反射</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag">数据结构</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Java/" style="font-size: 20px;">Java</a> <a href="/tags/Lambda/" style="font-size: 10px;">Lambda</a> <a href="/tags/Reflection/" style="font-size: 10px;">Reflection</a> <a href="/tags/Stream/" style="font-size: 10px;">Stream</a> <a href="/tags/concurrency/" style="font-size: 20px;">concurrency</a> <a href="/tags/functional-programming/" style="font-size: 10px;">functional programming</a> <a href="/tags/key-value/" style="font-size: 10px;">key-value</a> <a href="/tags/redis/" style="font-size: 20px;">redis</a> <a href="/tags/thread-pool/" style="font-size: 20px;">thread pool</a> <a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 10px;">反射</a> <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" style="font-size: 10px;">数据结构</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2021/12/">十二月 2021</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2021/12/22/2021-08-03-java-concurrency-2/">Java并发： 使用CompletionService来接收线程池计算的结果</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/22/2021-08-03-java-concurrency-1/">Java并发： 多线程的异常捕获</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/22/2021-05-28-redis-key-value/">redis常用键值对解析</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/22/2021-05-28-redis-data-structure/">redis基础知识和底层数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2021/12/22/2021-05-22-Functional-Programming/">函数式编程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2021 Wang Junwei<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
