@@ -1,5 +1,6 @@
 # Docsify
-网站文档生成器。只需要较少的配置就可以实现。
+非常简约的网站文档生成器，只需要较少的配置就可以实现个人博客的搭建。
+由于它是通过加载网页时动态生成，使得它的网页打开速度较慢。
 
 
 
@@ -79,7 +80,8 @@ docsify serve docs
 
 ## 设置封面
 修改index.html文件，添加**coverpage: true**
-到目前为止，<script>脚本内容如下
+
+到目前为止，脚本内容如下
 ```html
   <script>
     window.$docsify = {
@@ -98,4 +100,12 @@ docsify serve docs
 ```
 
 
+
 ---
+# 上传Github
+提交分支，并进行如下设置
+![Github设置](img/upload_to_github.jpg)
+
+
+
+
