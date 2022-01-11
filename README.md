@@ -1,54 +1,101 @@
-# Mediumish - Jekyll Theme
-
-## 分支模板
-master分支为第一个模板
-second第二个模板
-在github项目页面通过以下方式切换博客的模板：
-1. 进入项目目录[vslegend](https://github.com/VsLegend/VsLegend.github.io)
-
-2. 进入Settings
-
-3. 进入Pages
-
-4. 在Source选项下的Branch中选择要应用的模板分支
-
-5. 等待几分钟即可
-
-
-![流程展示!](/assets/images/pageSetting.png "流程展示")
-
-
-## 博客搭建基础信息：
-
-<a href='VsLegend.github.io'>博客地址</a>
-
-<a href='https://www.markdownguide.org/basic-syntax/'>Markdown语法</a>
-
-<br><br>
-
-## 本地调试相关
-首先安装bundler包管理器：gem install bundler
-
-删除项目中的本地文件：Gemfile.lock
-
-执行bundle：bundle install
-
-本地调试命令：bundle exec jekyll serve
+# Docsify
+网站文档生成器。只需要较少的配置就可以实现。
 
 
 
 <br><br>
+---
+# 快速开始
+https://docsify.js.org/#/quickstart
 
-## 字体设置
-- 新细明体：PMingLiU
-- 细明体：MingLiU
-- 标楷体：DFKai-SB
-- 黑体：SimHei
-- 宋体：SimSun
-- 新宋体：NSimSun
-- 仿宋：FangSong
-- 楷体：KaiTi
-- 仿宋_GB2312：FangSong_GB2312
-- 楷体_GB2312：KaiTi_GB2312
-- 微软正黑体：Microsoft JhengHei
-- 微软雅黑体：Microsoft YaHei
+- 安装node.js 执行下面命令
+```yaml
+npm i docsify-cli -g
+```
+
+
+- 跳转指定文件目录
+```yaml
+cd /目录
+```
+
+- 初始化文件
+```yaml
+docsify init ./docs
+```
+
+- 启动本地服务查看页面
+```yaml
+docsify serve docs
+```
+
+<br><br>
+---
+# 个性化设置
+## 添加侧边栏
+修改index.html文件，添加**loadSidebar: true**
+```html
+<script>
+  window.$docsify = {
+    loadSidebar: true
+  }
+</script>
+```
+
+在docs中创建_sidebar.md文件，添加引用就行
+```markdown
+* [Home](/)
+* [READ](java/read.md)
+```
+
+
+## 通过侧边栏设置页面标题
+通过侧边栏可以快速全局的为所有页面设置其页面标题
+```markdown
+* [Home](/ "首页")
+* [READ](java/read.md "快速阅读")
+```
+
+## 侧边栏显示文章的小标题
+修改index.html文件，添加**subMaxLevel: 2**
+```html
+<script>
+  window.$docsify = {
+    loadSidebar: true,
+    subMaxLevel: 2
+  }
+</script>
+```
+
+如果需要在侧边栏屏蔽某个标题，添加如下内容到标题后
+```html
+<!-- {docsify-ignore} -->
+```
+
+或者输入如下内容，在侧边栏屏蔽文章的所有标题
+```html
+<!-- {docsify-ignore-all} -->
+```
+
+## 设置封面
+修改index.html文件，添加**coverpage: true**
+到目前为止，<script>脚本内容如下
+```html
+  <script>
+    window.$docsify = {
+      name: '',
+      repo: '',
+      // 侧边栏
+      loadSidebar: true,
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      },
+      // 侧边栏的映射标题至二级
+      subMaxLevel: 2,
+      coverpage: true
+    }
+  </script>
+```
+
+
+---
