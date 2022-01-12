@@ -4,11 +4,7 @@
 
 # Wang Junwei <small>`s Blog</small>
 
-> A magical documentation site generator.
-
-- Simple and lightweight
-- No statically built html files
-- Multiple themes
+> 开源文档记录
 
 [GitHub](https://github.com/VsLegend/VsLegend.github.io)
 [Get Started](home.md)

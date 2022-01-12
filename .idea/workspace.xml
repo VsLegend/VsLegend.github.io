@@ -19,18 +19,24 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="文字选择颜色修改">
-      <change afterPath="$PROJECT_DIR$/docs/frequent_used/java_linux_win.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/frequent_used/mysql_linux_and_sql.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/java/2021-05-22-Functional-Programming.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/java/concurrency/2021-08-03-java-concurrency-1.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/java/concurrency/2021-08-03-java-concurrency-2.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/redis/2021-05-28-redis-data-structure.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/redis/2021-05-28-redis-key-value.md" afterDir="false" />
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="Docsify 模板上传">
+      <change afterPath="$PROJECT_DIR$/docs/distributed/2PC.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/distributed/BASE.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/distributed/CAP.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/frequent_used/linux_usually_used_cmd.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/frequent_used/mybatis_usually_used_sql.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/frequent_used/mysql_usually_used_sql.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/thread_model.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/java/advanced/Serializable.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/java/advanced/marker_interfaces.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/java/concurrency/concurrency_challenge.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/java/concurrency/thread.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/_coverpage.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_coverpage.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/_sidebar.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_sidebar.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/java/Functional-Programming.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/java/JAVA-reflection.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/java/2021-05-21-JAVA-reflection.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/frequent_used/mysql_linux_and_sql.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/home.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/home.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/img/upload_to_github.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/docs/img/upload_to_github.jpg" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,32 +77,32 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/redis" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/img" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Document\VsLegend.github.io\docs\redis" />
-      <recent name="E:\Document\VsLegend.github.io\docs\java\concurrency" />
-      <recent name="E:\Document\VsLegend.github.io\img" />
-      <recent name="E:\Document\VsLegend.github.io" />
-      <recent name="F:\DATA\project\VsLegend.github.io\assets\images" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Document\VsLegend.github.io\docs\java" />
       <recent name="E:\Document\VsLegend.github.io\docs" />
+      <recent name="E:\Document\VsLegend.github.io\docs\java\advanced" />
+      <recent name="E:\Document\VsLegend.github.io\docs\java" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Document\VsLegend.github.io\img" />
+      <recent name="E:\Document\VsLegend.github.io\docs\java\concurrency" />
+      <recent name="E:\Document\VsLegend.github.io\docs\java\advanced" />
+      <recent name="E:\Document\VsLegend.github.io\docs\distributed" />
+      <recent name="E:\Document\VsLegend.github.io\docs\frequent_used" />
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -120,6 +126,9 @@
       <workItem from="1622020753708" duration="6386000" />
       <workItem from="1641871801655" duration="7541000" />
       <workItem from="1641882203434" duration="5502000" />
+      <workItem from="1641949390759" duration="4693000" />
+      <workItem from="1641964794367" duration="28000" />
+      <workItem from="1641967650965" duration="8817000" />
     </task>
     <task id="LOCAL-00001" summary="设置">
       <created>1621660495622</created>
@@ -254,7 +263,14 @@
       <option name="project" value="LOCAL" />
       <updated>1622031724513</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Docsify 模板上传">
+      <created>1641891105351</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1641891105351</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -308,6 +324,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="239" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1641883153114" />
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1641891106389">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1641891106389" />
     <state x="764" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1641883166408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -316,6 +336,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="720" y="231" key="git4idea.branch.GitSmartOperationDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1641889281932" />
+    <state x="616" y="240" key="run.anything.popup" timestamp="1641978260194">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1641978260194" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1641890545371">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
