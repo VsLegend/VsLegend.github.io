@@ -5,9 +5,20 @@
 * ___
 * [JAVA反射](java/2021-05-21-JAVA-reflection.md "Java reflection")
 * [JAVA函数式编程](java/2021-05-22-Functional-Programming.md "JAVA函数式编程")
-
 * [序列化](java/advanced/Serializable.md "序列化")
 * [接口标记](java/advanced/marker_interfaces.md "接口标记")
+
+
+* ___
+* **Java虚拟机**
+* ___
+* [JVM内存结构](jvm/jvm_memory_structure.md "JVM内存结构")
+* [垃圾回收名词解释](jvm/keywords_explanation.md "垃圾回收名词解释")
+* [哪些内存需要回收](jvm/gc_area.md "哪些内存需要回收")
+* [判断对象是否回收算法](jvm/weather_object_need_gc.md "判断对象是否回收算法")
+* [引用类型](jvm/reference.md "引用类型")
+* [垃圾回收算法](jvm/gc_algorithm.md "垃圾回收算法")
+* [垃圾回收器](jvm/garbage_collector.md "垃圾回收器")
 
 
 * ___

@@ -104,7 +104,7 @@ docsify serve docs
 ---
 # 上传Github
 提交分支，并进行如下设置
-![Github设置](/docs/img/upload_to_github.jpg)
+![Github设置](upload_to_github.jpg)
 
 
 

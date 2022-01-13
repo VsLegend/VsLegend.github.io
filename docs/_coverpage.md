@@ -4,7 +4,7 @@
 
 # Wang Junwei <small>`s Blog</small>
 
-> 开源文档记录
+> 开源文档
 
 [GitHub](https://github.com/VsLegend/VsLegend.github.io)
 [Get Started](home.md)
