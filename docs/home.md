@@ -17,8 +17,9 @@
 * **Java并发**
 * ___
 * [并发挑战](java/concurrency/concurrency_challenge.md "并发挑战")
+* [线程基础](java/concurrency/thread.md "线程基础")
 * [多线程的异常捕获](java/concurrency/2021-08-03-java-concurrency-1.md "多线程的异常捕获")
-* [使用CompletionService来接收线程池计算的结果](java/concurrency/2021-08-03-java-concurrency-2.md "使用CompletionService来接收线程池计算的结果")
+<!-- * [使用CompletionService来接收线程池计算的结果](java/concurrency/2021-08-03-java-concurrency-2.md "使用CompletionService来接收线程池计算的结果") -->
 
 
 * ___

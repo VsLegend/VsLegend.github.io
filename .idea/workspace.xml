@@ -20,23 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="Docsify 模板上传">
-      <change afterPath="$PROJECT_DIR$/docs/distributed/2PC.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/distributed/BASE.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/distributed/CAP.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/frequent_used/linux_usually_used_cmd.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/frequent_used/mybatis_usually_used_sql.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/frequent_used/mysql_usually_used_sql.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/img/thread_model.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/java/advanced/Serializable.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/java/advanced/marker_interfaces.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/java/concurrency/concurrency_challenge.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/java/concurrency/thread.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/_coverpage.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_coverpage.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/_sidebar.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_sidebar.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/frequent_used/mysql_linux_and_sql.md" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/home.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/home.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/img/upload_to_github.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/docs/img/upload_to_github.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/java/concurrency/2021-08-03-java-concurrency-1.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/java/concurrency/2021-08-03-java-concurrency-1.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/java/concurrency/thread.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/java/concurrency/thread.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,13 +85,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -129,6 +120,7 @@
       <workItem from="1641949390759" duration="4693000" />
       <workItem from="1641964794367" duration="28000" />
       <workItem from="1641967650965" duration="8817000" />
+      <workItem from="1642035734452" duration="8017000" />
     </task>
     <task id="LOCAL-00001" summary="设置">
       <created>1621660495622</created>
@@ -340,9 +332,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1641978260194" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1641890545371">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1642039450608">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1641890545371" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1642039450608" />
   </component>
 </project>
