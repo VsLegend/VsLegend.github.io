@@ -19,27 +19,13 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="笔记上传">
-      <change afterPath="$PROJECT_DIR$/docs/img/garbage_collector.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/img/jvm_comfirm_gc.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/img/jvm_memory_structure.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/img/mark_compact.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/img/mark_copying.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/img/mark_sweep.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/jvm/garbage_collector.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/jvm/gc_algorithm.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/jvm/gc_area.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/jvm/jvm_memory_structure.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/jvm/keywords_explanation.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/jvm/reference.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/jvm/weather_object_need_gc.md" afterDir="false" />
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="jvm笔记上传">
+      <change afterPath="$PROJECT_DIR$/docs/docker/basis.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/docker/command.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/docker/container.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/docker/image_operation.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/_coverpage.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_coverpage.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/_sidebar.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_sidebar.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/home.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/home.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/img/upload_to_github.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/upload_to_github.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/java/concurrency/thread.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/java/concurrency/thread.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,13 +87,15 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -135,7 +123,8 @@
       <workItem from="1641964794367" duration="28000" />
       <workItem from="1641967650965" duration="8817000" />
       <workItem from="1642035734452" duration="8093000" />
-      <workItem from="1642052366348" duration="5283000" />
+      <workItem from="1642052366348" duration="5915000" />
+      <workItem from="1642579667298" duration="3019000" />
     </task>
     <task id="LOCAL-00001" summary="设置">
       <created>1621660495622</created>
@@ -284,7 +273,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642052010522</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="jvm笔记上传">
+      <created>1642057709466</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1642057709466</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -316,7 +312,8 @@
     <MESSAGE value="代码块格式设置" />
     <MESSAGE value="Docsify 模板上传" />
     <MESSAGE value="笔记上传" />
-    <option name="LAST_COMMIT_MESSAGE" value="笔记上传" />
+    <MESSAGE value="jvm笔记上传" />
+    <option name="LAST_COMMIT_MESSAGE" value="jvm笔记上传" />
   </component>
   <component name="WindowStateProjectService">
     <state x="700" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641874160702">
@@ -339,10 +336,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="239" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1641883153114" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1642052031007">
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1642057712971">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1642052031007" />
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1642057712971" />
     <state x="764" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1641883166408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -355,9 +352,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1641978260194" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1642039450608">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1642580058126">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1642039450608" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1642580058126" />
   </component>
 </project>
