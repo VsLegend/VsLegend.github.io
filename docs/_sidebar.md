@@ -5,8 +5,11 @@
 * ___
 * [JAVA反射](java/2021-05-21-JAVA-reflection.md "Java reflection")
 * [JAVA函数式编程](java/2021-05-22-Functional-Programming.md "JAVA函数式编程")
+
+* [Cloneable](java/advanced/Cloneable.md "Cloneable")
 * [序列化](java/advanced/Serializable.md "序列化")
 * [接口标记](java/advanced/marker_interfaces.md "接口标记")
+* [代码检测与优化](java/advanced/inspect_code.md "代码检测与优化")
 
 
 * ___
