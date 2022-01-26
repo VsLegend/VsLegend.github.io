@@ -17,6 +17,7 @@
 * ___
 * [@SuppressWarnings](annotation/suppress_warning.md "@SuppressWarnings")
 * [@FunctionalInterface](annotation/functionalInterface.md "@FunctionalInterface")
+* [@Transactional](annotation/transactional.md "@Transactional")
 
 
 * ___

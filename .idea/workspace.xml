@@ -19,9 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="代码优化与修改">
-      <change afterPath="$PROJECT_DIR$/docs/annotation/functionalInterface.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/annotation/suppress_warning.md" afterDir="false" />
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="更新注解SuppressWarnings、FunctionalInterface">
+      <change afterPath="$PROJECT_DIR$/docs/annotation/transactional.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/img/transactional.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/_sidebar.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_sidebar.md" afterDir="false" />
     </list>
@@ -69,13 +69,6 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\Document\VsLegend.github.io\docs\annotation" />
-      <recent name="E:\Document\VsLegend.github.io\docs\jvm" />
-      <recent name="E:\Document\VsLegend.github.io\docs" />
-      <recent name="E:\Document\VsLegend.github.io" />
-      <recent name="E:\Document\VsLegend.github.io\docs\java\advanced" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="E:\Document\VsLegend.github.io\docs\img" />
       <recent name="E:\Document\VsLegend.github.io\img" />
@@ -83,19 +76,13 @@
       <recent name="E:\Document\VsLegend.github.io\docs\java\advanced" />
       <recent name="E:\Document\VsLegend.github.io\docs\distributed" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\Document\VsLegend.github.io\docs\annotation" />
+      <recent name="E:\Document\VsLegend.github.io\docs\jvm" />
+      <recent name="E:\Document\VsLegend.github.io\docs" />
+      <recent name="E:\Document\VsLegend.github.io" />
+      <recent name="E:\Document\VsLegend.github.io\docs\java\advanced" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
@@ -124,7 +111,11 @@
       <workItem from="1642647214095" duration="2393000" />
       <workItem from="1642655633549" duration="11000000" />
       <workItem from="1642727620666" duration="1000" />
-      <workItem from="1643011580757" duration="3315000" />
+      <workItem from="1643011580757" duration="3416000" />
+      <workItem from="1643072433138" duration="2548000" />
+      <workItem from="1643086220372" duration="7293000" />
+      <workItem from="1643158666146" duration="3447000" />
+      <workItem from="1643174403165" duration="3563000" />
     </task>
     <task id="LOCAL-00001" summary="设置">
       <created>1621660495622</created>
@@ -294,7 +285,14 @@
       <option name="project" value="LOCAL" />
       <updated>1642668696235</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="更新注解SuppressWarnings、FunctionalInterface">
+      <created>1643015032353</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1643015032353</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +327,8 @@
     <MESSAGE value="jvm笔记上传" />
     <MESSAGE value="docker 笔记上传" />
     <MESSAGE value="代码优化与修改" />
-    <option name="LAST_COMMIT_MESSAGE" value="代码优化与修改" />
+    <MESSAGE value="更新注解SuppressWarnings、FunctionalInterface" />
+    <option name="LAST_COMMIT_MESSAGE" value="更新注解SuppressWarnings、FunctionalInterface" />
   </component>
   <component name="WindowStateProjectService">
     <state x="700" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641874160702">
@@ -352,10 +351,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="685" y="239" key="RollbackChangesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1641883153114" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1642668697810">
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1643015033778">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1642668697810" />
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1643015033778" />
     <state x="764" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1641883166408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
