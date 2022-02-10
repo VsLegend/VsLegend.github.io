@@ -1,7 +1,7 @@
 <!-- docs/_sidebar.md -->
 
 
-* **Java**
+* <p style="color:#E87A90">Java</p>
 * ___
 * [JAVA反射](java/2021-05-21-JAVA-reflection.md "Java reflection")
 * [JAVA函数式编程](java/2021-05-22-Functional-Programming.md "JAVA函数式编程")
@@ -13,15 +13,24 @@
 
 
 * ___
-* **常用注解**
+* <p style="color:#E87A90">注解</p>
 * ___
 * [@SuppressWarnings](annotation/suppress_warning.md "@SuppressWarnings")
 * [@FunctionalInterface](annotation/functionalInterface.md "@FunctionalInterface")
 * [@Transactional](annotation/transactional.md "@Transactional")
+* [@ConditionalOnClass](annotation/ConditionalOnClass.md "@ConditionalOnClass")
+* [@ConditionalOnBean](annotation/ConditionalOnBean.md "@ConditionalOnBean")
+* [@ConditionalOnMissingBean](annotation/ConditionalOnMissingBean.md "@ConditionalOnMissingBean")
 
 
 * ___
-* **Java虚拟机**
+* <p style="color:#E87A90">常用工具类</p>
+* ___
+* [AnnotationUtils](utils/AnnotationUtils.md "AnnotationUtils")
+
+
+* ___
+* <p style="color:#E87A90">Java虚拟机</p>
 * ___
 * [JVM内存结构](jvm/jvm_memory_structure.md "JVM内存结构")
 * [垃圾回收名词解释](jvm/keywords_explanation.md "垃圾回收名词解释")
@@ -33,7 +42,7 @@
 
 
 * ___
-* **Java并发**
+* <p style="color:#E87A90">Java并发</p>
 * ___
 * [并发挑战](java/concurrency/concurrency_challenge.md "并发挑战")
 * [线程基础](java/concurrency/thread.md "线程基础")
@@ -42,14 +51,14 @@
 
 
 * ___
-* **Redis**
+* <p style="color:#E87A90">Redis</p>
 * ___
 * [Redis基础知识](redis/2021-05-28-redis-data-structure.md "Redis基础知识")
 * [Redis的常用键值对](redis/2021-05-28-redis-key-value.md "Redis的常用键值对")
 
 
 * ___
-* **常用语句**
+* <p style="color:#E87A90">常用语句</p>
 * ___
 * [java常用命令](frequent_used/java_linux_win.md "java常用命令")
 * [Linux常用命令](frequent_used/linux_usually_used_cmd.md "Linux常用命令")
@@ -58,7 +67,7 @@
 
 
 * ___
-* **分布式**
+* <p style="color:#E87A90">分布式</p>
 * ___
 * [CAP理论](distributed/CAP.md "CAP理论")
 * [BASE理论](distributed/BASE.md "BASE理论")
@@ -66,7 +75,7 @@
 
 
 * ___
-* **Docker**
+* <p style="color:#E87A90">Docker</p>
 * ___
 * [docker概念](docker/basis.md "docker概念")
 * [命令行](docker/command.md "命令行")
@@ -75,6 +84,6 @@
 
 
 * ___
-* **其他**
+* <p style="color:#E87A90">其他</p>
 * ___
 * [emoji](emoji/emoji.md "emoji")

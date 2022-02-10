@@ -1,19 +1,3 @@
----
-title:  "java反射机制"
-author: WangJwi
-categories:
-- Java
-tags:
-- Java
-- 反射
-- Reflection
----
-
-
-导读：反射通常由需要检查或修改java虚拟机中运行的应用程序的运行时行为的程序使用。反射是一种强大的技术，可以使应用程序执行原本不可能的操作。
-
-
-------
 
 # java反射机制
 ## 反射原理：

@@ -9,7 +9,7 @@
 # 快速开始
 https://docsify.js.org/#/quickstart
 
-- 安装node.js 执行下面命令
+- 安装node.js后 执行下面命令
 ```yaml
 npm i docsify-cli -g
 ```
@@ -25,7 +25,7 @@ cd /目录
 docsify init ./docs
 ```
 
-- 启动本地服务查看页面
+- 在docs下添加md文件后，启动本地服务查看页面
 ```yaml
 docsify serve docs
 ```
