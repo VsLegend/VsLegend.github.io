@@ -1,10 +1,5 @@
 # Mysql常用语句
 
-## 获取uuid
-```sql
-SELECT REPLACE(UUID(),'-','')
-```
-
 ## 获取当前数据库的所有表名：
 ```sql
 SELECT GROUP_CONCAT( a.table_name SEPARATOR ',' ) 
@@ -64,12 +59,6 @@ UPDATE 表名 SET url = REPLACE(url,'/document','/opt/storage');
 set @userId = 'id';
 DELETE FROM 表名1 WHERE user_id = @user;
 DELETE FROM 表名2 WHERE user_id = @user;
-```
-
-
-## 数字格式化
-```sql
-SELECT CONVERT(58.2453421, DECIMAL(4,2))
 ```
 
 ## 按指定规则排序

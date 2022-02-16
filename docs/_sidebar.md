@@ -59,6 +59,18 @@
 
 
 * ___
+* <p style="color:#E87A90">MYSQL</p>
+* ___
+* [函数使用](mysql/mysql_function.md "函数使用")
+* [锁的知识点](mysql/mysql_lock.md "锁的知识点")
+* [数据库事务](mysql/mysql_transactional.md "数据库事务")
+* [执行流程](mysql/mysql_process.md "执行流程")
+* [数据库引擎](mysql/mysql_engine.md "数据库引擎")
+* [性能优化](mysql/mysql_optimization.md "性能优化")
+* [创建索引语句](mysql/mysql_create_index.md "创建索引语句")
+* [高性能索引](mysql/mysql_index.md "高性能索引")
+
+* ___
 * <p style="color:#E87A90">常用语句</p>
 * ___
 * [java常用命令](frequent_used/java_linux_win.md "java常用命令")

@@ -19,14 +19,20 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="更新注解Transactional">
-      <change afterPath="$PROJECT_DIR$/docs/annotation/ConditionalOnBean.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/annotation/ConditionalOnClass.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/annotation/ConditionalOnMissingBean.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/utils/AnnotationUtils.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/docs/utils/string_utils.md" afterDir="false" />
+    <list default="true" id="cf189851-cd5b-4c6b-ab0f-cf7cea556e0d" name="Default Changelist" comment="StringJoiner-连接字符串">
+      <change afterPath="$PROJECT_DIR$/docs/mysql/index.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/mysql/mysql_create_index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/mysql/mysql_engine.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/mysql/mysql_function.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/mysql/mysql_index.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/mysql/mysql_lock.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/mysql/mysql_optimization.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/mysql/mysql_process.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/mysql/mysql_transactional.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docs/mysql/process.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/_sidebar.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/_sidebar.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/frequent_used/mysql_usually_used_sql.md" beforeDir="false" afterPath="$PROJECT_DIR$/docs/frequent_used/mysql_usually_used_sql.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,18 +73,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs/mysql" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\Document\VsLegend.github.io\docs\img" />
-      <recent name="E:\Document\VsLegend.github.io\img" />
-      <recent name="E:\Document\VsLegend.github.io\docs\java\concurrency" />
-      <recent name="E:\Document\VsLegend.github.io\docs\java\advanced" />
-      <recent name="E:\Document\VsLegend.github.io\docs\distributed" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\Document\VsLegend.github.io\docs\annotation" />
       <recent name="E:\Document\VsLegend.github.io\docs\jvm" />
@@ -86,6 +85,28 @@
       <recent name="E:\Document\VsLegend.github.io" />
       <recent name="E:\Document\VsLegend.github.io\docs\java\advanced" />
     </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Document\VsLegend.github.io\docs\mysql" />
+      <recent name="E:\Document\VsLegend.github.io\docs\img" />
+      <recent name="E:\Document\VsLegend.github.io\img" />
+      <recent name="E:\Document\VsLegend.github.io\docs\java\concurrency" />
+      <recent name="E:\Document\VsLegend.github.io\docs\java\advanced" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SshConsoleOptionsProvider">
@@ -126,7 +147,8 @@
       <workItem from="1644454997521" duration="12602000" />
       <workItem from="1644541660641" duration="7498000" />
       <workItem from="1644818625970" duration="7355000" />
-      <workItem from="1644993075603" duration="1615000" />
+      <workItem from="1644993075603" duration="1953000" />
+      <workItem from="1644996506047" duration="5374000" />
     </task>
     <task id="LOCAL-00001" summary="设置">
       <created>1621660495622</created>
@@ -331,7 +353,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644824176884</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="StringJoiner-连接字符串">
+      <created>1644994737542</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1644994737542</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -368,7 +397,8 @@
     <MESSAGE value="代码优化与修改" />
     <MESSAGE value="更新注解SuppressWarnings、FunctionalInterface" />
     <MESSAGE value="更新注解Transactional" />
-    <option name="LAST_COMMIT_MESSAGE" value="更新注解Transactional" />
+    <MESSAGE value="StringJoiner-连接字符串" />
+    <option name="LAST_COMMIT_MESSAGE" value="StringJoiner-连接字符串" />
   </component>
   <component name="WindowStateProjectService">
     <state x="700" y="320" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1641874160702">
@@ -399,10 +429,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1643262178893" />
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1644824178953">
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2" timestamp="1644995045842">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1644824178953" />
+    <state x="552" y="239" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1644995045842" />
     <state x="764" y="432" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1641883166408">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -419,10 +449,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="334" y="180" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1643252991398" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1641978260194">
+    <state x="616" y="240" key="run.anything.popup" timestamp="1644996617899">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1641978260194" />
+    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1644996617899" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1643012846914">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
