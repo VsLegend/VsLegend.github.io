@@ -26,3 +26,10 @@
 <br><br>
 
 ---
+
+
+
+
+
+## 参考
+[Understanding the Query Execution Plan](https://dev.mysql.com/doc/refman/8.0/en/execution-plan-information.html)
