@@ -79,8 +79,30 @@ for (final FieldError fieldError : result.getFieldErrors()) {
 
 
 
+### Performance - Method concatenates strings using + in a loop
+
+不能用for循环拼接字符串，由于字符串类String实例是一个不可变对象，每次拼接都会生成新对象，浪费内存。使用StringBuffer (or StringBuilder in Java 1.5)代替。
+
+```java
+// This is bad
+  String s = "";
+  for (int i = 0; i < field.length; ++i) {
+    s = s + field[i];
+  }
+
+  // This is better
+  StringBuffer buf = new StringBuffer();
+  for (int i = 0; i < field.length; ++i) {
+    buf.append(field[i]);
+  }
+  String s = buf.toString();
+
+```
 
 
+### Performance - Private method is never called
+
+私有方法未被调用
 
 
 <br><br>
