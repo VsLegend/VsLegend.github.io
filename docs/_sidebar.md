@@ -81,6 +81,14 @@
 * [查询性能优化](mysql/select_optimization.md "查询性能优化")
 * [优化工具explain](mysql/optimizational_tool_explain.md "优化工具explain")
 
+
+* ___
+* <p style="color:limegreen">MYBATIS</p>
+* ___
+* [SqlSession方法解析](mybatis/sqlsession.md "SqlSession方法解析")
+* [批量插入的三种方法，以及性能分析](mybatis/batch_insert.md "Mybatis 批量插入的三种方法，以及性能分析")
+
+
 * ___
 * <p style="color:limegreen">常用语句</p>
 * ___

@@ -355,3 +355,4 @@ public class ConstructorReflectDemo {
 参考：
 
 [The Reflection API](https://docs.oracle.com/javase/tutorial/reflect/index.html)
+[如何提高使用Java反射的效率？](https://juejin.cn/post/6844903830920888327#heading-5)
