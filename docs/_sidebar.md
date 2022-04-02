@@ -5,6 +5,7 @@
 * ___
 * [JAVA反射](java/2021-05-21-JAVA-reflection.md "Java reflection")
 * [JAVA函数式编程](java/2021-05-22-Functional-Programming.md "JAVA函数式编程")
+* [retry跳出循环语法](java/retry.md "retry跳出循环语法")
 
 * [Cloneable](java/advanced/Cloneable.md "Cloneable")
 * [序列化](java/advanced/Serializable.md "序列化")
@@ -48,6 +49,7 @@
 * [并发挑战](java/concurrency/concurrency_challenge.md "并发挑战")
 * [线程基础](java/concurrency/thread.md "线程基础")
 * [多线程的异常捕获](java/concurrency/2021-08-03-java-concurrency-1.md "多线程的异常捕获")
+* [ThreadPoolTaskExecutor异常中断问题](error/java/timedout_terminate.md "ThreadPoolTaskExecutor 线程异常中断")
 <!-- * [使用CompletionService来接收线程池计算的结果](java/concurrency/2021-08-03-java-concurrency-2.md "使用CompletionService来接收线程池计算的结果") -->
 
 
