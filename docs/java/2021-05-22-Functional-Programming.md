@@ -504,4 +504,5 @@ public class MethodReferencesExamples {
 [First-class_function](https://en.wikipedia.org/wiki/First-class_function)
 
 [Side effect](https://en.wikipedia.org/wiki/Side_effect_(computer_science))
+[java8 Stream的实现原理 (从零开始实现一个stream流) ](https://www.cnblogs.com/xiaoxiongcanguan/p/10511233.html)
 
